@@ -1,27 +1,24 @@
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, } from "firebase/auth";
 import { FormEvent, useState } from 'react';
 import { app,} from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
 
-const auth = getAuth(app);
 
-function Login() {
- // const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+function Cadastrar() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  
 
   const navigate = useNavigate()
   
   async  function submitEmail(event: FormEvent) {
     event.preventDefault();
   try {
-    if( !email || !password ) {
-      throw new Error('Digite seu email ou sua senha')
-    }
-   const respose=   await  signInWithEmailAndPassword(auth, email, password)
-   console.log(respose)
+    const { user} =   await  createUserWithEmailAndPassword(auth, email, password)
+   console.log( user)
    navigate("/home")
   } catch (error) {
     console.log(error)
@@ -29,22 +26,14 @@ function Login() {
   }
   
 
-//  async function loginGoogle(event: FormEvent) {
-//    event.preventDefault();
-//    try {
-//      await signInWithPopup(auth, provider);
-//      navigate("/home");
-//    } catch (error) {
-//      console.log(error);
-//    }
-//  }
+
 
 
   return (
     <>
       <div className={styles.geral}>
           
-          <h1>Acessa sua conta Taugor</h1>     
+          <h1>Cadastrar</h1>     
           <form onSubmit={submitEmail} className={styles.form} >  
             <TextField
               label="Email"
@@ -67,7 +56,7 @@ function Login() {
             <Button type="submit" variant="contained" color="primary">
               Enviar
             </Button>
-       
+         
           </form>
   
       </div>
@@ -75,4 +64,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Cadastrar;
