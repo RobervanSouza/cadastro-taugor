@@ -1,14 +1,13 @@
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FormEvent, useState } from 'react';
-import { app,} from "../../config/configuraFirebase";
+import { auth,} from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
 
-const auth = getAuth(app);
 
 function Login() {
- // const provider = new GoogleAuthProvider();
+  const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
 
@@ -29,15 +28,15 @@ function Login() {
   }
   
 
-//  async function loginGoogle(event: FormEvent) {
-//    event.preventDefault();
-//    try {
-//      await signInWithPopup(auth, provider);
-//      navigate("/home");
-//    } catch (error) {
-//      console.log(error);
-//    }
-//  }
+ async function loginGoogle(event: FormEvent) {
+   event.preventDefault();
+   try {
+     await signInWithPopup(auth, provider);
+     navigate("/home");
+   } catch (error) {
+     console.log(error);
+   }
+ }
 
 
   return (
@@ -66,6 +65,11 @@ function Login() {
           
             <Button type="submit" variant="contained" color="primary">
               Enviar
+            </Button>
+       
+          
+            <Button type="button" variant="contained" color="primary" onClick={loginGoogle} >
+              email
             </Button>
        
           </form>

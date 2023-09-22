@@ -4,12 +4,15 @@ import { createUserWithEmailAndPassword, getAuth, } from "firebase/auth";
 import { FormEvent, useState } from 'react';
 import { app,} from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
+import { UserType } from "../../types/userTypes";
+import { criarUsuario } from "../../utils/user";
 
 
 const auth = getAuth(app);
 function Cadastrar() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   
 
   const navigate = useNavigate()
@@ -18,7 +21,14 @@ function Cadastrar() {
     event.preventDefault();
   try {
     const { user} =   await  createUserWithEmailAndPassword(auth, email, password)
-   console.log( user)
+  
+    const usuario : UserType = {
+      id: user.uid,
+      email: email,
+      name: name,
+    };
+
+    criarUsuario(usuario)
    navigate("/home")
   } catch (error) {
     console.log(error)
@@ -35,6 +45,14 @@ function Cadastrar() {
           
           <h1>Cadastrar</h1>     
           <form onSubmit={submitEmail} className={styles.form} >  
+            <TextField
+              label="Nome"
+              variant="outlined"
+              fullWidth
+              name="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+            />
             <TextField
               label="Email"
               variant="outlined"
