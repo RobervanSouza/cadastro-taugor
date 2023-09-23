@@ -61,6 +61,14 @@ function Login() {
       } catch (error) {
         console.log(error);
       }
+    } else {
+      // Se algum dos campos não for válido, mostrar mensagens de erro
+      if (!isEmailValid) {
+        setEmailError("Email inválido");
+      }
+      if (!isPasswordValid) {
+        setPasswordError("A senha deve conter pelo menos 6 caracteres");
+      }
     }
   }
 
