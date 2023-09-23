@@ -6,6 +6,7 @@ import { auth,} from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
 
 
+
 function Login() {
   const provider = new GoogleAuthProvider();
   const [email, setEmail] = useState('')
@@ -42,38 +43,47 @@ function Login() {
   return (
     <>
       <div className={styles.geral}>
-          
-          <h1>Acessa sua conta Taugor</h1>     
-          <form onSubmit={submitEmail} className={styles.form} >  
-            <TextField
-              label="Email"
-              variant="outlined"
-              fullWidth
-              name="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <TextField
-              label="Senha"
-              variant="outlined"
-              fullWidth
-              type="password"
-              name="senha"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          
-            <Button type="submit" variant="contained" color="primary">
-              Enviar
-            </Button>
-       
-          
-            <Button type="button" variant="contained" color="primary" onClick={loginGoogle} >
-              email
-            </Button>
-       
-          </form>
-  
+        <h1>Acessa sua conta Taugor</h1>
+        <form onSubmit={submitEmail} className={styles.form}>
+          <TextField
+            label="Email"
+            variant="outlined"
+            fullWidth
+            name="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <TextField
+            label="Senha"
+            variant="outlined"
+            fullWidth
+            type="password"
+            name="senha"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+
+          <Button type="submit" variant="contained" color="primary">
+            Entrar
+          </Button>
+
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            onClick={loginGoogle}>
+            Entrar com conta Google
+          </Button>
+          <h1>Ainda não tem conta?</h1>
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+             onClick={() => navigate("/cadastrar")}
+            >
+            <h3>Faça seu Cadastro!</h3>
+          </Button>
+        </form>
       </div>
     </>
   );
