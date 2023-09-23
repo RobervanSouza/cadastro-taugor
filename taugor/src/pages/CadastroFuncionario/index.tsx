@@ -1,18 +1,20 @@
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss"
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, } from "firebase/auth";
 import { FormEvent, useState } from 'react';
-
+import { app,} from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "../../types/userTypes";
 import { criarUsuario } from "../../utils/user";
-import { auth } from "../../config/configuraFirebase";
 
-function Cadastrar() {
+const auth = getAuth(app);
+
+function CadastrarFuncionario() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   
+
   const navigate = useNavigate()
   
   async  function submitEmail(event: FormEvent) {
@@ -80,4 +82,4 @@ function Cadastrar() {
   );
 }
 
-export default Cadastrar;
+export default CadastrarFuncionario;
