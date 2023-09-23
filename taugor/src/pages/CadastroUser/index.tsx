@@ -91,7 +91,7 @@ function Cadastrar() {
           />
 
           <Button type="submit" variant="contained" color="primary">
-            Enviar
+            Cadastrar
           </Button>
         </form>
       </div>

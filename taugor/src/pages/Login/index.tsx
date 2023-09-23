@@ -1,49 +1,83 @@
+import React, { FormEvent, useState } from "react";
 import { TextField, Button } from "@mui/material";
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { FormEvent, useState } from 'react';
-import { auth,} from "../../config/configuraFirebase";
+import { auth } from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
-
-
 
 function Login() {
   const provider = new GoogleAuthProvider();
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-  
-  async  function submitEmail(event: FormEvent) {
-    event.preventDefault();
-  try {
-    if( !email || !password ) {
-      throw new Error('Digite seu email ou sua senha')
+  const validateEmail = (value: string) => {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(value);
+  };
+
+  const validatePassword = (value: string) => {
+    return value.length >= 6;
+  };
+
+  const isEmailValid = validateEmail(email);
+  const isPasswordValid = validatePassword(password);
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setEmail(value);
+    if (!validateEmail(value)) {
+      setEmailError("Email inválido");
+    } else {
+      setEmailError(""); // Limpar erro de email se for válido
     }
-   const respose=   await  signInWithEmailAndPassword(auth, email, password)
-   console.log(respose)
-   navigate("/home")
-  } catch (error) {
-    console.log(error)
-  }
-  }
-  
+  };
 
- async function loginGoogle(event: FormEvent) {
-   event.preventDefault();
-   try {
-     await signInWithPopup(auth, provider);
-     navigate("/home");
-   } catch (error) {
-     console.log(error);
-   }
- }
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setPassword(value);
+    if (value.length < 6) {
+      setPasswordError("A senha deve conter pelo menos 6 caracteres");
+    } else {
+      setPasswordError(""); // Limpar erro de senha se for válido
+    }
+  };
 
+  async function submitEmail(event: FormEvent) {
+    event.preventDefault();
+
+    // Verificar se o email e a senha são válidos antes de prosseguir
+    if (isEmailValid && isPasswordValid) {
+      try {
+        const response = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log(response);
+        navigate("/home");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  async function loginGoogle(event: FormEvent) {
+    event.preventDefault();
+    try {
+      await signInWithPopup(auth, provider);
+      navigate("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
       <div className={styles.geral}>
-        <h1>Acessa sua conta Taugor</h1>
+        <h1>Acesse sua conta Taugor</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
             label="Email"
@@ -51,7 +85,9 @@ function Login() {
             fullWidth
             name="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={handleEmailChange}
+            error={!isEmailValid && !!emailError}
+            helperText={emailError}
           />
           <TextField
             label="Senha"
@@ -60,7 +96,9 @@ function Login() {
             type="password"
             name="senha"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={handlePasswordChange}
+            error={!isPasswordValid && !!passwordError}
+            helperText={passwordError}
           />
 
           <Button type="submit" variant="contained" color="primary">
@@ -79,8 +117,7 @@ function Login() {
             type="button"
             variant="contained"
             color="primary"
-             onClick={() => navigate("/cadastrar")}
-            >
+            onClick={() => navigate("/cadastrar")}>
             <h3>Faça seu Cadastro!</h3>
           </Button>
         </form>
@@ -89,4 +126,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Login;
