@@ -17,9 +17,6 @@ function ProtecaoRotas({redirectTo}: IProtegerRotas) {
     return token  ? <Outlet/>: <Navigate to={redirectTo} /> 
 }
 
-
-
-
 export function Navegacao() {
     return (
       <Routes>

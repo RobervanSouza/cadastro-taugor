@@ -1,9 +1,14 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss";
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../../config/configuraFirebase";
 import { useNavigate } from "react-router-dom";
+import {  onAuthStateChanged } from "firebase/auth";
 
 function Login() {
   const provider = new GoogleAuthProvider();
@@ -12,6 +17,20 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    // Verificar o estado de autenticação do usuário assim que a página é montada
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // O usuário já está autenticado, redirecionar para a página inicial
+        navigate("/home");
+      }
+    });
+
+    // Lembre-se de cancelar a inscrição quando o componente for desmontado
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;

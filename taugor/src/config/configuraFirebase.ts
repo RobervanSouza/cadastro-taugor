@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { browserLocalPersistence, getAuth } from "firebase/auth";
+import { browserLocalPersistence, getAuth, setPersistence } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 
@@ -20,5 +20,14 @@ const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 auth.setPersistence(browserLocalPersistence)
+
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    // A persistência local foi configurada com sucesso
+  })
+  .catch((error) => {
+    // Lidar com erros de configuração de persistência
+    console.error("Erro na configuração de persistência local:", error);
+  });
 
 export { app, database, auth}
