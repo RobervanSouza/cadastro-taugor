@@ -3,6 +3,8 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Cadastrar from "./pages/CadastroUser";
 import Pagina404 from "./pages/pagina404";
+import CadastrarFuncionario from "./pages/CadastroFuncionario";
+import CriarAdministrador from "./pages/Admin";
 
 interface IProtegerRotas{
    redirectTo: string;
@@ -22,10 +24,16 @@ export function Navegacao() {
       <Routes>
         <Route element={<Login />} path="/" />
         <Route element={<Cadastrar />} path="/cadastrar" />
+        <Route element={<CriarAdministrador />} path="/criar-administrador" />
+
         <Route element={<ProtecaoRotas redirectTo="/" />}>
           <Route element={<Home />} path="/home" />
+          <Route
+            element={<CadastrarFuncionario />}
+            path="/cadastrafuncionario"
+          />
         </Route>
-        <Route element={<Pagina404/>} path="*" />
+        <Route element={<Pagina404 />} path="*" />
       </Routes>
     );
 }

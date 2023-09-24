@@ -1,6 +1,13 @@
 export type UserType = {
     id: string;
     name: string;
-    email: string;
-    senha?: string;
+    sexo: string;
+    endereco: string;
+    telefone: number;
+    foto: string;
+    nascimento: number
+    cargo: string
+    setor: string;
+    salario: string;
 }
+

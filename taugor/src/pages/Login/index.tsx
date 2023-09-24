@@ -30,7 +30,7 @@ function Login() {
 
     // Lembre-se de cancelar a inscrição quando o componente for desmontado
     return () => unsubscribe();
-  }, [auth, navigate]);
+  }, [ navigate]);
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
