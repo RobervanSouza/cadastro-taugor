@@ -1,22 +1,17 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss";
-import {
-  
-  signInWithEmailAndPassword,
- 
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/configuraFirebase";
-import { Link, useNavigate } from "react-router-dom";
-import {  onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
 
-function Login() {
+function LoginAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     // Verificar o estado de autenticação do usuário assim que a página é montada
@@ -29,7 +24,7 @@ function Login() {
 
     // Lembre-se de cancelar a inscrição quando o componente for desmontado
     return () => unsubscribe();
-  }, [ navigate]);
+  }, [navigate]);
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -69,13 +64,19 @@ function Login() {
     // Verificar se o email e a senha são válidos antes de prosseguir
     if (isEmailValid && isPasswordValid) {
       try {
-        const response = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        console.log(response);
-        navigate("/home");
+        // Verifique se o email é igual a "taugor@getnet.com"
+        if (email === "taugor@getnet.com") {
+          const response = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          console.log(response);
+          navigate("/cadastrar");
+        } else {
+          // Se o email não for "taugor@getnet.com" ou a senha estiver incorreta, mostre uma mensagem de erro
+          setEmailError("Email ou senha incorretos");
+        }
       } catch (error) {
         console.log(error);
       }
@@ -90,48 +91,38 @@ function Login() {
     }
   }
 
- 
-
   return (
-    <>
-      <div className={styles.geral}>
-        <h1>Acesse sua conta Taugor</h1>
-        <form onSubmit={submitEmail} className={styles.form}>
-          <TextField
-            label="Email"
-            variant="outlined"
-            fullWidth
-            name="email"
-            value={email}
-            onChange={handleEmailChange}
-            error={!isEmailValid && !!emailError}
-            helperText={emailError}
-          />
-          <TextField
-            label="Senha"
-            variant="outlined"
-            fullWidth
-            type="password"
-            name="senha"
-            value={password}
-            onChange={handlePasswordChange}
-            error={!isPasswordValid && !!passwordError}
-            helperText={passwordError}
-          />
+    <div className={styles.geral}>
+      <h1>Acesse sua conta Taugor</h1>
+      <form onSubmit={submitEmail} className={styles.form}>
+        <TextField
+          label="Email"
+          variant="outlined"
+          fullWidth
+          name="email"
+          value={email}
+          onChange={handleEmailChange}
+          error={!isEmailValid || !!emailError}
+          helperText={emailError}
+        />
+        <TextField
+          label="Senha"
+          variant="outlined"
+          fullWidth
+          type="password"
+          name="senha"
+          value={password}
+          onChange={handlePasswordChange}
+          error={!isPasswordValid || !!passwordError}
+          helperText={passwordError}
+        />
+        <Button type="submit" variant="contained" color="primary">
+          Entrar
+        </Button>
+      </form>
 
-          <Button type="submit" variant="contained" color="primary">
-            Entrar
-          </Button>
-
-          <Button type="submit" variant="contained" color="primary">
-            <Link to="/admin">
-              Ainda não tem uma conta? Crie uma aqui.
-            </Link>
-          </Button>
-        </form>
-      </div>
-    </>
+    </div>
   );
 }
 
-export default Login;
+export default LoginAdmin;

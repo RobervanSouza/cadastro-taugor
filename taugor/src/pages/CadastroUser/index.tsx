@@ -1,8 +1,8 @@
 import React, { FormEvent, useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import styles from "./styles.module.scss";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth } from "../../config/configuraFirebase";
 
 function Cadastrar() {
@@ -10,10 +10,9 @@ function Cadastrar() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState(""); // Estado para a mensagem de sucesso
 
   const validateEmail = (value: string) => {
-    
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(value);
   };
@@ -31,7 +30,7 @@ function Cadastrar() {
     if (!validateEmail(value)) {
       setEmailError("Email inválido");
     } else {
-      setEmailError(""); 
+      setEmailError("");
     }
   };
 
@@ -41,7 +40,7 @@ function Cadastrar() {
     if (value.length < 6) {
       setPasswordError("A senha deve conter pelo menos 6 caracteres");
     } else {
-      setPasswordError(""); 
+      setPasswordError("");
     }
   };
 
@@ -50,13 +49,11 @@ function Cadastrar() {
 
     if (isEmailValid && isPasswordValid) {
       try {
-        const response = await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        console.log(response);
-        navigate("/home");
+        await createUserWithEmailAndPassword(auth, email, password);
+        // Define a mensagem de sucesso e limpa os campos
+        setSuccessMessage("Usuário cadastrado com sucesso!");
+        setEmail("");
+        setPassword("");
       } catch (error) {
         console.log(error);
       }
@@ -93,7 +90,16 @@ function Cadastrar() {
           <Button type="submit" variant="contained" color="primary">
             Cadastrar
           </Button>
+
+          <Button variant="contained" color="primary">
+            <Link to="/home">Nagevar para a pagina home</Link>
+          </Button>
         </form>
+        {successMessage && (
+          <Typography variant="subtitle1" color="success">
+            {successMessage}
+          </Typography>
+        )}
       </div>
     </>
   );
