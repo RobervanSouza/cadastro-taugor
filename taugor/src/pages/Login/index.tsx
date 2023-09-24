@@ -1,14 +1,12 @@
 import React, { FormEvent, useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss";
-import {
-  
-  signInWithEmailAndPassword,
- 
-} from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/configuraFirebase";
 import { Link, useNavigate } from "react-router-dom";
-import {  onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import LogoComponent from "../../components/logo/logo";
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -16,7 +14,6 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
-  
 
   useEffect(() => {
     // Verificar o estado de autenticação do usuário assim que a página é montada
@@ -29,7 +26,7 @@ function Login() {
 
     // Lembre-se de cancelar a inscrição quando o componente for desmontado
     return () => unsubscribe();
-  }, [ navigate]);
+  }, [navigate]);
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -49,7 +46,7 @@ function Login() {
     if (!validateEmail(value)) {
       setEmailError("Email inválido");
     } else {
-      setEmailError(""); // Limpar erro de email se for válido
+      setEmailError(""); 
     }
   };
 
@@ -59,7 +56,7 @@ function Login() {
     if (value.length < 6) {
       setPasswordError("A senha deve conter pelo menos 6 caracteres");
     } else {
-      setPasswordError(""); // Limpar erro de senha se for válido
+      setPasswordError(""); 
     }
   };
 
@@ -80,9 +77,9 @@ function Login() {
         console.log(error);
       }
     } else {
-      // Se algum dos campos não for válido, mostrar mensagens de erro
+     
       if (!isEmailValid) {
-        setEmailError("Email inválido");
+        setEmailError("Digite email valido");
       }
       if (!isPasswordValid) {
         setPasswordError("A senha deve conter pelo menos 6 caracteres");
@@ -90,12 +87,11 @@ function Login() {
     }
   }
 
- 
-
   return (
     <>
       <div className={styles.geral}>
-        <h1>Acesse sua conta Taugor</h1>
+      <LogoComponent/>
+        <h1>Acesse sua conta</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
             label="Email"
@@ -123,9 +119,11 @@ function Login() {
             Entrar
           </Button>
 
-          <Button type="submit" variant="contained" color="primary">
-            <Link to="/admin">
-              Ainda não tem uma conta? Crie uma aqui.
+          <Button type="button" variant="contained" className="primary">
+            <Link
+              to="/admin"
+              style={{ textDecoration: "none", color: "white" }}>
+              Acessar como Admin
             </Link>
           </Button>
         </form>

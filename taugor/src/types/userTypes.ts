@@ -3,11 +3,11 @@ export type UserType = {
     name: string;
     sexo: string;
     endereco: string;
-    telefone: number;
+    telefone: number | string;
     foto: string;
-    nascimento: number
+    nascimento: number | string;
     cargo: string
     setor: string;
     salario: string;
+    admisao: string | number;
 }
-

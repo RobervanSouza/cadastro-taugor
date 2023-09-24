@@ -10,7 +10,7 @@ function Cadastrar() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [successMessage, setSuccessMessage] = useState(""); // Estado para a mensagem de sucesso
+  const [successMessage, setSuccessMessage] = useState("");
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,6 +46,12 @@ function Cadastrar() {
 
   async function submitEmail(event: FormEvent) {
     event.preventDefault();
+
+    if (email.trim() === "" || password.trim() === "") {
+      // Verifique se os campos de email e senha estão vazios e defina uma mensagem de erro
+      setEmailError("Preencha todos os campos.");
+      return;
+    }
 
     if (isEmailValid && isPasswordValid) {
       try {
@@ -92,7 +98,7 @@ function Cadastrar() {
           </Button>
 
           <Button variant="contained" color="primary">
-            <Link to="/home">Nagevar para a pagina home</Link>
+            <Link to="/home">Navegar para a página home</Link>
           </Button>
         </form>
         {successMessage && (

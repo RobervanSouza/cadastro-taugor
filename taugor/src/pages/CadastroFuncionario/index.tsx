@@ -1,19 +1,23 @@
-import React, { FormEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user"; // Importe a função criarUsuario aqui
 import { UserType } from "../../types/userTypes";
 import { useNavigate } from "react-router-dom";
+import LogoComponent from "../../components/logo/logo";
+import styles from "./styles.module.scss";
+
 
 function CadastrarFuncionario() {
   const [name, setName] = useState("");
   const [sexo, setSexo] = useState("");
   const [endereco, setEndereco] = useState("");
-  const [telefone, setTelefone] = useState(0); // Alterado para número
+  const [telefone, setTelefone] = useState(''); // Alterado para número
   const [foto, setFoto] = useState("");
-  const [nascimento, setNascimento] = useState(0); // Alterado para número
+  const [nascimento, setNascimento] = useState(''); // Alterado para número
   const [cargo, setCargo] = useState("");
   const [setor, setSetor] = useState("");
   const [salario, setSalario] = useState("");
+  const [admisao, setAdmisao] = useState("");
 
   const navigate = useNavigate();
 
@@ -31,6 +35,7 @@ function CadastrarFuncionario() {
       cargo,
       setor,
       salario,
+      admisao
     };
 
     criarUsuario(usuario);
@@ -38,17 +43,24 @@ function CadastrarFuncionario() {
     // Redirecionar para a página desejada após o cadastro
     navigate("/home");
   };
+  
+
 
   return (
-    <div>
-      <h1>Cadastrar</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.geral}>
+      <div>
+        <LogoComponent />
+      </div>
+      <h1>Cadastrar Funcionario</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <TextField
           label="Nome"
           variant="outlined"
           fullWidth
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
+          placeholder="Robervan Souza"
         />
         <TextField
           label="Sexo"
@@ -56,6 +68,8 @@ function CadastrarFuncionario() {
           fullWidth
           value={sexo}
           onChange={(e) => setSexo(e.target.value)}
+          required
+          placeholder="Sexo"
         />
         <TextField
           label="Endereço"
@@ -63,36 +77,56 @@ function CadastrarFuncionario() {
           fullWidth
           value={endereco}
           onChange={(e) => setEndereco(e.target.value)}
+          required
+          placeholder="Rua ..."
         />
         <TextField
           label="Telefone"
           variant="outlined"
           fullWidth
-          type="number" // Alterado para tipo "número"
+          type="text"
           value={telefone}
-          onChange={(e) => setTelefone(Number(e.target.value))} // Convertido para número
+          onChange={(e) => {
+            const value = e.target.value;
+            const numericValue = value.replace(/[^\d\s-]/g, ""); // Remove todos os caracteres não numéricos, exceto espaços e hífens
+            setTelefone(numericValue);
+          }}
+          required
+          placeholder="99 9999-2333"
         />
+
         <TextField
           label="Foto"
           variant="outlined"
           fullWidth
           value={foto}
           onChange={(e) => setFoto(e.target.value)}
+          required
+          placeholder="link da imagem"
         />
         <TextField
           label="Data de Nascimento"
           variant="outlined"
           fullWidth
-          type="number" // Alterado para tipo "número"
+          type="text"
           value={nascimento}
-          onChange={(e) => setNascimento(Number(e.target.value))} // Convertido para número
+          onChange={(e) => {
+            const value = e.target.value;
+            const formattedValue = value.replace(/[^0-9/]/g, ""); // Remove caracteres não numéricos e não "/"
+            setNascimento(formattedValue);
+          }}
+          required
+          placeholder="DD/MM/AAAA"
         />
+
         <TextField
           label="Cargo"
           variant="outlined"
           fullWidth
           value={cargo}
           onChange={(e) => setCargo(e.target.value)}
+          required
+          placeholder="Digite o cargo do funcionário"
         />
         <TextField
           label="Setor"
@@ -100,13 +134,35 @@ function CadastrarFuncionario() {
           fullWidth
           value={setor}
           onChange={(e) => setSetor(e.target.value)}
+          required
+          placeholder="Setor que o funcionario trabalha"
         />
         <TextField
           label="Salário"
           variant="outlined"
           fullWidth
           value={salario}
-          onChange={(e) => setSalario(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            const formattedValue = value.replace(/[^0-9,.]/g, ""); // Remove caracteres não numéricos, exceto pontos e vírgulas
+            setSalario(formattedValue);
+          }}
+          required
+          placeholder="Digite o salário (ex: 1000,50)"
+        />
+
+        <TextField
+          label="Data de admisão"
+          variant="outlined"
+          fullWidth
+          value={admisao}
+          onChange={(e) => {
+            const value = e.target.value;
+            const formattedValue = value.replace(/[^0-9/]/g, ""); // Remove caracteres não numéricos e não "/"
+            setAdmisao(formattedValue);
+          }}
+          required
+          placeholder="DD/MM/AAAA"
         />
         <Button type="submit" variant="contained" color="primary">
           Enviar

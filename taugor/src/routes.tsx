@@ -25,11 +25,8 @@ export function Navegacao() {
     <Routes>
       <Route element={<Login />} path="/" />
       <Route element={<LoginAdmin />} path="/admin" />
-
       <Route element={<ProtecaoRotas redirectTo="/admin" />}>
-        
-      <Route element={<Cadastrar />} path="/cadastrar" />
-       
+        <Route element={<Cadastrar />} path="/cadastrar" />
       </Route>
       <Route element={<ProtecaoRotas redirectTo="/" />}>
         <Route element={<Home />} path="/home" />

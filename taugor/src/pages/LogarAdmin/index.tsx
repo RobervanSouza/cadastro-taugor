@@ -3,14 +3,14 @@ import { TextField, Button } from "@mui/material";
 import styles from "./styles.module.scss";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/configuraFirebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 
 function LoginAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function LoginAdmin() {
     if (!validateEmail(value)) {
       setEmailError("Email inválido");
     } else {
-      setEmailError(""); // Limpar erro de email se for válido
+      setEmailError(null); // Limpar erro de email se for válido
     }
   };
 
@@ -54,7 +54,7 @@ function LoginAdmin() {
     if (value.length < 6) {
       setPasswordError("A senha deve conter pelo menos 6 caracteres");
     } else {
-      setPasswordError(""); // Limpar erro de senha se for válido
+      setPasswordError(null); // Limpar erro de senha se for válido
     }
   };
 
@@ -75,7 +75,7 @@ function LoginAdmin() {
           navigate("/cadastrar");
         } else {
           // Se o email não for "taugor@getnet.com" ou a senha estiver incorreta, mostre uma mensagem de erro
-          setEmailError("Email ou senha incorretos");
+          setEmailError("Email ou senha incorretos ou você não e Admin.");
         }
       } catch (error) {
         console.log(error);
@@ -93,7 +93,7 @@ function LoginAdmin() {
 
   return (
     <div className={styles.geral}>
-      <h1>Acesse sua conta Taugor</h1>
+      <h1>Entrar como Admin</h1>
       <form onSubmit={submitEmail} className={styles.form}>
         <TextField
           label="Email"
@@ -119,8 +119,12 @@ function LoginAdmin() {
         <Button type="submit" variant="contained" color="primary">
           Entrar
         </Button>
+        <Button type="button" variant="contained" color="primary">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            Voltar para login
+          </Link>
+        </Button>
       </form>
-
     </div>
   );
 }

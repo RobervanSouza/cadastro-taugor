@@ -29,7 +29,6 @@ body {
   background-color: white;
 }
 
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -40,4 +39,12 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+}
+.logo{
+  
+  width: 350px;
+  height: 150px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
