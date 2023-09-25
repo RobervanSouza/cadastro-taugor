@@ -16,6 +16,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const userDetails = [
     { label: "Cargo", value: usuario.cargo },
     { label: "Setor", value: usuario.setor },
+    
   ];
 
   const openModal = () => {
@@ -27,11 +28,12 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
     onUpdateUser(usuario);
   };
 
-
-
   return (
     <Card className={styles["user-card"]}>
       <CardContent className={styles["card-content"]}>
+        <div className={styles["user-image"]}>
+          <img src={usuario.foto} alt={usuario.name} />
+        </div>
         <Typography className={styles["user-name"]} variant="h6">
           {usuario.name}
         </Typography>
