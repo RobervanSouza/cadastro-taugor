@@ -1,16 +1,17 @@
 import React, { FormEvent, useState } from "react";
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, } from "@mui/material";
 import styles from "./styles.module.scss";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/configuraFirebase";
+import LogoComponent from "../../components/logo/logo";
 
 function Cadastrar() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
+
 
   const validateEmail = (value: string) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -57,7 +58,7 @@ function Cadastrar() {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
         // Define a mensagem de sucesso e limpa os campos
-        setSuccessMessage("Usuário cadastrado com sucesso!");
+        alert("Usuário cadastrado com sucesso!");
         setEmail("");
         setPassword("");
       } catch (error) {
@@ -69,7 +70,8 @@ function Cadastrar() {
   return (
     <>
       <div className={styles.geral}>
-        <h1>Cadastrar</h1>
+        <div> <LogoComponent/> </div>
+        <h1>Cadastrar usuario</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
             label="Email"
@@ -96,16 +98,12 @@ function Cadastrar() {
           <Button type="submit" variant="contained" color="primary">
             Cadastrar
           </Button>
-
           <Button variant="contained" color="primary">
-            <Link to="/home">Navegar para a página home</Link>
+            <Link style={{ textDecoration: "none", color: "white" }} to="/home">
+              Navegar para a página home
+            </Link>
           </Button>
         </form>
-        {successMessage && (
-          <Typography variant="subtitle1" color="success">
-            {successMessage}
-          </Typography>
-        )}
       </div>
     </>
   );

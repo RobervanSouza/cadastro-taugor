@@ -1,5 +1,5 @@
-.geral{
-  display: flex; 
+.geral {
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -8,24 +8,33 @@
   min-height: 100vh;
   padding: 10px;
   position: relative;
-
-  h1{
-    color: #06A0EC;
-    font-size: 24px;
-  }
-  
 }
-.form{
+
+h1 {
+  color: #06a0ec;
+  font-size: 24px;
+}
+
+.form {
   display: flex;
   align-items: center;
-justify-content: center;
-flex-direction: row;
-flex-wrap: wrap;
-
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
-  width: 340px;
+  width: 540px;
   min-height: 400px;
   padding: 50px;
-  border: 2px solid #06A0EC;
-    
+  border: 2px solid #06a0ec;
+}
+
+/* Adicione um media query para ajustar os campos em telas menores */
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+    flex-direction: column;
+  
+    display: flex;
+    justify-content: center;
+  }
 }

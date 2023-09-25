@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../config/configuraFirebase";
 import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
+import LogoComponent from "../../components/logo/logo";
 
 function LoginAdmin() {
   const [email, setEmail] = useState("");
@@ -93,6 +94,7 @@ function LoginAdmin() {
 
   return (
     <div className={styles.geral}>
+      <div> <LogoComponent/> </div>
       <h1>Entrar como Admin</h1>
       <form onSubmit={submitEmail} className={styles.form}>
         <TextField

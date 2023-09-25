@@ -91,7 +91,7 @@ function Login() {
     <>
       <div className={styles.geral}>
       <LogoComponent/>
-        <h1>Acesse sua conta</h1>
+        <h1>Acessar sua conta</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
             label="Email"
