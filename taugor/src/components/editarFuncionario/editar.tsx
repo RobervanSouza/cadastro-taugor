@@ -13,6 +13,7 @@ interface EditUserFormProps {
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
+  const [initialCargo, setInitialCargo] = useState(usuario.cargo);
 
   const handleSave = async () => {
     try {
@@ -33,20 +34,23 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
-  // Adicione um histórico de cargos quando o cargo atual for alterado
- const handleCargoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   const newCargo = e.target.value;
-   setEditedUser((prevUser) => ({
-     ...prevUser,
-     cargo: newCargo,
-   }));
- };
- const handleCargoBlur = () => {
-   setEditedUser((prevUser) => ({
-     ...prevUser,
-     cargoHistorico: [...(prevUser.cargoHistorico || []), prevUser.cargo],
-   }));
- };
+  const handleCargoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newCargo = e.target.value;
+    setEditedUser((prevUser) => ({
+      ...prevUser,
+      cargo: newCargo,
+    }));
+  };
+
+  const handleCargoBlur = () => {
+    // Adicione o cargo atual ao histórico se for diferente do cargo inicial
+    if (editedUser.cargo !== initialCargo) {
+      setEditedUser((prevUser) => ({
+        ...prevUser,
+        cargoHistorico: [...(prevUser.cargoHistorico || []), initialCargo],
+      }));
+    }
+  };
 
   return (
     <div>
@@ -60,7 +64,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
         value={editedUser.cargo}
         onChange={handleCargoChange}
         onBlur={handleCargoBlur}
-        />
+      />
 
       <Button onClick={handleSave} disabled={isSaving}>
         {isSaving ? "Salvando..." : "Salvar"}

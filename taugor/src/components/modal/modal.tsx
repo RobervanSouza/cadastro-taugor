@@ -69,8 +69,8 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser
             <p>Nome: {editedUser.name}</p>{" "}
             {/* Use editedUser em vez de usuario */}
             <p>Cargo: {editedUser.cargo}</p>
-            <p>Setor: {editedUser.endereco}</p>
-            <p>Setor: {editedUser.cargoHistorico}</p>
+            
+            <p>Historico de cargo: {editedUser.cargoHistorico}</p>
             {/* Adicione mais informações do funcionário aqui */}
             
           </div>
