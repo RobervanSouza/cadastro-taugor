@@ -1,23 +1,20 @@
-// ListarUsuarios.js
 
-import React, { useEffect, useState } from 'react';
-import { ref, get, child } from 'firebase/database';
-import { auth, database } from '../../config/configuraFirebase'
-import { UserType } from '../../types/userTypes';
-import UserCard from './card';
-import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { useEffect, useState } from "react";
+import { ref, get, child } from "firebase/database";
+import { auth, database } from "../../config/configuraFirebase";
+import { UserType } from "../../types/userTypes";
+import UserCard from "../../components/cardHome/card";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
 import styles from "./styles.module.scss";
-
-
 
 function ListarUsuarios() {
   const [usuarios, setUsuarios] = useState<UserType[]>([]);
 
   useEffect(() => {
-    const usuariosRef = ref(database, 'users');
+    const usuariosRef = ref(database, "users");
 
-    get(child(usuariosRef, '/')).then((snapshot) => {
+    get(child(usuariosRef, "/")).then((snapshot) => {
       if (snapshot.exists()) {
         const usuariosArray: UserType[] = [];
         snapshot.forEach((childSnapshot) => {
@@ -43,7 +40,7 @@ function ListarUsuarios() {
         <button>Cadastrar Funcionário</button>
       </Link>
       <button onClick={sair}>Sair</button>
-      <h1>Lista de Usuários</h1>
+      <h1>Lista de funcionarios</h1>
       <div className={styles.userList}>
         {usuarios.map((usuario) => (
           <UserCard key={usuario.id} usuario={usuario} />

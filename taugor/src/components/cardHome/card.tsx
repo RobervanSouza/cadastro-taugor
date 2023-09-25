@@ -1,20 +1,30 @@
-// UserCard.js
-
-import React from "react";
-import { Card, CardContent, Typography } from "@mui/material";
+import { useState } from "react";
+import { Button, Card, CardContent, Typography } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import styles from "./styles.module.scss";
+import UserDetailsModal from "../modal/modal";
 
 interface UserCardProps {
   usuario: UserType;
 }
 
 function UserCard({ usuario }: UserCardProps) {
+  const [modalOpen, setModalOpen] = useState(false);
+
   const userDetails = [
     { label: "Cargo", value: usuario.cargo },
     { label: "Setor", value: usuario.setor },
-    // Adicione outros campos do usuário aqui
   ];
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+
 
   return (
     <Card className={styles["user-card"]}>
@@ -30,6 +40,14 @@ function UserCard({ usuario }: UserCardProps) {
             }>{`${detail.label}: ${detail.value}`}</Typography>
         ))}
       </CardContent>
+      <Button onClick={openModal}>Ver Detalhes</Button>
+      <UserDetailsModal
+        usuario={usuario}
+        isOpen={modalOpen}
+        onClose={closeModal}
+      
+      
+      />
     </Card>
   );
 }
