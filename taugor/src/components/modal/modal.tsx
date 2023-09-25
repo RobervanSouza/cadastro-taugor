@@ -2,6 +2,7 @@ import { Dialog, DialogTitle, DialogContent, Button } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { useState } from "react";
 import EditUserForm from "../editarFuncionario/editar"; // Importe o componente de edição
+import styles from "./styles.module.scss";
 
 interface UserDetailsModalProps {
   usuario: UserType;
@@ -65,14 +66,17 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser
             onSave={handleSave}
           />
         ) : (
-          <div>
-            <p>Nome: {editedUser.name}</p>{" "}
-            {/* Use editedUser em vez de usuario */}
-            <p>Cargo: {editedUser.cargo}</p>
-            
-            <p>Historico de cargo: {editedUser.cargoHistorico}</p>
-            {/* Adicione mais informações do funcionário aqui */}
-            
+          <div className={styles.geral}>
+            <p>Nome: {editedUser.name}</p>
+            <p>Cargo atual: {editedUser.cargo}</p>
+            <div className={styles.historico}>
+              <h6>Histórico do funcionário</h6>
+              {editedUser.cargoHistorico?.map((cargo, index) => (
+                <p key={index}>
+                  {index + 1}° Cargo : <span>{cargo}</span>
+                </p>
+              ))}
+            </div>
           </div>
         )}
       </DialogContent>

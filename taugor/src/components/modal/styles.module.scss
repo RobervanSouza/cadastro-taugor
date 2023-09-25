@@ -1,0 +1,29 @@
+.geral {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 240px;
+  min-height: 10vh;
+  padding: 10px;
+  position: relative;
+}
+
+h1 {
+  color: #06a0ec;
+  font-size: 24px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 540px;
+  min-height: 400px;
+  padding: 50px;
+  border: 2px solid #06a0ec;
+}
