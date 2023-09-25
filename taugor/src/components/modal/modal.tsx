@@ -9,9 +9,10 @@ interface UserDetailsModalProps {
   onClose: () => void;
   onUpdateUser: (updatedUser: UserType) => void;
   onDeleteUser: (userId: string) => void;
+
 }
 
-function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser}: UserDetailsModalProps) {
+function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser,}: UserDetailsModalProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario); // Inicialize o estado editedUser com os dados do usuário
 
@@ -55,7 +56,7 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>Detalhes do Funcionário</DialogTitle>
+      <DialogTitle>Detalhe do Funcionário</DialogTitle>
       <DialogContent>
         {isEditing ? (
           <EditUserForm
@@ -68,8 +69,10 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser
             <p>Nome: {editedUser.name}</p>{" "}
             {/* Use editedUser em vez de usuario */}
             <p>Cargo: {editedUser.cargo}</p>
-            <p>Setor: {editedUser.setor}</p>
+            <p>Setor: {editedUser.endereco}</p>
+            <p>Setor: {editedUser.cargoHistorico}</p>
             {/* Adicione mais informações do funcionário aqui */}
+            
           </div>
         )}
       </DialogContent>

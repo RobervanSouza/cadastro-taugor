@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { ref, update } from "firebase/database";
@@ -33,7 +33,21 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
-  // Use o estado de "isSaving" para desabilitar o botão "Salvar" durante a operação de salvamento
+  // Adicione um histórico de cargos quando o cargo atual for alterado
+ const handleCargoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+   const newCargo = e.target.value;
+   setEditedUser((prevUser) => ({
+     ...prevUser,
+     cargo: newCargo,
+   }));
+ };
+ const handleCargoBlur = () => {
+   setEditedUser((prevUser) => ({
+     ...prevUser,
+     cargoHistorico: [...(prevUser.cargoHistorico || []), prevUser.cargo],
+   }));
+ };
+
   return (
     <div>
       <TextField
@@ -44,17 +58,10 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
       <TextField
         label="Cargo"
         value={editedUser.cargo}
-        onChange={(e) =>
-          setEditedUser({ ...editedUser, cargo: e.target.value })
-        }
-      />
-      <TextField
-        label="Setor"
-        value={editedUser.setor}
-        onChange={(e) =>
-          setEditedUser({ ...editedUser, setor: e.target.value })
-        }
-      />
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        />
+
       <Button onClick={handleSave} disabled={isSaving}>
         {isSaving ? "Salvando..." : "Salvar"}
       </Button>
