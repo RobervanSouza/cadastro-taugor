@@ -32,6 +32,13 @@ function ListarUsuarios() {
     navigate("/");
   }
 
+  const onUpdateUser = (updatedUser: UserType) => {
+    setUsuarios((prevUsers) =>
+      prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+    );
+  };
+
+  
   return (
     <div className={styles.geral}>
       <Link to="/cadastrafuncionario">
@@ -43,7 +50,11 @@ function ListarUsuarios() {
       <h1>Lista de funcionarios</h1>
       <div className={styles.userList}>
         {usuarios.map((usuario) => (
-          <UserCard key={usuario.id} usuario={usuario} />
+          <UserCard
+            key={usuario.id}
+            usuario={usuario}
+            onUpdateUser={onUpdateUser}
+          />
         ))}
       </div>
     </div>

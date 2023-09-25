@@ -1,18 +1,18 @@
 import { Dialog, DialogTitle, DialogContent, Button } from "@mui/material";
 import { UserType } from "../../types/userTypes";
-import React, { useState } from "react";
+import { useState } from "react";
 import EditUserForm from "../editarFuncionario/editar"; // Importe o componente de edição
 
 interface UserDetailsModalProps {
   usuario: UserType;
   isOpen: boolean;
   onClose: () => void;
-  
+  onUpdateUser: (updatedUser: UserType) => void;
 }
 
-function UserDetailsModal({ usuario, isOpen, onClose }: UserDetailsModalProps) {
+function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser }: UserDetailsModalProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedUser, setEditedUser] = useState(usuario);
+  const [editedUser, setEditedUser] = useState(usuario); // Inicialize o estado editedUser com os dados do usuário
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -22,14 +22,22 @@ function UserDetailsModal({ usuario, isOpen, onClose }: UserDetailsModalProps) {
     setIsEditing(false);
   };
 
-  const handleSave = (editedUserData : UserType) => {
+  const handleSave = (editedUserData: UserType) => {
     // Atualize o estado editedUser com os dados editados
     setEditedUser(editedUserData);
 
     // Implemente a lógica para salvar as alterações do usuário aqui
     setIsEditing(false);
-   
+       onUpdateUser(editedUserData);
   };
+
+   const handleClose = () => {
+     // Chame a função onUpdateUser com os dados atuais do usuário
+     onUpdateUser(editedUser);
+
+     // Feche o modal
+     onClose();
+   };
 
 
   return (
@@ -44,18 +52,18 @@ function UserDetailsModal({ usuario, isOpen, onClose }: UserDetailsModalProps) {
           />
         ) : (
           <div>
-            <p>Nome: {usuario.name}</p>
-            <p>Cargo: {usuario.cargo}</p>
-            <p>Setor: {usuario.setor}</p>
+            <p>Nome: {editedUser.name}</p>{" "}
+            {/* Use editedUser em vez de usuario */}
+            <p>Cargo: {editedUser.cargo}</p>
+            <p>Setor: {editedUser.setor}</p>
             {/* Adicione mais informações do funcionário aqui */}
           </div>
         )}
       </DialogContent>
       <Button onClick={handleEdit}>Editar</Button>
-      <Button onClick={onClose}>Fechar</Button>
+      <Button onClick={handleClose}>Fechar</Button>
     </Dialog>
   );
 }
-
 
 export default UserDetailsModal;

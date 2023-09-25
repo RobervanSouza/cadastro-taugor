@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { UserType } from "../../types/userTypes";
-import { ref, update } from "firebase/database"; // Importe as funções necessárias do Firebase
+import { ref, update } from "firebase/database";
 import { database } from "../../config/configuraFirebase";
 
 interface EditUserFormProps {
@@ -12,9 +12,9 @@ interface EditUserFormProps {
 
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleSave = async () => {
-    
     try {
       // Atualize os dados do usuário no Firebase
       const usuariosRef = ref(database, `users/${usuario.id}`);
@@ -23,15 +23,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
       // Chame a função onSave com os dados editados
       onSave({ ...editedUser, id: usuario.id });
 
-      // Após salvar com sucesso, você pode executar alguma ação, como fechar o formulário
-      window.location.reload();
-     
+      // Defina o estado de salvamento como concluído
+      setIsSaving(false);
     } catch (error) {
       // Lide com erros, se necessário
       console.error("Erro ao salvar:", error);
+      // Defina o estado de salvamento como concluído, mesmo em caso de erro
+      setIsSaving(false);
     }
   };
 
+  // Use o estado de "isSaving" para desabilitar o botão "Salvar" durante a operação de salvamento
   return (
     <div>
       <TextField
@@ -53,7 +55,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
           setEditedUser({ ...editedUser, setor: e.target.value })
         }
       />
-      <Button onClick={handleSave}>Salvar</Button>
+      <Button onClick={handleSave} disabled={isSaving}>
+        {isSaving ? "Salvando..." : "Salvar"}
+      </Button>
       <Button onClick={onCancel}>Cancelar</Button>
     </div>
   );
