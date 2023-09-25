@@ -7,9 +7,10 @@ import UserDetailsModal from "../modal/modal";
 interface UserCardProps {
   usuario: UserType;
   onUpdateUser: (updatedUser: UserType) => void;
+  onDeleteUser: (userId: string) => void;
 }
 
-function UserCard({ usuario, onUpdateUser }: UserCardProps) {
+function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
   const userDetails = [
@@ -48,6 +49,7 @@ function UserCard({ usuario, onUpdateUser }: UserCardProps) {
         isOpen={modalOpen}
         onClose={closeModal}
         onUpdateUser={onUpdateUser}
+        onDeleteUser={onDeleteUser}
       />
     </Card>
   );

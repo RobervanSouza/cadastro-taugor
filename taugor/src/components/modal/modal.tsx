@@ -8,9 +8,10 @@ interface UserDetailsModalProps {
   isOpen: boolean;
   onClose: () => void;
   onUpdateUser: (updatedUser: UserType) => void;
+  onDeleteUser: (userId: string) => void;
 }
 
-function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser }: UserDetailsModalProps) {
+function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser, onDeleteUser}: UserDetailsModalProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario); // Inicialize o estado editedUser com os dados do usuário
 
@@ -39,6 +40,18 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser }: UserDetail
      onClose();
    };
 
+   
+  const handleDelete = async () => {
+    try {
+      // Chame a função onDeleteUser com o ID do usuário a ser excluído
+      onDeleteUser(usuario.id);
+
+      // Feche o modal
+      onClose();
+    } catch (error) {
+      console.error("Erro ao excluir o usuário:", error);
+    }
+  };
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
@@ -61,6 +74,9 @@ function UserDetailsModal({ usuario, isOpen, onClose, onUpdateUser }: UserDetail
         )}
       </DialogContent>
       <Button onClick={handleEdit}>Editar</Button>
+      <Button onClick={handleDelete} color="error">
+        Excluir
+      </Button>
       <Button onClick={handleClose}>Fechar</Button>
     </Dialog>
   );
