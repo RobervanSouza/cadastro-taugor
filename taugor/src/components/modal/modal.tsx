@@ -54,36 +54,48 @@ function UserDetailsModal({
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>Detalhes do Funcionário</DialogTitle>
-      <DialogContent>
-        {isEditing ? (
-          <EditUserForm
-            usuario={editedUser}
-            onCancel={handleCancel}
-            onSave={handleSave}
-          />
-        ) : (
-          <div className={styles.geral}>
-            <p>Nome: {editedUser.name}</p>
-            <p>Cargo atual: {editedUser.cargo}</p>
-            <div className={styles.historico}>
-              <h6>Histórico do funcionário</h6>
-              {editedUser.cargoHistorico?.map((cargo, index) => (
-                <p key={index}>
-                  {index + 1}° Cargo: <span>{cargo}</span>
-                </p>
-              ))}
+      <div className={styles.geral}>
+        <DialogTitle>
+          {" "}
+          <h1> Informações de Contato</h1>
+        </DialogTitle>
+        <DialogContent>
+          {isEditing ? (
+            <EditUserForm
+              usuario={editedUser}
+              onCancel={handleCancel}
+              onSave={handleSave}
+            />
+          ) : (
+            <div className={styles.card}>
+              <p>Nome: {editedUser.name}</p>
+              <p>Sexo: {editedUser.sexo}</p>
+              <p>Endereço: {editedUser.endereco}</p>
+              <p>Contato: {editedUser.telefone}</p>
+              <p>Data Nascimento: {editedUser.nascimento}</p>
+              <p>Setor: {editedUser.setor}</p>
+              <p>Salario: {editedUser.salario}</p>
+              <p>Data Admissão: {editedUser.admisao}</p>
+              <p>Cargo atual: {editedUser.cargo}</p>
+              <div className={styles.historico}>
+                <h4>Histórico de Cargo:</h4>
+                {editedUser.cargoHistorico?.map((cargo, index) => (
+                  <p key={index}>
+                    {index + 1}° Cargo: <span>{cargo}</span>
+                  </p>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
+        </DialogContent>
+        {!isEditing && <Button onClick={handleEdit}>Editar</Button>}
+        {!isEditing && <Button onClick={handleClose}>Fechar</Button>}
+        {!isEditing && (
+          <Button onClick={handleDelete} color="error">
+            Excluir
+          </Button>
         )}
-      </DialogContent>
-      {!isEditing && <Button onClick={handleEdit}>Editar</Button>}
-      {!isEditing && <Button onClick={handleClose}>Fechar</Button>}
-      {!isEditing && (
-        <Button onClick={handleDelete} color="error">
-          Excluir
-        </Button>
-      )}
+      </div>
     </Dialog>
   );
 }

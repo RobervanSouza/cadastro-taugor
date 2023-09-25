@@ -3,6 +3,8 @@ import { Button, TextField } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { ref, update } from "firebase/database";
 import { database } from "../../config/configuraFirebase";
+import styles from "./styles.module.scss";
+
 
 interface EditUserFormProps {
   usuario: UserType;
@@ -52,7 +54,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   };
 
   return (
-    <div>
+    <div className={styles.geral}>
       <TextField
         label="Nome"
         value={editedUser.name}
