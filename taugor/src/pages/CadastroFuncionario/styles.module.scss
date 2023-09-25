@@ -31,10 +31,14 @@ h1 {
 /* Adicione um media query para ajustar os campos em telas menores */
 @media (max-width: 768px) {
   .form {
-    width: 100%;
+    width: 80%;
+    height: 70%;
     flex-direction: column;
-  
+    padding: 16px;
     display: flex;
+    gap: 12px;
     justify-content: center;
+    margin-bottom: 22px;
+    
   }
 }

@@ -1,5 +1,5 @@
 import  { FormEvent, useState } from "react";
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user";
 import { UserType } from "../../types/userTypes";
 import { useNavigate } from "react-router-dom";
@@ -39,8 +39,9 @@ function CadastrarFuncionario() {
       admisao,
     };
 
-    criarUsuario(usuario);
 
+    criarUsuario(usuario);
+    alert("cadastrado com sucesso")
     // Redirecionar para a página desejada após o cadastro
     navigate("/home");
   };
@@ -50,47 +51,43 @@ function CadastrarFuncionario() {
       <div>
         <LogoComponent />
       </div>
-      <h1>Cadastrar</h1>
+      <h1>Cadastrar funcionario</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
+        
             <TextField
               label="Nome"
               variant="outlined"
-              fullWidth
+            
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
               placeholder="Robervan Souza"
             />
-          </Grid>
-          <Grid item xs={6}>
+         
             <TextField
               label="Sexo"
               variant="outlined"
-              fullWidth
+              
               value={sexo}
               onChange={(e) => setSexo(e.target.value)}
               required
               placeholder="Sexo"
             />
-          </Grid>
-          <Grid item xs={6}>
+         
             <TextField
               label="Endereço"
               variant="outlined"
-              fullWidth
+            
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
               required
               placeholder="Rua ..."
             />
-          </Grid>
-          <Grid item xs={6}>
+        
             <TextField
               label="Telefone"
               variant="outlined"
-              fullWidth
+            
               type="text"
               value={telefone}
               onChange={(e) => {
@@ -101,23 +98,21 @@ function CadastrarFuncionario() {
               required
               placeholder="99 9999-2333"
             />
-          </Grid>
-          <Grid item xs={6}>
+          
             <TextField
               label="Foto"
               variant="outlined"
-              fullWidth
+              
               value={foto}
               onChange={(e) => setFoto(e.target.value)}
               required
               placeholder="link da imagem"
             />
-          </Grid>
-          <Grid item xs={6}>
+         
             <TextField
               label="Data de Nascimento"
               variant="outlined"
-              fullWidth
+              
               type="text"
               value={nascimento}
               onChange={(e) => {
@@ -128,34 +123,31 @@ function CadastrarFuncionario() {
               required
               placeholder="DD/MM/AAAA"
             />
-          </Grid>
-          <Grid item xs={6}>
+        
             <TextField
               label="Cargo"
               variant="outlined"
-              fullWidth
+            
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
               required
               placeholder="Digite o cargo do funcionário"
             />
-          </Grid>
-          <Grid item xs={6}>
+        
             <TextField
               label="Setor"
               variant="outlined"
-              fullWidth
+              
               value={setor}
               onChange={(e) => setSetor(e.target.value)}
               required
               placeholder="Setor que o funcionario trabalha"
             />
-          </Grid>
-          <Grid item xs={6}>
+         
             <TextField
               label="Salário"
               variant="outlined"
-              fullWidth
+              
               value={salario}
               onChange={(e) => {
                 const value = e.target.value;
@@ -165,12 +157,11 @@ function CadastrarFuncionario() {
               required
               placeholder="Digite o salário (ex: 1000,50)"
             />
-          </Grid>
-          <Grid item xs={6}>
+         
             <TextField
               label="Data de Admissão"
               variant="outlined"
-              fullWidth
+              
               value={admisao}
               onChange={(e) => {
                 const value = e.target.value;
@@ -180,11 +171,10 @@ function CadastrarFuncionario() {
               required
               placeholder="DD/MM/AAAA"
             />
-          </Grid>
-        </Grid>
+         
 
         <Button type="submit" variant="contained" color="primary">
-          Enviar
+          Cadastrar
         </Button>
       </form>
     </div>
