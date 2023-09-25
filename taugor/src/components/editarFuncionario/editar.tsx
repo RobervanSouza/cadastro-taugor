@@ -13,7 +13,6 @@ interface EditUserFormProps {
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
-  const [initialCargo, setInitialCargo] = useState(usuario.cargo);
 
   const handleSave = async () => {
     try {
@@ -44,10 +43,10 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
 
   const handleCargoBlur = () => {
     // Adicione o cargo atual ao histórico se for diferente do cargo inicial
-    if (editedUser.cargo !== initialCargo) {
+    if (editedUser.cargo !== usuario.cargo) {
       setEditedUser((prevUser) => ({
         ...prevUser,
-        cargoHistorico: [...(prevUser.cargoHistorico || []), initialCargo],
+        cargoHistorico: [...(prevUser.cargoHistorico || []), usuario.cargo],
       }));
     }
   };
