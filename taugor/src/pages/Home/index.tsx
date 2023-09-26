@@ -7,6 +7,7 @@ import UserCard from "../../components/cardHome/card";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import styles from "./styles.module.scss";
+import Header from "../../components/header/header";
 
 
 function ListarUsuarios() {
@@ -55,6 +56,10 @@ const deleteUserFromFirebase = async (userId: string) => {
 };
   
   return (
+    <>
+    <header>
+<Header/>
+    </header>
     <div className={styles.geral}>
       <Link to="/cadastrafuncionario">
         {" "}
@@ -71,10 +76,11 @@ const deleteUserFromFirebase = async (userId: string) => {
             usuario={usuario}
             onUpdateUser={onUpdateUser}
             onDeleteUser={deleteUserFromFirebase}
-          />
-        ))}
+            />
+            ))}
       </div>
     </div>
+            </>
   );
 }
 

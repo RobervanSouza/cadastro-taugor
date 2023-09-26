@@ -42,6 +42,7 @@ function CadastrarFuncionario() {
       setor,
       salario,
       admisao,
+    
     };
 
 

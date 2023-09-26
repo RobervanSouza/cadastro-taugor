@@ -11,4 +11,5 @@ export type UserType = {
   salario: string;
   admisao: string | number;
   cargoHistorico?: string[];
+
 };
