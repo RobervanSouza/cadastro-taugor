@@ -2,11 +2,12 @@ import  { FormEvent, useState } from "react";
 import { Button,  TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user";
 import { UserType } from "../../types/userTypes";
-import { Link,  } from "react-router-dom";
+
 import LogoComponent from "../../components/logo/logo";
 import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
   import "react-toastify/dist/ReactToastify.css";
+import Header from "../../components/header/header";
 
 
 function CadastrarFuncionario() {
@@ -67,9 +68,12 @@ const resetForm = () => {
   };
 
   return (
+    <>
+    <header><Header/></header>
     <div className={styles.geral}>
+      
       <div>
-        <LogoComponent />
+        <LogoComponent width="340px" height="112px" />
       </div>
       <h1>Cadastrar funcionario</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
@@ -80,7 +84,7 @@ const resetForm = () => {
           onChange={(e) => setName(e.target.value)}
           required
           placeholder="Robervan Souza"
-        />
+          />
 
         <TextField
           label="Sexo"
@@ -89,7 +93,7 @@ const resetForm = () => {
           onChange={(e) => setSexo(e.target.value)}
           required
           placeholder="Sexo"
-        />
+          />
 
         <TextField
           label="Endereço"
@@ -112,7 +116,7 @@ const resetForm = () => {
           }}
           required
           placeholder="99 9999-2333"
-        />
+          />
 
         <TextField
           label="Foto"
@@ -121,7 +125,7 @@ const resetForm = () => {
           onChange={(e) => setFoto(e.target.value)}
           required
           placeholder="link da imagem"
-        />
+          />
 
         <TextField
           label="Data de Nascimento"
@@ -135,7 +139,7 @@ const resetForm = () => {
           }}
           required
           placeholder="DD/MM/AAAA"
-        />
+          />
 
         <TextField
           label="Cargo"
@@ -144,7 +148,7 @@ const resetForm = () => {
           onChange={(e) => setCargo(e.target.value)}
           required
           placeholder="Digite o cargo do funcionário"
-        />
+          />
 
         <TextField
           label="Setor"
@@ -153,7 +157,7 @@ const resetForm = () => {
           onChange={(e) => setSetor(e.target.value)}
           required
           placeholder="Setor que o funcionario trabalha"
-        />
+          />
 
         <TextField
           label="Salário"
@@ -166,7 +170,7 @@ const resetForm = () => {
           }}
           required
           placeholder="Digite o salário (ex: 1000,50)"
-        />
+          />
 
         <TextField
           label="Data de Admissão"
@@ -179,19 +183,16 @@ const resetForm = () => {
           }}
           required
           placeholder="DD/MM/AAAA"
-        />
+          />
       
 
         <Button type="submit" variant="contained" color="primary">
           Cadastrar
         </Button>
-        <Button type="button" variant="contained" color="primary">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            Voltar para home
-          </Link>
-        </Button>
+       
       </form>
     </div>
+          </>
   );
 }
 

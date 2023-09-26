@@ -21,13 +21,14 @@
 /* UserCard.module.scss */
 .userList{
   width: 90vw;
-  min-height: 90vh;
+  
   margin: 16px;
+
   border-radius: 8px;
   transition: transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-background-color: #06A0EC;
+
 }

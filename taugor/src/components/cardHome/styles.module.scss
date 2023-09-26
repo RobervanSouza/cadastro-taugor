@@ -1,4 +1,9 @@
 
+.cardGeral{
+  
+  padding: 13px;
+}
+
 .user-card {
   width: 300px;
   margin: 6px;
@@ -10,19 +15,20 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: rgb(181, 135, 135);
+ 
 
    div{
-   
+ 
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 12px;
    } 
 
 
   .card-content {
-    padding: 16px;
+    padding: 2px;
 
     .user-name {
       font-size: 1.25rem;
@@ -45,10 +51,15 @@
     }
 
   }
-
+  .botoes{
+    margin-top: -22px;
+    gap: 12px;
+  }
+  
 }
 .user-card {
   border: 2px solid transparent;
+
 }
 .user-card.demitido {
   border-color: red; 

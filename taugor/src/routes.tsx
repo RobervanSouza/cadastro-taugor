@@ -36,7 +36,6 @@ export function Navegacao() {
         <Route element={<Home />} path="/home" />
         <Route element={<CadastrarFuncionario />} path="/cadastrafuncionario" />
         <Route element={<PaginaPDF />} path="/pdf" />
-       
       </Route>
       <Route element={<Pagina404 />} path="*" />
     </Routes>

@@ -48,68 +48,75 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
 
 
   return (
-    <Card
-      className={`${styles["user-card"]} ${
-        usuario.status === "demitido" ? styles["demitido"] : styles["ativo"]
-      }`}>
-      <CardContent className={styles["card-content"]}>
-        <div className={styles["user-image"]}>
-          <img src={usuario.foto} alt={usuario.name} />
-        </div>
-        <Typography className={styles["user-name"]} variant="h6">
-          {usuario.name}
-        </Typography>
-      
-        <Typography
-          className={`
-            ${styles["user-status"]}
-            ${usuario.status === "ativo" ? styles["ativo"] : styles["demitido"]}
-          `}
-          variant="h6">
-          <p> Status: {usuario.status}</p>
-        </Typography>
+    <>
+      <div className={styles.cardGeral} >
+        <Card
+          className={`${styles["user-card"]} ${
+            usuario.status === "demitido" ? styles["demitido"] : styles["ativo"]
+          }`}>
+          <CardContent className={styles["card-content"]}>
+            <div className={styles["user-image"]}>
+              <img src={usuario.foto} alt={usuario.name} />
+            </div>
+            <Typography className={styles["user-name"]} variant="h6">
+              {usuario.name}
+            </Typography>
 
-        {userDetails.map((detail, index) => (
-          <Typography
-            key={index}
-            className={
-              styles["user-details"]
-            }>{`${detail.label}: ${detail.value}`}</Typography>
-        ))}
-        {showCargoHistorico && (
-          <div className={`${styles.historico} ${styles.paragraph}`}>
-            <h4>Histórico de Cargo</h4>
-            {usuario.cargoHistorico?.map((cargo, index) => (
-              <p key={index}>
-                {index + 1}° Cargo: <span>{cargo}</span>
-              </p>
+            <Typography
+              className={`
+          ${styles["user-status"]}
+          ${usuario.status === "ativo" ? styles["ativo"] : styles["demitido"]}
+          `}
+              variant="h6">
+              <p> Status: {usuario.status}</p>
+            </Typography>
+
+            {userDetails.map((detail, index) => (
+              <Typography
+                key={index}
+                className={
+                  styles["user-details"]
+                }>{`${detail.label}: ${detail.value}`}</Typography>
             ))}
-          </div>
-        )}
-        <Button onClick={toggleCargoHistorico}>
-          {showCargoHistorico
-            ? "Esconder Histórico"
-            : "Ver Histórico dos Cargos"}
-        </Button>
-      </CardContent>
-      <Button onClick={openModal}>Ver Detalhes</Button>
-      <Button
-        type="button"
-        variant="contained"
-        color="primary"
-        onClick={viewPDF}>
-        <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
-          visualizar em PDF!
-        </Link>
-      </Button>
-      <UserDetailsModal
-        usuario={usuario}
-        isOpen={modalOpen}
-        onClose={closeModal}
-        onUpdateUser={onUpdateUser}
-        onDeleteUser={onDeleteUser}
-      />
-    </Card>
+            {showCargoHistorico && (
+              <div className={`${styles.historico} ${styles.paragraph}`}>
+                <h4>Histórico de Cargo</h4>
+                {usuario.cargoHistorico?.map((cargo, index) => (
+                  <p key={index}>
+                    {index + 1}° Cargo: <span>{cargo}</span>
+                  </p>
+                ))}
+              </div>
+            )}
+            <Button onClick={toggleCargoHistorico}>
+              {showCargoHistorico
+                ? "Esconder Histórico"
+                : "Ver Histórico dos Cargos"}
+            </Button>
+          </CardContent>
+          <div className={styles.botoes}>
+
+          <Button onClick={openModal}>Ver Detalhes</Button>
+          <Button
+            type="button"
+            variant="contained"
+            color="primary"
+            onClick={viewPDF}>
+            <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
+              visualizar em PDF!
+            </Link>
+          </Button>
+          <UserDetailsModal
+            usuario={usuario}
+            isOpen={modalOpen}
+            onClose={closeModal}
+            onUpdateUser={onUpdateUser}
+            onDeleteUser={onDeleteUser}
+            />
+            </div>
+        </Card>
+      </div>
+    </>
   );
 }
 

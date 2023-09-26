@@ -1,0 +1,36 @@
+.header {
+  width: 98%;
+  margin-left: 2px;
+  height: 70px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  .logo {
+    width: 20%;
+    height: 100%;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar {
+    width: 78%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    gap: 22px;
+  }
+
+
+}
+
+@media (max-width: 768px) {
+  .header{
+    flex-direction: column;
+    margin-bottom: 23px;
+    margin-top: 23px;
+  }
+}

@@ -1,10 +1,26 @@
 
 import Logo from "../../assets/logo.png";
-function LogoComponent() {
+
+
+
+
+interface LogoComponentProps {
+  width: string;
+  height: string;
+}
+
+function LogoComponent({ width, height }: LogoComponentProps) {
+  const style = {
+    width: width,
+    height: height,
+  };
+
   return (
-    <div className="logo">
-      <img src={Logo} alt="Logo" />
-    </div>
+    <img
+      src={Logo}
+      alt="Logo"
+      style={style}
+    />
   );
 }
 
