@@ -59,7 +59,7 @@ function UserDetailsModal({
           {" "}
           <h1> Informações de Contato</h1>
         </DialogTitle>
-        <div className={styles.cards} >
+        <div className={styles.cards}>
           {isEditing ? (
             <EditUserForm
               usuario={editedUser}
@@ -95,15 +95,33 @@ function UserDetailsModal({
               </div>
             </div>
           )}
-        </div >
-        <div className={styles.botoes}  >
-          {!isEditing && <Button onClick={handleEdit}>Editar</Button>}
-          {!isEditing && <Button onClick={handleClose}>Fechar</Button>}
-          {!isEditing && (
-            <Button onClick={handleDelete} color="error">
-              Excluir
-            </Button>
-          )}
+        </div>
+        <div className={styles.botoes}>
+          <p className={styles.btnEditar}>
+            {!isEditing && (
+              <Button onClick={handleEdit} style={{ color: "white" }}>
+                Editar
+              </Button>
+            )}
+          </p>
+          <p className={styles.btnFecha}>
+            {!isEditing && (
+              <Button style={{ color: "white" }} onClick={handleClose}>
+                Fechar
+              </Button>
+            )}
+          </p>
+
+          <p className={styles.btnExcluir}>
+            {!isEditing && (
+              <Button
+                style={{ color: "white" }}
+                onClick={handleDelete}
+                color="error">
+                Excluir
+              </Button>
+            )}
+          </p>
         </div>
       </div>
     </Dialog>

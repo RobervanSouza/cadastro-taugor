@@ -19,7 +19,7 @@
 
 
 .cards{
-  
+
   width: 634px;
   height: min-content;
   display: flex;
@@ -30,7 +30,7 @@
 }
 
 .card{
-  // background-color: red;
+  
   width: 634px;
   height: 340px;
   flex-wrap: wrap;
@@ -39,4 +39,25 @@
   justify-content: center;
   flex-direction: column;
   gap: 5px;
+}
+
+.botoes{
+  display: flex;
+  gap: 23px;
+
+  .btnEditar{
+    background-color: gray;
+    border-radius: 5px;
+    
+  }
+  .btnFecha{
+    background-color:#06A0EC ;
+    border-radius: 5px;
+    
+  }
+  .btnExcluir{
+    background-color:red ;
+    border-radius: 5px;
+    
+  }
 }
