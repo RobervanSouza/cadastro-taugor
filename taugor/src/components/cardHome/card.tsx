@@ -12,11 +12,17 @@ interface UserCardProps {
 
 function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [showCargoHistorico, setShowCargoHistorico] = useState(false); // Adicione o estado para controlar a exibição do histórico
 
   const userDetails = [
-    { label: "Cargo", value: usuario.cargo },
+    { label: "Sexo", value: usuario.sexo },
+    { label: "Endereço", value: usuario.endereco },
+    { label: "Contato", value: usuario.telefone },
+    { label: "Data de Nascimento", value: usuario.nascimento },
     { label: "Setor", value: usuario.setor },
-    
+    { label: "Salário", value: usuario.salario },
+    { label: "Data Admissão", value: usuario.admisao },
+    { label: "Cargo Atual", value: usuario.cargo },
   ];
 
   const openModal = () => {
@@ -26,6 +32,11 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const closeModal = () => {
     setModalOpen(false);
     onUpdateUser(usuario);
+  };
+
+  const toggleCargoHistorico = () => {
+    // Alterne a exibição do histórico quando o botão for clicado
+    setShowCargoHistorico(!showCargoHistorico);
   };
 
   return (
@@ -44,6 +55,19 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               styles["user-details"]
             }>{`${detail.label}: ${detail.value}`}</Typography>
         ))}
+        {showCargoHistorico && (
+          <div className={`${styles.historico} ${styles.paragraph}`}>
+            <h4>Histórico de Cargo</h4>
+            {usuario.cargoHistorico?.map((cargo, index) => (
+              <p key={index}>
+                {index + 1}° Cargo: <span>{cargo}</span>
+              </p>
+            ))}
+          </div>
+        )}
+        <Button onClick={toggleCargoHistorico}>
+          {showCargoHistorico ? "Esconder Histórico" : "Ver Histórico dos Cargos"}
+        </Button>
       </CardContent>
       <Button onClick={openModal}>Ver Detalhes</Button>
       <UserDetailsModal
