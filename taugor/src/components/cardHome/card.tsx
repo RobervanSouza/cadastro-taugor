@@ -48,7 +48,10 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
 
 
   return (
-    <Card className={styles["user-card"]}>
+    <Card
+      className={`${styles["user-card"]} ${
+        usuario.status === "demitido" ? styles["demitido"] : styles["ativo"]
+      }`}>
       <CardContent className={styles["card-content"]}>
         <div className={styles["user-image"]}>
           <img src={usuario.foto} alt={usuario.name} />
@@ -56,6 +59,16 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
         <Typography className={styles["user-name"]} variant="h6">
           {usuario.name}
         </Typography>
+      
+        <Typography
+          className={`
+            ${styles["user-status"]}
+            ${usuario.status === "ativo" ? styles["ativo"] : styles["demitido"]}
+          `}
+          variant="h6">
+          <p> Status: {usuario.status}</p>
+        </Typography>
+
         {userDetails.map((detail, index) => (
           <Typography
             key={index}
@@ -80,11 +93,15 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
         </Button>
       </CardContent>
       <Button onClick={openModal}>Ver Detalhes</Button>
-       <Button type="button" variant="contained" color="primary" onClick={viewPDF} >
-          <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
-            visualizar em PDF!
-          </Link>
-        </Button>
+      <Button
+        type="button"
+        variant="contained"
+        color="primary"
+        onClick={viewPDF}>
+        <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
+          visualizar em PDF!
+        </Link>
+      </Button>
       <UserDetailsModal
         usuario={usuario}
         isOpen={modalOpen}

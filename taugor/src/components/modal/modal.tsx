@@ -88,6 +88,9 @@ function UserDetailsModal({
                 Data Admissão: {editedUser.admisao}
               </p>
               <p className={styles.paragraph}>
+                Status: {editedUser.status}
+              </p>
+              <p className={styles.paragraph}>
                 Cargo atual: {editedUser.cargo}
               </p>
               <div className={`${styles.historico} ${styles.paragraph}`}>

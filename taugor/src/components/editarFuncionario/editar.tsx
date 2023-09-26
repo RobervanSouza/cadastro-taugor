@@ -18,6 +18,7 @@ interface EditUserFormProps {
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
+
  
   function notificacao() {
     toast.success("Funcionário editado com sucesso!");
@@ -68,81 +69,93 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
 
   return (
     <>
-
-    <div className={styles.editar}>
-  
-      <TextField
-        label="Nome"
-        value={editedUser.name}
-        onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-        required
+      <div className={styles.editar}>
+        <TextField
+          label="Nome"
+          value={editedUser.name}
+          onChange={(e) =>
+            setEditedUser({ ...editedUser, name: e.target.value })
+          }
+          required
         />
-      <TextField
-        label="Sexo"
-        value={editedUser.sexo}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Sexo"
+          value={editedUser.sexo}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Endereço"
-        value={editedUser.endereco}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Endereço"
+          value={editedUser.endereco}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Contato"
-        value={editedUser.telefone}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Contato"
+          value={editedUser.telefone}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Data Nascimento"
-        value={editedUser.nascimento}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Data Nascimento"
+          value={editedUser.nascimento}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Setor"
-        value={editedUser.setor}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Setor"
+          value={editedUser.setor}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Salario"
-        value={editedUser.salario}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Salario"
+          value={editedUser.salario}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Data Admissão"
-        value={editedUser.admisao}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Data Admissão"
+          value={editedUser.admisao}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-      <TextField
-        label="Cargo atual"
-        value={editedUser.cargo}
-        onChange={handleCargoChange}
-        onBlur={handleCargoBlur}
-        required
+        <TextField
+          label="Cargo atual"
+          value={editedUser.cargo}
+          onChange={handleCargoChange}
+          onBlur={handleCargoBlur}
+          required
         />
-
-      <Button onClick={handleSave} disabled={isSaving}>
-        {isSaving ? "Salvando..." : "Salvar"}
-      </Button>
-      <Button onClick={onCancel}>Cancelar</Button>
-      
-    
-  
-    </div>
-        </>
+        <TextField
+          label="Status"
+          variant="outlined"
+          value={editedUser.status} // Use o valor do status diretamente a partir do estado editedUser
+          onChange={
+            (e) => setEditedUser({ ...editedUser, status: e.target.value }) // Atualize o status diretamente no editedUser
+          }
+          onBlur={handleCargoBlur}
+          required
+          select
+          SelectProps={{
+            native: true,
+          }}>
+          <option value="ativo">Ativo</option>
+          <option value="demitido">Demitido</option>
+        </TextField>
+        <Button onClick={handleSave} disabled={isSaving}>
+          {isSaving ? "Salvando..." : "Salvar"}
+        </Button>
+        <Button onClick={onCancel}>Cancelar</Button>
+      </div>
+    </>
   );
 }
 

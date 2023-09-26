@@ -17,6 +17,7 @@ export function criarUsuario(user: UserType) {
     cargo: user.cargo,
     setor: user.setor,
     salario: user.salario,
-    admisao: user.admisao
+    admisao: user.admisao,
+    status: user.status,
   });
 }

@@ -8,8 +8,8 @@ export type UserType = {
   nascimento: number | string;
   cargo: string;
   setor: string;
+  status: string;
   salario: string;
   admisao: string | number;
   cargoHistorico?: string[];
-
 };

@@ -47,3 +47,18 @@
   }
 
 }
+.user-card {
+  border: 2px solid transparent;
+}
+.user-card.demitido {
+  border-color: red; 
+}
+.user-card.ativo {
+  border-color: green; 
+}
+.ativo{
+  color: green;
+}
+.demitido{
+  color: red;
+}

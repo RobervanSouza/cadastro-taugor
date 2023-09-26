@@ -1,8 +1,8 @@
 import  { FormEvent, useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button,  TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user";
 import { UserType } from "../../types/userTypes";
-import { Link, useNavigate } from "react-router-dom";
+import { Link,  } from "react-router-dom";
 import LogoComponent from "../../components/logo/logo";
 import styles from "./styles.module.scss";
 import { toast } from "react-toastify";
@@ -20,15 +20,29 @@ function CadastrarFuncionario() {
   const [setor, setSetor] = useState("");
   const [salario, setSalario] = useState("");
   const [admisao, setAdmisao] = useState("");
+  const [status, setStatus] = useState("ativo"); 
 
-  const navigate = useNavigate();
   function notificacao() {
-  toast.success("Cadastrado com sucesso!");
-}
+    toast.success("Cadastrado com sucesso!");
+  }
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     // Realize as validações dos campos (como mencionado em respostas anteriores)
+
+const resetForm = () => {
+  setName("");
+  setSexo("");
+  setEndereco("");
+  setTelefone("");
+  setFoto("");
+  setNascimento("");
+  setCargo("");
+  setSetor("");
+  setSalario("");
+  setAdmisao("");
+  setStatus("ativo");
+};
 
     const usuario: UserType = {
       id: "", // Você pode definir um ID aqui, se necessário
@@ -42,14 +56,14 @@ function CadastrarFuncionario() {
       setor,
       salario,
       admisao,
-    
+      status,
     };
-
 
     criarUsuario(usuario);
     notificacao();
+    resetForm();
     // Redirecionar para a página desejada após o cadastro
-    navigate("/home");
+    
   };
 
   return (
@@ -166,6 +180,7 @@ function CadastrarFuncionario() {
           required
           placeholder="DD/MM/AAAA"
         />
+      
 
         <Button type="submit" variant="contained" color="primary">
           Cadastrar
