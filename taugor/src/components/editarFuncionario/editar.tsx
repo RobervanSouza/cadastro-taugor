@@ -4,6 +4,9 @@ import { UserType } from "../../types/userTypes";
 import { ref, update } from "firebase/database";
 import { database } from "../../config/configuraFirebase";
 import styles from "./styles.module.scss";
+  import { toast } from "react-toastify";
+
+  import "react-toastify/dist/ReactToastify.css";
 
 
 interface EditUserFormProps {
@@ -15,17 +18,25 @@ interface EditUserFormProps {
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
+ 
+  function notificacao() {
+    toast.success("Funcionário editado com sucesso!");
+  }
+
 
   const handleSave = async () => {
     try {
+      
       // Atualize os dados do usuário no Firebase
       const usuariosRef = ref(database, `users/${usuario.id}`);
       await update(usuariosRef, editedUser);
+      
+      notificacao();
 
       // Chame a função onSave com os dados editados
       onSave({ ...editedUser, id: usuario.id });
 
-      // Defina o estado de salvamento como concluído
+     
       setIsSaving(false);
     } catch (error) {
       // Lide com erros, se necessário
@@ -53,10 +64,13 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
-  return (
-    <div className={styles.editar}>
-      
 
+
+  return (
+    <>
+
+    <div className={styles.editar}>
+  
       <TextField
         label="Nome"
         value={editedUser.name}
@@ -69,7 +83,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
         onChange={handleCargoChange}
         onBlur={handleCargoBlur}
         required
-      />
+        />
       <TextField
         label="Endereço"
         value={editedUser.endereco}
@@ -111,7 +125,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
         onChange={handleCargoChange}
         onBlur={handleCargoBlur}
         required
-      />
+        />
       <TextField
         label="Cargo atual"
         value={editedUser.cargo}
@@ -124,8 +138,11 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
         {isSaving ? "Salvando..." : "Salvar"}
       </Button>
       <Button onClick={onCancel}>Cancelar</Button>
-        
+      
+    
+  
     </div>
+        </>
   );
 }
 
