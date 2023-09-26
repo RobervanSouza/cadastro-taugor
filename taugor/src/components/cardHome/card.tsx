@@ -82,7 +82,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
       <Button onClick={openModal}>Ver Detalhes</Button>
        <Button type="button" variant="contained" color="primary" onClick={viewPDF} >
           <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
-            visualizar com em pdf 
+            visualizar em PDF!
           </Link>
         </Button>
       <UserDetailsModal

@@ -6,7 +6,7 @@ import Pagina404 from "./pages/pagina404";
 import CadastrarFuncionario from "./pages/CadastroFuncionario";
 
 import LoginAdmin from "./pages/LogarAdmin";
-import PaginaPDF from "./pages/PDF/paginaPdf";
+import PaginaPDF from "./pages/PaginaPdf/index";
 
 
 

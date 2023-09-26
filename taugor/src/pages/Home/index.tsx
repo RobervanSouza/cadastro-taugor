@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import styles from "./styles.module.scss";
 
+
 function ListarUsuarios() {
   const [usuarios, setUsuarios] = useState<UserType[]>([]);
 
@@ -60,6 +61,7 @@ const deleteUserFromFirebase = async (userId: string) => {
         {/* Use o Link para navegar */}
         <button>Cadastrar Funcionário</button>
       </Link>
+      
       <button onClick={sair}>Sair</button>
       <h1>Lista de funcionarios</h1>
       <div className={styles.userList}>

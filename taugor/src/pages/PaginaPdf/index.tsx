@@ -2,15 +2,47 @@ import { Link, useLocation } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 import { Button } from "@mui/material";
-
+import { useState } from "react";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function PaginaPDF() {
   const location = useLocation();
   const { usuario } = location.state;
+  const [leitura, setleitura] = useState(false);
+  
+  
+  const baixarPDF = () => {
+   
+    setleitura(true);
+  const capturar = document.querySelector(".pdf") as HTMLElement;
+
+
+  if (!capturar) {
+    console.error("Elemento com a classe 'pdf' não encontrado na página.");
+    return;
+  }
+
+
+  html2canvas(capturar).then((canvas) => {
+    const imageData = canvas.toDataURL("img/png");
+    const doc = new jsPDF("p", "mm", "a4");
+    const largura = doc.internal.pageSize.getWidth();
+    const altura = doc.internal.pageSize.getHeight();
+    doc.addImage(imageData, "png", 0, 0, largura, altura);
+    setleitura(false);
+   
+      const nomeDoArquivo = `Funcionário-${usuario.name}.pdf`;
+      doc.save(nomeDoArquivo);
+  });
+};
+
 
   return (
     <div className={styles.geral}>
-      <h2>Dados do Usuário</h2>
+      <div className="pdf" >
+      <h2 >Dados do Usuário</h2>
+        
       <ul>
         <li>
           <strong>Nome:</strong> {usuario.name}
@@ -52,11 +84,21 @@ function PaginaPDF() {
           </ul>
         </div>
       )}
+      </div>
       <Button type="button" variant="contained" color="primary">
         <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
           Voltar para home
         </Link>
       </Button>
+      <button onClick={baixarPDF}
+      disabled={!leitura === false}
+      >
+        {leitura?(
+          <span>Downloading</span>
+          ):(
+            <span>douload</span>
+            )}
+      </button>
     </div>
   );
 }
