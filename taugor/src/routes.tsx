@@ -7,6 +7,8 @@ import CadastrarFuncionario from "./pages/CadastroFuncionario";
 
 import LoginAdmin from "./pages/LogarAdmin";
 
+
+
 interface IProtegerRotas {
   redirectTo: string;
 }
@@ -31,6 +33,7 @@ export function Navegacao() {
       <Route element={<ProtecaoRotas redirectTo="/" />}>
         <Route element={<Home />} path="/home" />
         <Route element={<CadastrarFuncionario />} path="/cadastrafuncionario" />
+       
       </Route>
       <Route element={<Pagina404 />} path="*" />
     </Routes>

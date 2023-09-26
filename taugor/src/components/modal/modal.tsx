@@ -4,6 +4,7 @@ import { useState } from "react";
 import EditUserForm from "../editarFuncionario/editar"; // Importe o componente de edição
 import styles from "./styles.module.scss";
 
+
 interface UserDetailsModalProps {
   usuario: UserType;
   isOpen: boolean;
@@ -21,6 +22,8 @@ function UserDetailsModal({
 }: UserDetailsModalProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario);
+
+  const [pdfViewerOpen, setPDFViewerOpen] = useState(false);
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -52,6 +55,11 @@ function UserDetailsModal({
     }
   };
 
+  const handleGeneratePDF = () => {
+    // Abre a página de PDF quando o botão for clicado
+    window.location.href = "/caminho-para/UserDetailsPDFPage";
+  };
+
   return (
     <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
       <div className={styles.geral}>
@@ -68,6 +76,7 @@ function UserDetailsModal({
             />
           ) : (
             <div className={styles.card}>
+              {/* Renderize os detalhes do usuário aqui */}
               <p className={styles.paragraph}>Nome: {editedUser.name}</p>
               <p className={styles.paragraph}>Sexo: {editedUser.sexo}</p>
               <p className={styles.paragraph}>
@@ -111,7 +120,6 @@ function UserDetailsModal({
               </Button>
             )}
           </p>
-
           <p className={styles.btnExcluir}>
             {!isEditing && (
               <Button
@@ -122,8 +130,26 @@ function UserDetailsModal({
               </Button>
             )}
           </p>
+
+          {/* Botão para abrir o modal de visualização em PDF */}
+          <Button
+            style={{ color: "red" }}
+            onClick={() => setPDFViewerOpen(true)}>
+            Ver em PDF
+          </Button>
+
+          <p className={styles.btnPDF}>
+            {/* Botão para gerar PDF */}
+            {!isEditing && (
+              <Button style={{ color: "white" }} onClick={handleGeneratePDF}>
+                Gerar PDF
+              </Button>
+            )}
+          </p>
         </div>
       </div>
+      
+
     </Dialog>
   );
 }
