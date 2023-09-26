@@ -5,12 +5,18 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../config/configuraFirebase";
 import LogoComponent from "../../components/logo/logo";
+import { toast } from "react-toastify";
 
 function Cadastrar() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+   function notificacao() {
+     toast.success("Usuário cadastrado com sucesso!");
+   }
+
 
 
   const validateEmail = (value: string) => {
@@ -58,7 +64,7 @@ function Cadastrar() {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
         // Define a mensagem de sucesso e limpa os campos
-        alert("Usuário cadastrado com sucesso!");
+        notificacao();
         setEmail("");
         setPassword("");
       } catch (error) {

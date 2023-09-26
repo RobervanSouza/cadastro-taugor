@@ -5,6 +5,9 @@ import { UserType } from "../../types/userTypes";
 import { Link, useNavigate } from "react-router-dom";
 import LogoComponent from "../../components/logo/logo";
 import styles from "./styles.module.scss";
+import { toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
+
 
 function CadastrarFuncionario() {
   const [name, setName] = useState("");
@@ -19,10 +22,12 @@ function CadastrarFuncionario() {
   const [admisao, setAdmisao] = useState("");
 
   const navigate = useNavigate();
+  function notificacao() {
+  toast.success("Cadastrado com sucesso!");
+}
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
     // Realize as validações dos campos (como mencionado em respostas anteriores)
 
     const usuario: UserType = {
@@ -41,7 +46,7 @@ function CadastrarFuncionario() {
 
 
     criarUsuario(usuario);
-    alert("cadastrado com sucesso")
+    notificacao();
     // Redirecionar para a página desejada após o cadastro
     navigate("/home");
   };

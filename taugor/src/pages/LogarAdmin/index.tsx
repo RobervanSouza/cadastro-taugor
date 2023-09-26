@@ -10,8 +10,8 @@ import LogoComponent from "../../components/logo/logo";
 function LoginAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState<string | null>(null);
-  const [passwordError, setPasswordError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function LoginAdmin() {
     if (!validateEmail(value)) {
       setEmailError("Email inválido");
     } else {
-      setEmailError(null); // Limpar erro de email se for válido
+      setEmailError(''); // Limpar erro de email se for válido
     }
   };
 
@@ -55,7 +55,7 @@ function LoginAdmin() {
     if (value.length < 6) {
       setPasswordError("A senha deve conter pelo menos 6 caracteres");
     } else {
-      setPasswordError(null); // Limpar erro de senha se for válido
+      setPasswordError(''); // Limpar erro de senha se for válido
     }
   };
 

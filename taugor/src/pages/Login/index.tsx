@@ -123,7 +123,7 @@ function Login() {
             <Link
               to="/admin"
               style={{ textDecoration: "none", color: "white" }}>
-              Acessar como Admin
+              Cadastrar usuário como Admin?
             </Link>
           </Button>
         </form>
