@@ -54,23 +54,77 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   };
 
   return (
-    <div className={styles.geral}>
+    <div className={styles.editar}>
+      
+
       <TextField
         label="Nome"
         value={editedUser.name}
         onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
+        required
+        />
+      <TextField
+        label="Sexo"
+        value={editedUser.sexo}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
       />
       <TextField
-        label="Cargo"
+        label="Endereço"
+        value={editedUser.endereco}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+        />
+      <TextField
+        label="Contato"
+        value={editedUser.telefone}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+        />
+      <TextField
+        label="Data Nascimento"
+        value={editedUser.nascimento}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+        />
+      <TextField
+        label="Setor"
+        value={editedUser.setor}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+        />
+      <TextField
+        label="Salario"
+        value={editedUser.salario}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+        />
+      <TextField
+        label="Data Admissão"
+        value={editedUser.admisao}
+        onChange={handleCargoChange}
+        onBlur={handleCargoBlur}
+        required
+      />
+      <TextField
+        label="Cargo atual"
         value={editedUser.cargo}
         onChange={handleCargoChange}
         onBlur={handleCargoBlur}
-      />
+        required
+        />
 
       <Button onClick={handleSave} disabled={isSaving}>
         {isSaving ? "Salvando..." : "Salvar"}
       </Button>
       <Button onClick={onCancel}>Cancelar</Button>
+        
     </div>
   );
 }

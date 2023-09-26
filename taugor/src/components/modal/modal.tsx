@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, DialogContent, Button } from "@mui/material";
+import { Dialog, DialogTitle, Button } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { useState } from "react";
 import EditUserForm from "../editarFuncionario/editar"; // Importe o componente de edição
@@ -53,13 +53,13 @@ function UserDetailsModal({
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
       <div className={styles.geral}>
         <DialogTitle>
           {" "}
           <h1> Informações de Contato</h1>
         </DialogTitle>
-        <DialogContent>
+        <div className={styles.cards} >
           {isEditing ? (
             <EditUserForm
               usuario={editedUser}
@@ -68,17 +68,25 @@ function UserDetailsModal({
             />
           ) : (
             <div className={styles.card}>
-              <p>Nome: {editedUser.name}</p>
-              <p>Sexo: {editedUser.sexo}</p>
-              <p>Endereço: {editedUser.endereco}</p>
-              <p>Contato: {editedUser.telefone}</p>
-              <p>Data Nascimento: {editedUser.nascimento}</p>
-              <p>Setor: {editedUser.setor}</p>
-              <p>Salario: {editedUser.salario}</p>
-              <p>Data Admissão: {editedUser.admisao}</p>
-              <p>Cargo atual: {editedUser.cargo}</p>
-              <div className={styles.historico}>
-                <h4>Histórico de Cargo:</h4>
+              <p className={styles.paragraph}>Nome: {editedUser.name}</p>
+              <p className={styles.paragraph}>Sexo: {editedUser.sexo}</p>
+              <p className={styles.paragraph}>
+                Endereço: {editedUser.endereco}
+              </p>
+              <p className={styles.paragraph}>Contato: {editedUser.telefone}</p>
+              <p className={styles.paragraph}>
+                Data Nascimento: {editedUser.nascimento}
+              </p>
+              <p className={styles.paragraph}>Setor: {editedUser.setor}</p>
+              <p className={styles.paragraph}>Salario: {editedUser.salario}</p>
+              <p className={styles.paragraph}>
+                Data Admissão: {editedUser.admisao}
+              </p>
+              <p className={styles.paragraph}>
+                Cargo atual: {editedUser.cargo}
+              </p>
+              <div className={`${styles.historico} ${styles.paragraph}`}>
+                <h4>Histórico de Cargo</h4>
                 {editedUser.cargoHistorico?.map((cargo, index) => (
                   <p key={index}>
                     {index + 1}° Cargo: <span>{cargo}</span>
@@ -87,14 +95,16 @@ function UserDetailsModal({
               </div>
             </div>
           )}
-        </DialogContent>
-        {!isEditing && <Button onClick={handleEdit}>Editar</Button>}
-        {!isEditing && <Button onClick={handleClose}>Fechar</Button>}
-        {!isEditing && (
-          <Button onClick={handleDelete} color="error">
-            Excluir
-          </Button>
-        )}
+        </div >
+        <div className={styles.botoes}  >
+          {!isEditing && <Button onClick={handleEdit}>Editar</Button>}
+          {!isEditing && <Button onClick={handleClose}>Fechar</Button>}
+          {!isEditing && (
+            <Button onClick={handleDelete} color="error">
+              Excluir
+            </Button>
+          )}
+        </div>
       </div>
     </Dialog>
   );

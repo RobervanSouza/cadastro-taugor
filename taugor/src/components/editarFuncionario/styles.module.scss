@@ -1,21 +1,13 @@
-.geral {
+.editar {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 13px;
-  width: 440px;
-  min-height: 10vh;
+  width: 840px;
+  height: min-content;
   padding: 22px;
   position: relative;
-}
-
-.card{
-  width: 230px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 
 }

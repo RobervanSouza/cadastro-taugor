@@ -3,19 +3,40 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 3px;
-  width: 440px;
-  min-height: 10vh;
+  min-width: 340px;
   padding: 2px;
   position: relative;
+  
+  height: 570px;
+}
+
+.botoes{
+ margin-top: 12px;
+  
+}
+
+
+.cards{
+  
+  width: 634px;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+   
+
 }
 
 .card{
-  width: 230px;
+  // background-color: red;
+  width: 634px;
+  height: 340px;
+  flex-wrap: wrap;
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   flex-direction: column;
   gap: 5px;
-
 }
