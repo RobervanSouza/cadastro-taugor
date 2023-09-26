@@ -3,6 +3,7 @@ import { Button, Card, CardContent, Typography } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import styles from "./styles.module.scss";
 import UserDetailsModal from "../modal/modal";
+import { Link, useNavigate } from "react-router-dom";
 
 interface UserCardProps {
   usuario: UserType;
@@ -12,7 +13,9 @@ interface UserCardProps {
 
 function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [showCargoHistorico, setShowCargoHistorico] = useState(false); // Adicione o estado para controlar a exibição do histórico
+  const [showCargoHistorico, setShowCargoHistorico] = useState(false);
+ const  navigate= useNavigate();
+ 
 
   const userDetails = [
     { label: "Sexo", value: usuario.sexo },
@@ -38,6 +41,11 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
     // Alterne a exibição do histórico quando o botão for clicado
     setShowCargoHistorico(!showCargoHistorico);
   };
+
+   const viewPDF = () => {
+     navigate("/pdf", { state: { usuario } }); // Passe os dados do usuário como estado
+   };
+
 
   return (
     <Card className={styles["user-card"]}>
@@ -66,10 +74,17 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
           </div>
         )}
         <Button onClick={toggleCargoHistorico}>
-          {showCargoHistorico ? "Esconder Histórico" : "Ver Histórico dos Cargos"}
+          {showCargoHistorico
+            ? "Esconder Histórico"
+            : "Ver Histórico dos Cargos"}
         </Button>
       </CardContent>
       <Button onClick={openModal}>Ver Detalhes</Button>
+       <Button type="button" variant="contained" color="primary" onClick={viewPDF} >
+          <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
+            visualizar com em pdf 
+          </Link>
+        </Button>
       <UserDetailsModal
         usuario={usuario}
         isOpen={modalOpen}

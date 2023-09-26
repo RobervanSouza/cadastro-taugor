@@ -1,0 +1,20 @@
+.geral{
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+ 
+  h2{
+    color: #06A0EC;
+    font-size: 24px;
+  }
+  li{
+    color: black;
+  }
+  
+}
