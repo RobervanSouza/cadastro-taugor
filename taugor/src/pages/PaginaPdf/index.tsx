@@ -1,10 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, } from "react-router-dom";
 
 import styles from "./styles.module.scss";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import Header from "../../components/header/header";
 
 function PaginaPDF() {
   const location = useLocation();
@@ -13,16 +14,13 @@ function PaginaPDF() {
   
   
   const baixarPDF = () => {
-   
     setleitura(true);
   const capturar = document.querySelector(".pdf") as HTMLElement;
-
 
   if (!capturar) {
     console.error("Elemento com a classe 'pdf' não encontrado na página.");
     return;
   }
-
 
   html2canvas(capturar).then((canvas) => {
     const imageData = canvas.toDataURL("img/png");
@@ -39,6 +37,10 @@ function PaginaPDF() {
 
 
   return (
+    <>
+    <header>
+      <Header/>
+    </header>
     <div className={styles.geral}>
       <div className="pdf">
         <h2>Dados do Usuário</h2>
@@ -85,11 +87,7 @@ function PaginaPDF() {
           </div>
         )}
       </div>
-      <Button type="button" variant="contained" color="primary">
-        <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
-          Voltar para home
-        </Link>
-      </Button>
+      
 
       <Button
         type="button"
@@ -103,6 +101,7 @@ function PaginaPDF() {
       </Button>
       
     </div>
+    </>
   );
 }
 
