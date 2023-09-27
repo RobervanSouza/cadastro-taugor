@@ -38,12 +38,12 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   };
 
   const toggleCargoHistorico = () => {
-    // Alterne a exibição do histórico quando o botão for clicado
+    
     setShowCargoHistorico(!showCargoHistorico);
   };
 
    const viewPDF = () => {
-     navigate("/visualizar-pdf", { state: { usuario } }); // Passe os dados do usuário como estado
+     navigate("/visualizar-pdf", { state: { usuario } });
    };
 
 

@@ -49,50 +49,123 @@ body {
 }
 
 .pagina{
-  
    width: 210mm;
   height: 297mm;
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  border: 1px solid #060505;
+  border: 1px solid #06A0EC;
   padding: 22px;
+  margin-bottom: 12px;
 }
 
 .pagina h2{
-  background-color:  #06A0EC;
-  border: 1px solid #444343;
+  color: #06A0EC;
+  border: 1px solid #d6d4d4;
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-bottom: 4px;
-}
-
-.nome-imagem{
-  align-items: center;
-  background-color: rgb(218, 215, 220);
-  justify-content: center;
-  display: flex;
-  width: 100%;
+  margin-bottom: 44px;
 }
 
 .pagina-nome{
   width: 100%;
   align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: row;
-  background-color: aqua;
-}
+  flex-wrap: wrap;
+  border-bottom: 2px solid #06A0EC;
+  border-left: 2px solid #06A0EC;
+  border-right: 2px solid #06A0EC;
 
+}
 .pagina-nome p{
-  color: #060505;
-
+  margin-bottom: 13px;
+  color: #06A0EC;
+  margin-top: 12px;
 }
-.pagina-imagem{
-  width: 50%;
-}
+.pagina-nome span{
+  color: black;
+ }
 
-.pagina-imagem img{
+.espaco{
+  margin-top: 12px;
   width: 100%;
+  height: 22px;
+  border: 1px solid #d6d4d4;
+  margin-bottom: 12px;
+}
+
+.contato{
+  border: 1px solid #d6d4d4;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: -18px;
+  margin-bottom: 12px;
+}
+.contato p{
+   margin-bottom: 13px;
+  color: #06A0EC;
+  margin-top: 12px;
+}
+
+.contato span{
+  color: black;
+}
+
+.informacoes{
+  margin-top: 5px;
+}
+
+.informacoes-trabalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #d6d4d4;
+  margin-top: -18px;
+}
+
+.informacoes-trabalho p{
+   margin-bottom: 13px;
+  color: #06A0EC;
+  margin-top: 12px;
+}
+.informacoes-trabalho span{
+  color: black;
+}
+.grupo-superior,
+.grupo-inferior {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.grupo-superior {
+  margin-bottom: 2px; 
+}
+
+.historico{
+  margin-top: 18px;
+}
+
+.historicos-cargos{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #d6d4d4;
+  margin-top: -18px;
+}
+.historicos-cargos p{
+   margin-bottom: 13px;
+  color: #06A0EC;
+  margin-top: 12px;
+}
+
+.historicos-cargos span{
+  color: black;
 }

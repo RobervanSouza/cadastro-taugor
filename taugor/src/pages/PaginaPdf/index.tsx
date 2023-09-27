@@ -45,64 +45,78 @@ function PaginaPDF() {
       </header>
       <div className="container">
         <div className="pagina">
-         
-
+          <div>
+            <h2>Informações do funcionário</h2>
+          </div>
           <div className="pagina-nome">
             <p>
               Nome: <span> {usuario.name} </span>
             </p>
             <p>
-              Nome: <span> {usuario.sexo} </span>
+              Sexo: <span> {usuario.sexo} </span>
+            </p>
+            <p>
+              Data Nascimento: <span> {usuario.nascimento} </span>
             </p>
           </div>
-          <ul>
-            <li></li>
-            <li></li>
-            <li>
-              <strong>Endereço:</strong> {usuario.endereco}
-            </li>
-            <li>
-              <strong>Contato:</strong> {usuario.telefone}
-            </li>
-            <li>
-              <strong>Data de Nascimento:</strong> {usuario.nascimento}
-            </li>
-            <li>
-              <strong>Setor:</strong> {usuario.setor}
-            </li>
-            <li>
-              <strong>Salário:</strong> {usuario.salario}
-            </li>
-            <li>
-              <strong>Data de Admissão:</strong> {usuario.admisao}
-            </li>
-            <li>
-              <strong>Cargo Atual:</strong> {usuario.cargo}
-            </li>
-          </ul>
-          {usuario.cargoHistorico && usuario.cargoHistorico.length > 0 && (
-            <div>
-              <h2>Histórico de Cargo</h2>
-              <ul>
-                {usuario.cargoHistorico.map((cargo: string, index: number) => (
-                  <li key={index}>
-                    {index + 1}° Cargo: {cargo}
-                  </li>
-                ))}
-              </ul>
+          <div className="espaco"></div>
+          <div className="informacoes">
+            <h2>Informações de Contato</h2>
+          </div>
+          <div className="contato">
+            <p>
+              Telefone: <span> {usuario.telefone} </span>
+            </p>
+            <p>
+              Endereço: <span> {usuario.endereco} </span>
+            </p>
+          </div>
+          <div className="informacoes">
+            <h2>Função na Empresa</h2>
+          </div>
+          <div className="informacoes-trabalho">
+            <div className="grupo-superior">
+              <p>
+                Cargo atual: <span> {usuario.cargo} </span>
+              </p>
+              <p>
+                Data admissão: <span> {usuario.admisao} </span>
+              </p>
             </div>
-          )}
-
-          <Button
-            type="button"
-            variant="contained"
-            color="primary"
-            onClick={baixarPDF}
-            disabled={!leitura === false}>
-            {" "}
-            {leitura ? <span>downloading...</span> : <span>dowload</span>}{" "}
-          </Button>
+            <div className="grupo-inferior">
+              <p>
+                Setor: <span> {usuario.setor} </span>
+              </p>
+              <p>
+                Salário: <span> {usuario.salario} </span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="historico">
+              <h2>Histórico de Cargos</h2>
+            </div>
+            {usuario.cargoHistorico && usuario.cargoHistorico.length > 0 && (
+              <div className="historicos-cargos">
+                {usuario.cargoHistorico.map((cargo: string, index: number) => (
+                  <p key={index}>
+                    {index + 1}° Cargo: <span>{cargo}</span>
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
+
+        <Button
+          type="button"
+          variant="contained"
+          color="primary"
+          onClick={baixarPDF}
+          disabled={!leitura === false}>
+          {" "}
+          {leitura ? <span>Baixando...</span> : <span>Baixar PDF</span>}{" "}
+        </Button>
       </div>
     </>
   );
