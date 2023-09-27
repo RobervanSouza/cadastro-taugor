@@ -35,6 +35,18 @@ function PaginaPDF() {
     });
   };
 
+  function getStatusClassName(usuarioStatus: string) {
+    console.log("usuarioStatus:", usuarioStatus); // Verifique o valor de usuarioStatus
+    if (usuarioStatus === "demitido") {
+      console.log("Class: funcionario-demitido");
+      return "funcionario-demitido";
+    } else if (usuarioStatus === "ativo") {
+      console.log("Class: funcionario-ativo");
+      return "funcionario-ativo";
+    }
+  }
+
+
   return (
     <>
       <header>
@@ -76,6 +88,12 @@ function PaginaPDF() {
           </div>
           <div className="informacoes-trabalho">
             <div className="grupo-superior">
+              <p>
+                Status do funcionário:{" "}
+                <span className={getStatusClassName(usuario.status)}>
+                  <span> {usuario.status}</span>
+                </span>
+              </p>
               <p>
                 Cargo atual: <span> {usuario.cargo} </span>
               </p>

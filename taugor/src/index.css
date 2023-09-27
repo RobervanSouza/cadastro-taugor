@@ -169,3 +169,11 @@ body {
 .historicos-cargos span{
   color: black;
 }
+
+.funcionario-demitido span {
+  color: red; /* Estilo para funcionários demitidos */
+}
+
+.funcionario-ativo span {
+  color: green; /* Estilo para funcionários ativos */
+}
