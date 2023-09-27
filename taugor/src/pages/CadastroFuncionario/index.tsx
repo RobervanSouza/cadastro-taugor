@@ -1,4 +1,4 @@
-import  { FormEvent, useState } from "react";
+import  { ChangeEvent, FormEvent, useState } from "react";
 import { Button,  TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user";
 import { UserType } from "../../types/userTypes";
@@ -67,6 +67,45 @@ const resetForm = () => {
     
   };
 
+const dataAdmisao = (event: ChangeEvent<HTMLInputElement>) => {
+  const value = event.target.value;
+  let formattedValue = value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+
+
+  if (formattedValue.length > 8) {
+    formattedValue = formattedValue.slice(0, 8);
+  }
+
+  if (formattedValue.length > 2) {
+    formattedValue = formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
+  }
+  if (formattedValue.length > 5) {
+    formattedValue = formattedValue.slice(0, 5) + "/" + formattedValue.slice(5);
+  }
+
+  setAdmisao(formattedValue);
+};
+const dataNascimento = (event: ChangeEvent<HTMLInputElement>) => {
+  const value = event.target.value;
+  let formattedValue = value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+
+  // Limita o tamanho máximo em 8 caracteres
+  if (formattedValue.length > 8) {
+    formattedValue = formattedValue.slice(0, 8);
+  }
+
+  // Adiciona as barras nos locais corretos
+  if (formattedValue.length > 2) {
+    formattedValue = formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
+  }
+  if (formattedValue.length > 5) {
+    formattedValue = formattedValue.slice(0, 5) + "/" + formattedValue.slice(5);
+  }
+
+  setNascimento(formattedValue);
+};
+
+
   return (
     <>
     <header><Header/></header>
@@ -83,7 +122,7 @@ const resetForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          placeholder="Robervan Souza"
+          placeholder="Nome Funcionário"
           />
 
         <TextField
@@ -111,7 +150,7 @@ const resetForm = () => {
           value={telefone}
           onChange={(e) => {
             const value = e.target.value;
-            const numericValue = value.replace(/[^\d\s-]/g, ""); // Remove todos os caracteres não numéricos, exceto espaços e hífens
+            const numericValue = value.replace(/[^\d\s-]/g, ""); 
             setTelefone(numericValue);
           }}
           required
@@ -132,11 +171,7 @@ const resetForm = () => {
           variant="outlined"
           type="text"
           value={nascimento}
-          onChange={(e) => {
-            const value = e.target.value;
-            const formattedValue = value.replace(/[^0-9/]/g, ""); // Remove caracteres não numéricos e não "/"
-            setNascimento(formattedValue);
-          }}
+          onChange={dataNascimento}
           required
           placeholder="DD/MM/AAAA"
           />
@@ -176,11 +211,7 @@ const resetForm = () => {
           label="Data de Admissão"
           variant="outlined"
           value={admisao}
-          onChange={(e) => {
-            const value = e.target.value;
-            const formattedValue = value.replace(/[^0-9/]/g, ""); // Remove caracteres não numéricos e não "/"
-            setAdmisao(formattedValue);
-          }}
+          onChange={dataAdmisao}
           required
           placeholder="DD/MM/AAAA"
           />
