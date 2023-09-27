@@ -23,10 +23,10 @@ function PaginaPDF() {
     }
 
     html2canvas(capturar, {
-      scale: 7, // Aumente a escala (pode melhorar a qualidade)
-      useCORS: true, // Habilitar o uso de CORS (se necessário)
+      scale: 7, 
+      useCORS: true,
     }).then((canvas) => {
-      const imageData = canvas.toDataURL("image/jpeg", 3.0); // Use "image/jpeg" e 1.0 para qualidade máxima
+      const imageData = canvas.toDataURL("image/jpeg", 3.0);
       const doc = new jsPDF("p", "mm", "a4");
       const largura = doc.internal.pageSize.getWidth();
       const altura = doc.internal.pageSize.getHeight();
@@ -40,7 +40,7 @@ function PaginaPDF() {
   };
 
   function getStatusClassName(usuarioStatus: string) {
-    console.log("usuarioStatus:", usuarioStatus); // Verifique o valor de usuarioStatus
+    console.log("usuarioStatus:", usuarioStatus); 
     if (usuarioStatus === "demitido") {
       console.log("Class: funcionario-demitido");
       return "funcionario-demitido";
@@ -61,8 +61,8 @@ function PaginaPDF() {
       </header>
       <div className="container">
         <div className="pagina">
-          <div>
-            <h2>Informações do funcionário</h2>
+          <div className="funcionario">
+            <h1>Informações do Funcionário</h1>
           </div>
           <div className="pagina-nome">
             <p>
@@ -75,25 +75,27 @@ function PaginaPDF() {
               Data Nascimento: <span> {usuario.nascimento} </span>
             </p>
           </div>
-          <div className="espaco"></div>
-          <div className="informacoes">
-            <h2>Informações de Contato</h2>
-          </div>
+
           <div className="contato">
-            <p>
-              Telefone: <span> {usuario.telefone} </span>
-            </p>
-            <p>
-              Endereço: <span> {usuario.endereco} </span>
-            </p>
-          </div>
-          <div className="informacoes">
-            <h2>Função na Empresa</h2>
+            <div className="contato-h2">
+              <h2>Informações de Contato</h2>
+            </div>
+            <div className="contato-nomes">
+              <p>
+                Telefone: <span> {usuario.telefone} </span>
+              </p>
+              <p>
+                Endereço: <span> {usuario.endereco} </span>
+              </p>
+            </div>
           </div>
           <div className="informacoes-trabalho">
+            <div className="empresa">
+              <h2>Função na Empresa</h2>
+            </div>
             <div className="grupo-superior">
               <p>
-                Status do funcionário:{" "}
+                Status:{" "}
                 <span className={getStatusClassName(usuario.status)}>
                   <span> {usuario.status}</span>
                 </span>
@@ -114,10 +116,14 @@ function PaginaPDF() {
               </p>
             </div>
           </div>
-          <div>
+
+          <div className="historico-funcionario" >
             <div className="historico">
               <h2>Histórico de Cargos</h2>
             </div>
+            
+            <div className="historico-cargo">
+              
             {usuario.cargoHistorico && usuario.cargoHistorico.length > 0 && (
               <div className="historicos-cargos">
                 {usuario.cargoHistorico.map((cargo: string, index: number) => (
@@ -127,6 +133,7 @@ function PaginaPDF() {
                 ))}
               </div>
             )}
+            </div>
           </div>
         </div>
 

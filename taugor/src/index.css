@@ -57,15 +57,14 @@ body {
   border: 1px solid #06A0EC;
   padding: 22px;
   margin-bottom: 12px;
+  
 }
 
-.pagina h2{
-  color: #06A0EC;
-  border: 1px solid #d6d4d4;
-  align-items: center;
+.funcionario{
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 44px;
+  margin-bottom:18px ;
 }
 
 .pagina-nome{
@@ -78,8 +77,12 @@ body {
   border-bottom: 2px solid #06A0EC;
   border-left: 2px solid #06A0EC;
   border-right: 2px solid #06A0EC;
+  position: relative;
+  margin-bottom:38px ;
+
 
 }
+
 .pagina-nome p{
   margin-bottom: 13px;
   color: #06A0EC;
@@ -89,23 +92,16 @@ body {
   color: black;
  }
 
-.espaco{
-  margin-top: 12px;
-  width: 100%;
-  height: 22px;
-  border: 1px solid #d6d4d4;
-  margin-bottom: 12px;
-}
 
 .contato{
   border: 1px solid #d6d4d4;
   align-items: center;
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: -18px;
-  margin-bottom: 12px;
+  flex-direction: column;
+  margin-top: 28px;
+  margin-bottom:38px ;
+  
+
 }
 .contato p{
    margin-bottom: 13px;
@@ -117,11 +113,32 @@ body {
   color: black;
 }
 
+.contato-h2{
+  background-color: white;
+  color: #06A0EC;
+  margin-top: -22px;
+  width: 322px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  margin-left: -382px;
+}
+
+.contato-nomes{
+  
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+
+
 .informacoes{
   margin-top: 5px;
 }
 
 .informacoes-trabalho {
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,10 +163,51 @@ body {
 
 .grupo-superior {
   margin-bottom: 2px; 
+  
 }
 
+.empresa{
+  margin-top: -18px;
+  
+  background-color: white;
+  width: 272px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-left: -442px;
+  color: #06A0EC;
+}
+
+
+
+
+
+
+.historico-funcionario{
+  border: 1px solid #d6d4d4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 28px;
+}
+
+
+
 .historico{
-  margin-top: 18px;
+  margin-top: -18px;
+  color: #06A0EC;
+  background-color:white;
+  width: 272px;
+  margin-left: -442px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.historico-cargo{
+  width: 100%;
+  
 }
 
 .historicos-cargos{
@@ -157,8 +215,6 @@ body {
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
-  border: 1px solid #d6d4d4;
-  margin-top: -18px;
 }
 .historicos-cargos p{
    margin-bottom: 13px;
@@ -176,4 +232,8 @@ body {
 
 .funcionario-ativo span {
   color: green; /* Estilo para funcionários ativos */
+}
+
+.informacoes-trabalho{
+  margin-top: 12px;
 }
