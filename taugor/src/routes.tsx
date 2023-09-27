@@ -35,7 +35,7 @@ export function Navegacao() {
       <Route element={<ProtecaoRotas redirectTo="/" />}>
         <Route element={<Home />} path="/home" />
         <Route element={<CadastrarFuncionario />} path="/cadastrafuncionario" />
-        <Route element={<PaginaPDF />} path="/pdf" />
+        <Route element={<PaginaPDF />} path="/visualizar-pdf" />
       </Route>
       <Route element={<Pagina404 />} path="*" />
     </Routes>

@@ -18,8 +18,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["./typings/html2pdf.js.d.ts", "./node_modules/@types"]
   },
+
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

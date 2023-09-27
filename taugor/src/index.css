@@ -37,3 +37,62 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.container{
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.pagina{
+  
+   width: 210mm;
+  height: 297mm;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border: 1px solid #060505;
+  padding: 22px;
+}
+
+.pagina h2{
+  background-color:  #06A0EC;
+  border: 1px solid #444343;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.nome-imagem{
+  align-items: center;
+  background-color: rgb(218, 215, 220);
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+.pagina-nome{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  background-color: aqua;
+}
+
+.pagina-nome p{
+  color: #060505;
+
+}
+.pagina-imagem{
+  width: 50%;
+}
+
+.pagina-imagem img{
+  width: 100%;
+}

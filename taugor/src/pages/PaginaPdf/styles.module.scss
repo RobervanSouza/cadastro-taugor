@@ -1,13 +1,15 @@
 .geral{
-  display: flex; 
-  align-items: center;
+    width: 100vw;
+  height: 90vh;
+
+  display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
-  gap: 10px;
-  width: 100vw;
-  min-height: 90vh;
-  padding: 10px;
-  position: relative;
+  background-color: aquamarine;
+  overflow-x: hidden;
+  
+
   h2{
     color: #06A0EC;
     font-size: 24px;

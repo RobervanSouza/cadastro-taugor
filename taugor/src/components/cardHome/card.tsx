@@ -3,7 +3,7 @@ import { Button, Card, CardContent, Typography } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import styles from "./styles.module.scss";
 import UserDetailsModal from "../modal/modal";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface UserCardProps {
   usuario: UserType;
@@ -18,13 +18,13 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
  
 
   const userDetails = [
-    { label: "Sexo", value: usuario.sexo },
-    { label: "Endereço", value: usuario.endereco },
-    { label: "Contato", value: usuario.telefone },
-    { label: "Data de Nascimento", value: usuario.nascimento },
-    { label: "Setor", value: usuario.setor },
-    { label: "Salário", value: usuario.salario },
-    { label: "Data Admissão", value: usuario.admisao },
+    // { label: "Sexo", value: usuario.sexo },
+    // { label: "Endereço", value: usuario.endereco },
+    // { label: "Contato", value: usuario.telefone },
+    // { label: "Data de Nascimento", value: usuario.nascimento },
+    // { label: "Setor", value: usuario.setor },
+    // { label: "Salário", value: usuario.salario },
+    // { label: "Data Admissão", value: usuario.admisao },
     { label: "Cargo Atual", value: usuario.cargo },
   ];
 
@@ -43,7 +43,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   };
 
    const viewPDF = () => {
-     navigate("/pdf", { state: { usuario } }); // Passe os dados do usuário como estado
+     navigate("/visualizar-pdf", { state: { usuario } }); // Passe os dados do usuário como estado
    };
 
 
@@ -102,9 +102,9 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
             variant="contained"
             color="primary"
             onClick={viewPDF}>
-            <Link to="/pdf" style={{ textDecoration: "none", color: "white" }}>
+           
               visualizar em PDF!
-            </Link>
+            
           </Button>
           <UserDetailsModal
             usuario={usuario}
