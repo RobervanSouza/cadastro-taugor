@@ -22,17 +22,21 @@ function PaginaPDF() {
       return;
     }
 
-    html2canvas(capturar).then((canvas) => {
-      const imageData = canvas.toDataURL("img/png");
+    html2canvas(capturar, {
+      scale: 7, // Aumente a escala (pode melhorar a qualidade)
+      useCORS: true, // Habilitar o uso de CORS (se necessário)
+    }).then((canvas) => {
+      const imageData = canvas.toDataURL("image/jpeg", 3.0); // Use "image/jpeg" e 1.0 para qualidade máxima
       const doc = new jsPDF("p", "mm", "a4");
       const largura = doc.internal.pageSize.getWidth();
       const altura = doc.internal.pageSize.getHeight();
-      doc.addImage(imageData, "png", 0, 0, largura, altura);
+      doc.addImage(imageData, "JPEG", 0, 0, largura, altura);
       setleitura(false);
 
       const nomeDoArquivo = `Funcionário-${usuario.name}.pdf`;
       doc.save(nomeDoArquivo);
     });
+    
   };
 
   function getStatusClassName(usuarioStatus: string) {
