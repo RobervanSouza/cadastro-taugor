@@ -127,6 +127,13 @@ function CadastrarFuncionario() {
     setImagemPlaceholder(e.target.value);
   };
 
+  
+  const handleCheckboxChange = () => {
+    // Limpar a input de foto quando o checkbox for clicado
+    setFoto("");
+    // Alternar entre escolher arquivo e colar link
+    setEscolherArquivo(!escolherArquivo);
+  };
   const [escolherArquivo, setEscolherArquivo] = useState(true);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -243,7 +250,7 @@ function CadastrarFuncionario() {
                   <input
                     type="checkbox"
                     checked={escolherArquivo}
-                    onChange={() => setEscolherArquivo(!escolherArquivo)}
+                    onChange={handleCheckboxChange}
                   />{" "}
                   Arquivo ou Link
                 </label>
