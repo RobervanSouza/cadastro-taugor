@@ -132,23 +132,25 @@ function CadastrarFuncionario() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    if (value.startsWith("http") || value.startsWith("https")) {
-      setImagemPlaceholder(value);
-      setFoto(value);
-    } else {
-      const file = e.target.files && e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const dataURL = event.target && event.target.result;
-          if (dataURL) {
-            setImagemPlaceholder(dataURL as string);
-            setFoto(dataURL as string);
-          }
-        };
-        reader.readAsDataURL(file);
+      if (value.startsWith("http://") || value.startsWith("https://")) {
+        // Se o valor começa com 'http://' ou 'https://', assumimos que é um link de imagem
+        setImagemPlaceholder(value);
+        setFoto(value); // Atualize o estado 'foto' com o link da imagem
+      } else {
+        // Caso contrário, assume-se que é um arquivo
+        const file = e.target.files && e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const dataURL = event.target && event.target.result;
+            if (dataURL) {
+              setImagemPlaceholder(dataURL as string);
+              setFoto(dataURL as string);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
       }
-    }
   };
 
   return (
