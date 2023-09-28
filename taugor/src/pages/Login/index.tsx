@@ -90,7 +90,7 @@ function Login() {
   return (
     <>
       <div className={styles.geral}>
-      <LogoComponent/>
+      <LogoComponent width="" height="" />
         <h1>Acessar sua conta</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField

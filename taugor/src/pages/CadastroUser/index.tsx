@@ -76,7 +76,7 @@ function Cadastrar() {
   return (
     <>
       <div className={styles.geral}>
-        <div> <LogoComponent/> </div>
+        <div> <LogoComponent width="" height="" /> </div>
         <h1>Cadastrar usuario</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
