@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { criarUsuario } from "../../utils/user";
 import { UserType } from "../../types/userTypes";
 import styles from "./styles.module.scss";
@@ -7,6 +7,14 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/header";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import PersonIcon from "@mui/icons-material/Person";
+import WcIcon from "@mui/icons-material/Wc";
+import AddLocationIcon from "@mui/icons-material/AddLocation";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import WorkIcon from "@mui/icons-material/Work";
+import SettingsIcon from "@mui/icons-material/Settings";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 
 function CadastrarFuncionario() {
@@ -169,6 +177,13 @@ function CadastrarFuncionario() {
                 placeholder="Nome do funcionário"
                 fullWidth
                 className={styles.nome}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <PersonIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
               />
               <TextField
                 label="Sexo"
@@ -178,6 +193,13 @@ function CadastrarFuncionario() {
                 required
                 placeholder="Sexo"
                 fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <WcIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
 
@@ -201,7 +223,10 @@ function CadastrarFuncionario() {
                             className={styles.imgPla}
                           />
                         ) : (
-                          <AccountBoxIcon className={styles.icon} />
+                          <AccountBoxIcon
+                            className={styles.icon}
+                            style={{ color: "#06a0ec" }}
+                          />
                         )}
                       </div>
                     ),
@@ -225,8 +250,8 @@ function CadastrarFuncionario() {
                     type="checkbox"
                     checked={escolherArquivo}
                     onChange={() => setEscolherArquivo(!escolherArquivo)}
-                  />
-                  Escolher foto
+                  />{" "}
+                  Arquivo ou Link
                 </label>
               </div>
             </div>
@@ -239,6 +264,13 @@ function CadastrarFuncionario() {
             onChange={(e) => setEndereco(e.target.value)}
             required
             placeholder="Rua ..."
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AddLocationIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -253,6 +285,13 @@ function CadastrarFuncionario() {
             }}
             required
             placeholder="99 9999-2333"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LocalPhoneIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -263,6 +302,13 @@ function CadastrarFuncionario() {
             onChange={dataNascimento}
             required
             placeholder="DD/MM/AAAA"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -272,6 +318,13 @@ function CadastrarFuncionario() {
             onChange={(e) => setCargo(e.target.value)}
             required
             placeholder="Digite o cargo do funcionário"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <WorkIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -281,6 +334,13 @@ function CadastrarFuncionario() {
             onChange={(e) => setSetor(e.target.value)}
             required
             placeholder="Setor que o funcionario trabalha"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SettingsIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -294,6 +354,13 @@ function CadastrarFuncionario() {
             }}
             required
             placeholder="Digite o salário (ex: 1000,50)"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AttachMoneyIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <TextField
@@ -303,6 +370,13 @@ function CadastrarFuncionario() {
             onChange={dataAdmisao}
             required
             placeholder="DD/MM/AAAA"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
 
           <Button type="submit" variant="contained" color="primary">
