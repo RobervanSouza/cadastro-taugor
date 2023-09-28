@@ -28,7 +28,13 @@ function CadastrarFuncionario() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    // Realize as validações dos campos (como mencionado em respostas anteriores)
+    
+ if (!foto) {
+   toast.error("Você deve fornecer uma foto antes de salvar.");
+   return; 
+ }
+
+
 
     const resetForm = () => {
       setName("");
@@ -41,6 +47,7 @@ function CadastrarFuncionario() {
       setSetor("");
       setSalario("");
       setAdmisao("");
+      setImagemPlaceholder("");
       setStatus("ativo");
     };
 
@@ -122,11 +129,11 @@ function CadastrarFuncionario() {
    const value = e.target.value;
 
    if (value.startsWith("http") || value.startsWith("https")) {
-     // Se o valor começa com 'http' ou 'https', assumimos que é um link de imagem
+     
      setImagemPlaceholder(value);
      setFoto(value);
    } else {
-     // Caso contrário, assume-se que é um arquivo
+     
      const file = e.target.files && e.target.files[0];
      if (file) {
        const reader = new FileReader();
@@ -182,8 +189,8 @@ function CadastrarFuncionario() {
                   value={foto}
                   onChange={handleChange}
                   disabled
-                  placeholder=""
                   fullWidth
+                  className={styles.input}
                   InputProps={{
                     startAdornment: (
                       <div className={styles.icon}>
@@ -201,14 +208,16 @@ function CadastrarFuncionario() {
                   }}
                 />
               </div>
-             <div className={styles.descFoto}>
+
+              <div className={styles.descFoto}>
                 <label className={styles.uploadLabel}>
                   {escolherArquivo ? "Escolher arquivo" : "Colar link"}
                   <input
                     type={escolherArquivo ? "file" : "text"}
                     accept={escolherArquivo ? "image/*" : undefined}
-                    className={styles.fileInput}
+                    className={styles.fotoInput}
                     onChange={handleFileChange}
+                    placeholder="  Colar link da foto"
                   />
                 </label>
                 <label>
@@ -217,11 +226,10 @@ function CadastrarFuncionario() {
                     checked={escolherArquivo}
                     onChange={() => setEscolherArquivo(!escolherArquivo)}
                   />
-                  Escolher link
+                  Escolher foto
                 </label>
               </div>
             </div>
-           
           </section>
 
           <TextField

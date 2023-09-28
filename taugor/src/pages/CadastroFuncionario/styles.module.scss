@@ -69,7 +69,6 @@
 
       .input {
         margin-top: -12px;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -100,6 +99,14 @@
       img {
         width: 12px;
       }
+
+      .fotoInput{
+        background-color: #f6f9fb;
+        border: 2px solid black;
+        height: 22px;
+        color: #06a0ec;
+        
+      }
     }
   }
 }
@@ -120,6 +127,3 @@
     margin-top: 22px;
   }
 }
-
-
-

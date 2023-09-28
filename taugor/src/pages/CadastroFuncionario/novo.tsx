@@ -331,3 +331,61 @@ function CadastrarFuncionario() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div>
+   <button onClick={handleToggleMode}>
+     {isLinkMode ? "Voltar" : "Link da imagem"}
+   </button>
+
+   {isLinkMode ? (
+     <TextField
+       label="Link da Imagem"
+       variant="outlined"
+       value={foto}
+       onChange={(e) => {
+         setFoto(e.target.value);
+       }}
+       InputProps={{
+         startAdornment: (
+           <InputAdornment position="start">
+             <AccountBoxIcon />
+           </InputAdornment>
+         ),
+       }}
+     />
+   ) : (
+     <div>
+       <input type="file" accept="image/*" onChange={handleFileChange} />
+       {imagemPlaceholder && (
+         <img
+           src={imagemPlaceholder}
+           alt="Imagem"
+           style={{ maxWidth: "100px", maxHeight: "100px" }}
+         />
+       )}
+     </div>
+   )}
+ </div>;
