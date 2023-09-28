@@ -134,6 +134,7 @@ function CadastrarFuncionario() {
                 required
                 placeholder="Nome do funcionário"
                 fullWidth
+                className={styles.nome}
               />
               <TextField
                 label="Sexo"
@@ -155,7 +156,6 @@ function CadastrarFuncionario() {
                 placeholder="link da Foto"
                 fullWidth
                 InputProps={{
-             
                   startAdornment: (
                     <div className={styles.icon}>
                       {imagemPlaceholder ? (
