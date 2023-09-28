@@ -6,8 +6,8 @@ import Logo from "../../assets/logo.png";
 
 
 interface LogoComponentProps {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
 }
 
 function LogoComponent({ width, height }: LogoComponentProps) {
