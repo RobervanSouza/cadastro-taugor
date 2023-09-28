@@ -250,46 +250,49 @@ function CadastrarFuncionario() {
           </section>
 
           <section className={styles.cargo}>
-            <TextField
-              label="Cargo"
-              variant="outlined"
-              value={cargo}
-              onChange={(e) => setCargo(e.target.value)}
-              required
-              fullWidth
-              placeholder="Digite o cargo do funcionário"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <WorkIcon style={{ color: "#06a0ec" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <div className={styles.teste}>
+              <TextField
+                label="Cargo"
+                variant="outlined"
+                value={cargo}
+                onChange={(e) => setCargo(e.target.value)}
+                required
+                fullWidth
+                placeholder="Digite o cargo do funcionário"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <WorkIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
           </section>
           <section className={styles.endereco}>
-            <TextField
-              label="Endereço"
-              variant="outlined"
-              value={endereco}
-              onChange={(e) => setEndereco(e.target.value)}
-              required
-              fullWidth
-              placeholder="Rua ..."
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <AddLocationIcon style={{ color: "#06a0ec" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <div className={styles.enderecoTeste}>
+              <TextField
+                label="Endereço"
+                variant="outlined"
+                value={endereco}
+                onChange={(e) => setEndereco(e.target.value)}
+                required
+                fullWidth
+                placeholder="Rua ..."
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AddLocationIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
           </section>
 
           <section className={styles.teleNasci}>
-            <div>
+            <div className={styles.telefone}>
               <TextField
-                className={styles.telefone}
                 label="Telefone"
                 variant="outlined"
                 type="text"
@@ -312,9 +315,8 @@ function CadastrarFuncionario() {
               />
             </div>
 
-            <div>
+            <div className={styles.nascimento}>
               <TextField
-                className={styles.nascimento}
                 label="Data de Nascimento"
                 variant="outlined"
                 type="text"
