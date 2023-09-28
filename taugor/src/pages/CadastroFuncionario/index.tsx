@@ -107,14 +107,29 @@ function CadastrarFuncionario() {
   };
 
 
-  const [imagemPlaceholder, setImagemPlaceholder] = useState(""); // Defina como uma string vazia
+   const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
+     null
+   );
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const linkDaImagem = e.target.value;
-    setFoto(linkDaImagem);
-    setImagemPlaceholder(linkDaImagem);
-  };
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     setFoto(e.target.value);
+     setImagemPlaceholder(e.target.value);
+   };
 
+   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+     const file = e.target.files && e.target.files[0];
+     if (file) {
+       const reader = new FileReader();
+       reader.onload = (event) => {
+         const dataURL = event.target && event.target.result;
+         if (dataURL) {
+           setImagemPlaceholder(dataURL as string);
+         }
+       };
+       reader.readAsDataURL(file);
+     }
+   };
+  
 
 
   return (
@@ -146,31 +161,75 @@ function CadastrarFuncionario() {
                 fullWidth
               />
             </div>
+            {/* <div className={styles.foto}>
+              <div className={styles.iconeFoto}>
+                <TextField
+                  label="Foto"
+                  variant="outlined"
+                  value={foto}
+                  onChange={handleChange}
+                  required
+                  placeholder="link da Foto"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <div className={styles.icon}>
+                        {imagemPlaceholder ? (
+                          <img
+                            src={imagemPlaceholder}
+                            alt="Imagem"
+                            className={styles.imgPla}
+                          />
+                        ) : (
+                          <AccountBoxIcon className={styles.icon} />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
+              <div className={styles.descFoto}>link da foto</div>
+            </div> */}
+
             <div className={styles.foto}>
-              <TextField
-                label="Foto"
-                variant="outlined"
-                value={foto}
-                onChange={handleChange}
-                required
-                placeholder="link da Foto"
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <div className={styles.icon}>
-                      {imagemPlaceholder ? (
-                        <img
-                          src={imagemPlaceholder}
-                          alt="Imagem"
-                          className={styles.imgPla}
-                        />
-                      ) : (
-                        <AccountBoxIcon className={styles.icon} />
-                      )}
-                    </div>
-                  ),
-                }}
-              />
+              <div className={styles.iconeFoto}>
+                <TextField
+                  label="Foto"
+                  variant="outlined"
+                  value={foto}
+                  onChange={handleChange}
+                  required
+                  placeholder="link da Foto"
+                  fullWidth
+                  InputProps={{
+                    startAdornment: (
+                      <div className={styles.icon}>
+                        {imagemPlaceholder ? (
+                          <img
+                            src={imagemPlaceholder}
+                            alt="Imagem"
+                            className={styles.imgPla}
+                          />
+                        ) : (
+                          <AccountBoxIcon className={styles.icon} />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
+              <div className={styles.descFoto}>
+                  <label className={styles.uploadLabel}>
+                    Escolher arquivo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className={styles.fileInput}
+                      onChange={handleFileChange}
+                    />
+                  </label>
+                
+              </div>
             </div>
           </section>
 
