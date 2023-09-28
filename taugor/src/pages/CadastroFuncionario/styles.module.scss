@@ -52,10 +52,24 @@
   }
   .foto {
     width: 35%;
-    height: 110px;
-    
+    height: 128px;
+    margin-top: 12px;
+  
+    // background-color: aqua;
     .icon {
-      font-size: 123px;
+      
+      width: 423px;
+      height: 113px;
+      overflow: hidden;
+      // background-color: #06a0ec;
+      margin-left: -12px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      
+      img{
+        width: 80%;
+      }
     }
     
 

@@ -107,6 +107,16 @@ function CadastrarFuncionario() {
   };
 
 
+  const [imagemPlaceholder, setImagemPlaceholder] = useState(""); // Defina como uma string vazia
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const linkDaImagem = e.target.value;
+    setFoto(linkDaImagem);
+    setImagemPlaceholder(linkDaImagem);
+  };
+
+
+
   return (
     <>
       <header>
@@ -116,6 +126,15 @@ function CadastrarFuncionario() {
         <form onSubmit={handleSubmit} className={styles.form}>
           <section className={styles.fns}>
             <div className={styles.nomeSexo}>
+              <TextField
+                label="Nome"
+                variant="outlined"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                placeholder="Nome do funcionário"
+                fullWidth
+              />
               <TextField
                 label="Sexo"
                 variant="outlined"
@@ -131,15 +150,23 @@ function CadastrarFuncionario() {
                 label="Foto"
                 variant="outlined"
                 value={foto}
-                onChange={(e) => setFoto(e.target.value)}
+                onChange={handleChange}
                 required
                 placeholder="link da Foto"
                 fullWidth
                 InputProps={{
-                  style: { height: "125px", marginTop: "-8px" },
+             
                   startAdornment: (
                     <div className={styles.icon}>
-                      <AccountBoxIcon className={styles.icon} />
+                      {imagemPlaceholder ? (
+                        <img
+                          src={imagemPlaceholder}
+                          alt="Imagem"
+                          className={styles.imgPla}
+                        />
+                      ) : (
+                        <AccountBoxIcon className={styles.icon} />
+                      )}
                     </div>
                   ),
                 }}
