@@ -16,7 +16,6 @@ import WorkIcon from "@mui/icons-material/Work";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
-
 function CadastrarFuncionario() {
   const [name, setName] = useState("");
   const [sexo, setSexo] = useState("");
@@ -36,13 +35,11 @@ function CadastrarFuncionario() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    
- if (!foto) {
-   toast.error("Você deve fornecer uma foto antes de salvar.");
-   return; 
- }
 
-
+    if (!foto) {
+      toast.error("Você deve fornecer uma foto antes de salvar.");
+      return;
+    }
 
     const resetForm = () => {
       setName("");
@@ -121,43 +118,38 @@ function CadastrarFuncionario() {
     setNascimento(formattedValue);
   };
 
+  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
+    null
+  );
 
-   const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
-     null
-   );
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFoto(e.target.value);
+    setImagemPlaceholder(e.target.value);
+  };
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     setFoto(e.target.value);
-     setImagemPlaceholder(e.target.value);
-   };
+  const [escolherArquivo, setEscolherArquivo] = useState(true);
 
-    const [escolherArquivo, setEscolherArquivo] = useState(true);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
 
- const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   const value = e.target.value;
-
-   if (value.startsWith("http") || value.startsWith("https")) {
-     
-     setImagemPlaceholder(value);
-     setFoto(value);
-   } else {
-     
-     const file = e.target.files && e.target.files[0];
-     if (file) {
-       const reader = new FileReader();
-       reader.onload = (event) => {
-         const dataURL = event.target && event.target.result;
-         if (dataURL) {
-           setImagemPlaceholder(dataURL as string);
-           setFoto(dataURL as string);
-         }
-       };
-       reader.readAsDataURL(file);
-     }
-   }
- };
-  
-
+    if (value.startsWith("http") || value.startsWith("https")) {
+      setImagemPlaceholder(value);
+      setFoto(value);
+    } else {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const dataURL = event.target && event.target.result;
+          if (dataURL) {
+            setImagemPlaceholder(dataURL as string);
+            setFoto(dataURL as string);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  };
 
   return (
     <>
@@ -257,131 +249,159 @@ function CadastrarFuncionario() {
             </div>
           </section>
 
-          <TextField
-            label="Endereço"
-            variant="outlined"
-            value={endereco}
-            onChange={(e) => setEndereco(e.target.value)}
-            required
-            placeholder="Rua ..."
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AddLocationIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <section className={styles.cargo}>
+            <TextField
+              label="Cargo"
+              variant="outlined"
+              value={cargo}
+              onChange={(e) => setCargo(e.target.value)}
+              required
+              fullWidth
+              placeholder="Digite o cargo do funcionário"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <WorkIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </section>
+          <section className={styles.endereco}>
+            <TextField
+              label="Endereço"
+              variant="outlined"
+              value={endereco}
+              onChange={(e) => setEndereco(e.target.value)}
+              required
+              fullWidth
+              placeholder="Rua ..."
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AddLocationIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </section>
 
-          <TextField
-            label="Telefone"
-            variant="outlined"
-            type="text"
-            value={telefone}
-            onChange={(e) => {
-              const value = e.target.value;
-              const numericValue = value.replace(/[^\d\s-]/g, "");
-              setTelefone(numericValue);
-            }}
-            required
-            placeholder="99 9999-2333"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LocalPhoneIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <section className={styles.teleNasci}>
+            <div>
+              <TextField
+                className={styles.telefone}
+                label="Telefone"
+                variant="outlined"
+                type="text"
+                value={telefone}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  const numericValue = value.replace(/[^\d\s-]/g, "");
+                  setTelefone(numericValue);
+                }}
+                required
+                fullWidth
+                placeholder="99 9999-2333"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <LocalPhoneIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
 
-          <TextField
-            label="Data de Nascimento"
-            variant="outlined"
-            type="text"
-            value={nascimento}
-            onChange={dataNascimento}
-            required
-            placeholder="DD/MM/AAAA"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <CalendarMonthIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
+            <div>
+              <TextField
+                className={styles.nascimento}
+                label="Data de Nascimento"
+                variant="outlined"
+                type="text"
+                fullWidth
+                value={nascimento}
+                onChange={dataNascimento}
+                required
+                placeholder="DD/MM/AAAA"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+          </section>
 
-          <TextField
-            label="Cargo"
-            variant="outlined"
-            value={cargo}
-            onChange={(e) => setCargo(e.target.value)}
-            required
-            placeholder="Digite o cargo do funcionário"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <WorkIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
+          <section className={styles.setorAdm}>
+            <div>
+              <TextField
+                className={styles.adm}
+                label="Data de Admissão"
+                variant="outlined"
+                value={admisao}
+                onChange={dataAdmisao}
+                required
+                placeholder="DD/MM/AAAA"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                className={styles.setor}
+                label="Setor"
+                variant="outlined"
+                value={setor}
+                onChange={(e) => setSetor(e.target.value)}
+                required
+                placeholder="Setor que o funcionario trabalha"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SettingsIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+          </section>
 
-          <TextField
-            label="Setor"
-            variant="outlined"
-            value={setor}
-            onChange={(e) => setSetor(e.target.value)}
-            required
-            placeholder="Setor que o funcionario trabalha"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SettingsIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <TextField
-            label="Salário"
-            variant="outlined"
-            value={salario}
-            onChange={(e) => {
-              const value = e.target.value;
-              const formattedValue = value.replace(/[^0-9,.]/g, ""); // Remove caracteres não numéricos, exceto pontos e vírgulas
-              setSalario(formattedValue);
-            }}
-            required
-            placeholder="Digite o salário (ex: 1000,50)"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AttachMoneyIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <TextField
-            label="Data de Admissão"
-            variant="outlined"
-            value={admisao}
-            onChange={dataAdmisao}
-            required
-            placeholder="DD/MM/AAAA"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <CalendarMonthIcon style={{ color: "#06a0ec" }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <Button type="submit" variant="contained" color="primary">
-            Cadastrar
-          </Button>
+          <section className={styles.salarioButton}>
+            <div>
+              <TextField
+                className={styles.salario}
+                label="Salário"
+                variant="outlined"
+                value={salario}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  const formattedValue = value.replace(/[^0-9,.]/g, ""); // Remove caracteres não numéricos, exceto pontos e vírgulas
+                  setSalario(formattedValue);
+                }}
+                required
+                placeholder="Digite o salário (ex: 1000,50)"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <AttachMoneyIcon style={{ color: "#06a0ec" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div className={styles.button}>
+              <Button type="submit" variant="contained" color="primary">
+                Cadastrar
+              </Button>
+            </div>
+          </section>
         </form>
       </div>
     </>

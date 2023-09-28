@@ -31,9 +31,9 @@
   flex-wrap: wrap;
   gap: 10px;
   width: 840px;
-  height: 400px;
+  height: min-content;
   padding: 10px;
-  border: 1px solid black;
+  
   margin-top: -123px;
 }
 
@@ -44,7 +44,7 @@
   flex-direction: row;
   width: 734px;
   padding: 12px;
-  border: 1px solid black;
+  
 
   .nomeSexo {
     width: 50%;
@@ -110,7 +110,78 @@
       }
     }
   }
+
+
 }
+
+.cargo{
+  width: 704px;
+ 
+}
+.endereco{
+  width: 704px;
+
+}
+
+.teleNasci{
+  width: 704px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 14px;
+  
+
+  .telefone{
+    width: 343px;
+    
+  }
+
+  .nascimento{
+    width: 343px;
+  }
+}
+
+.setorAdm{
+   width: 704px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 14px;
+
+  .adm{
+    width: 343px;
+  }
+
+  .setor{
+    width: 343px;
+  }
+}
+
+.salarioButton{
+  width: 704px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 14px;
+
+  .salario{
+    width: 343px;
+  }
+
+  .button{
+    width: 343px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+
+
+
+
 
 /* Adicione um media query para ajustar os campos em telas menores */
 @media (max-width: 768px) {
