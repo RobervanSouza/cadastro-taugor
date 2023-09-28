@@ -9,4 +9,8 @@ export default defineConfig({
   server: {
     port: 5137,
   },
+  build: {
+    target: "server",
+    outDir: "dist",
+  },
 });
