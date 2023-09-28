@@ -50,7 +50,7 @@
     width: 50%;
     padding: 5px;
 
-    .nome{
+    .nome {
       margin-bottom: 22px;
     }
   }
@@ -58,44 +58,49 @@
     width: 50%;
     height: 128px;
     margin-top: 12px;
-     align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
 
-  
-    // background-color: aqua;
-    .icon {
-      
-      width: 423px;
-      height: 113px;
-      overflow: hidden;
-      // background-color: #06a0ec;
-      margin-left: -12px;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      
-      img{
-        width: 80%;
+    .iconeFoto {
+      width: 50%;
+      height: 124px;
+
+      .input {
+        margin-top: -12px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 173px;
+      }
+
+      .icon {
+        width: 933px;
+        height: 133px;
+        overflow: hidden;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        .imgPla {
+          width: 220px;
+          height: 123px; 
+        }
       }
     }
 
-    .iconeFoto{
+    .descFoto {
       width: 50%;
-    }
-    
-    .descFoto{
-      width: 50px;
-      background-color: #06a0ec;
+      color: #06a0ec;
 
-      img{
+      flex-direction: column;
+      overflow: hidden;
+      img {
         width: 12px;
       }
     }
-
-
-
   }
 }
 
@@ -115,3 +120,6 @@
     margin-top: 22px;
   }
 }
+
+
+

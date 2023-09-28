@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/header";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
-
 function CadastrarFuncionario() {
   const [name, setName] = useState("");
   const [sexo, setSexo] = useState("");
@@ -106,43 +105,38 @@ function CadastrarFuncionario() {
     setNascimento(formattedValue);
   };
 
+  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
+    null
+  );
 
-   const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
-     null
-   );
+  const [escolherArquivo, setEscolherArquivo] = useState(true);
 
-   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-     setFoto(e.target.value);
-     setImagemPlaceholder(e.target.value);
-   };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFoto(e.target.value);
+    setImagemPlaceholder(e.target.value);
+  };
 
-    const [escolherArquivo, setEscolherArquivo] = useState(true);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
 
- const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-   const value = e.target.value;
-
-   if (value.startsWith("http") || value.startsWith("https")) {
-     // Se o valor começa com 'http' ou 'https', assumimos que é um link de imagem
-     setImagemPlaceholder(value);
-     setFoto(value);
-   } else {
-     // Caso contrário, assume-se que é um arquivo
-     const file = e.target.files && e.target.files[0];
-     if (file) {
-       const reader = new FileReader();
-       reader.onload = (event) => {
-         const dataURL = event.target && event.target.result;
-         if (dataURL) {
-           setImagemPlaceholder(dataURL as string);
-           setFoto(dataURL as string);
-         }
-       };
-       reader.readAsDataURL(file);
-     }
-   }
- };
-  
-
+    if (value.startsWith("http") || value.startsWith("https")) {
+      // Se o valor começa com 'http' ou 'https', assumimos que é um link de imagem
+      setImagemPlaceholder(value);
+    } else {
+      // Caso contrário, assume-se que é um arquivo
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const dataURL = event.target && event.target.result;
+          if (dataURL) {
+            setImagemPlaceholder(dataURL as string);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  };
 
   return (
     <>
@@ -173,16 +167,15 @@ function CadastrarFuncionario() {
                 fullWidth
               />
             </div>
-
-            <div className={styles.foto}>
+            {/* <div className={styles.foto}>
               <div className={styles.iconeFoto}>
                 <TextField
                   label="Foto"
                   variant="outlined"
                   value={foto}
                   onChange={handleChange}
-                  disabled
-                  placeholder=""
+                  required
+                  placeholder="link da Foto"
                   fullWidth
                   InputProps={{
                     startAdornment: (
@@ -201,7 +194,39 @@ function CadastrarFuncionario() {
                   }}
                 />
               </div>
-             <div className={styles.descFoto}>
+              <div className={styles.descFoto}>link da foto</div>
+            </div> */}
+
+            <div className={styles.foto}>
+              <div className={styles.iconeFoto}>
+                <TextField
+                  label="Foto"
+                  variant="outlined"
+                  value={foto}
+                  onChange={handleChange}
+                  required
+                  placeholder=""
+                  fullWidth
+                  disabled
+                  className={styles.input}
+                  InputProps={{
+                    startAdornment: (
+                      <div className={styles.icon}>
+                        {imagemPlaceholder ? (
+                          <img
+                            src={imagemPlaceholder}
+                            alt="Imagem"
+                            className={styles.imgPla}
+                          />
+                        ) : (
+                          <AccountBoxIcon className={styles.icon} />
+                        )}
+                      </div>
+                    ),
+                  }}
+                />
+              </div>
+              <div className={styles.descFoto}>
                 <label className={styles.uploadLabel}>
                   {escolherArquivo ? "Escolher arquivo" : "Colar link"}
                   <input
@@ -221,7 +246,6 @@ function CadastrarFuncionario() {
                 </label>
               </div>
             </div>
-           
           </section>
 
           <TextField
@@ -306,4 +330,4 @@ function CadastrarFuncionario() {
   );
 }
 
-export default CadastrarFuncionario;
+
