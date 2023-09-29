@@ -9,11 +9,15 @@ import HomeIcon from "@mui/icons-material/Home";
 const Header = () => {
 
    const navigate = useNavigate();
-   function sair() {
-     signOut(auth);
-     navigate("/");
-   }
-   
+  async function sair() {
+    try {
+      await signOut(auth);
+      navigate("/");
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+      // Lidar com erros, se houver
+    }
+  }
    function cadastrar() {
      navigate("/cadastrafuncionario");
    }

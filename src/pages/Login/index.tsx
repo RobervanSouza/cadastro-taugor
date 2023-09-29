@@ -6,6 +6,8 @@ import { auth } from "../../config/configuraFirebase";
 import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import LogoComponent from "../../components/logo/logo";
+import Reload from "../../assets/reload.gif";
+
 
 
 function Login() {
@@ -13,6 +15,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,37 +64,41 @@ function Login() {
     }
   };
 
-  async function submitEmail(event: FormEvent) {
-    event.preventDefault();
+ async function submitEmail(event: FormEvent) {
+   event.preventDefault();
 
-    // Verificar se o email e a senha são válidos antes de prosseguir
-    if (isEmailValid && isPasswordValid) {
-      try {
-        const response = await signInWithEmailAndPassword(
-          auth,
-          email,
-          password
-        );
-        console.log(response);
-        navigate("/home");
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-     
-      if (!isEmailValid) {
-        setEmailError("Digite email valido");
-      }
-      if (!isPasswordValid) {
-        setPasswordError("A senha deve conter pelo menos 6 caracteres");
-      }
-    }
-  }
+   // Defina isLoading como true para mostrar a imagem de carregamento
+   setIsLoading(true);
+
+   // Verificar se o email e a senha são válidos antes de prosseguir
+   if (isEmailValid && isPasswordValid) {
+     try {
+       const response = await signInWithEmailAndPassword(auth, email, password);
+       console.log(response);
+       navigate("/home");
+     } catch (error) {
+       console.log(error);
+     } finally {
+       // Defina isLoading como false após a conclusão do processo
+       setIsLoading(false);
+     }
+   } else {
+     if (!isEmailValid) {
+       setEmailError("Digite um email válido");
+     }
+     if (!isPasswordValid) {
+       setPasswordError("A senha deve conter pelo menos 6 caracteres");
+     }
+
+     // Defina isLoading como false em caso de erro
+     setIsLoading(false);
+   }
+ }
 
   return (
     <>
       <div className={styles.geral}>
-      <LogoComponent width="" height="" />
+        <LogoComponent width="" height="" />
         <h1>Acessar sua conta</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
@@ -115,8 +123,12 @@ function Login() {
             helperText={passwordError}
           />
 
-          <Button type="submit" variant="contained" color="primary">
-            Entrar
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={isLoading}>
+            {isLoading ? <img src={Reload} alt="Carregando..." /> : "Entrar"}
           </Button>
 
           <Button type="button" variant="contained" className="primary">
