@@ -258,7 +258,7 @@ function CadastrarFuncionario() {
           </section>
 
           <section className={styles.cargo}>
-            <div className={styles.teste}>
+            <div className={styles.cargoStyle}>
               <TextField
                 label="Cargo"
                 variant="outlined"

@@ -25,7 +25,6 @@ interface EditUserFormProps {
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
-
   const [foto, setFoto] = useState(usuario.foto);
 
   function notificacao() {
@@ -107,6 +106,40 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
+ 
+ 
+  const formatarData = (value: string) => {
+    const numericValue = value.replace(/\D/g, "");
+
+    if (numericValue.length <= 2) {
+      return numericValue;
+    } else if (numericValue.length <= 4) {
+      return numericValue.slice(0, 2) + "/" + numericValue.slice(2);
+    } else {
+      return (
+        numericValue.slice(0, 2) +
+        "/" +
+        numericValue.slice(2, 4) +
+        "/" +
+        numericValue.slice(4, 8)
+      );
+    }
+  };
+
+  const dataNascimento = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const formattedValue = formatarData(e.target.value);
+    setEditedUser({ ...editedUser, nascimento: formattedValue });
+  };
+
+  const dataAdmisao = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedValue = formatarData(e.target.value);
+    setEditedUser({ ...editedUser, admisao: formattedValue });
+  };
+
+  
+   
   return (
     <>
       <div className={styles.editar}>
@@ -141,7 +174,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                 }}
               />
             </div>
-            <div className={styles.desFoto} >
+            <div className={styles.desFoto}>
               <label className={styles.uploadLabel}>
                 {escolherArquivo ? "Escolher arquivo" : "Colar link"}
                 <input
@@ -152,7 +185,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                   placeholder="  Colar link da foto"
                 />
               </label>
-              <label className={styles.checkbox} >
+              <label className={styles.checkbox}>
                 <input
                   type="checkbox"
                   checked={escolherArquivo}
@@ -252,9 +285,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             <TextField
               label="Data Nascimento"
               value={editedUser.nascimento}
-              onChange={(e) =>
-                setEditedUser({ ...editedUser, nascimento: e.target.value })
-              }
+              onChange={dataNascimento}
               required
               placeholder="DD/MM/AAAA"
               InputProps={{
@@ -314,8 +345,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             <TextField
               label="Data Admissão"
               value={editedUser.admisao}
-              onChange={(e) =>
-                setEditedUser({ ...editedUser, admisao: e.target.value })
+              onChange={dataAdmisao
               }
               required
               placeholder="DD/MM/AAAA"
@@ -354,9 +384,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
           <TextField
             label="Status"
             variant="outlined"
-            value={editedUser.status} 
-            onChange={
-              (e) => setEditedUser({ ...editedUser, status: e.target.value }) 
+            value={editedUser.status}
+            onChange={(e) =>
+              setEditedUser({ ...editedUser, status: e.target.value })
             }
             required
             select
