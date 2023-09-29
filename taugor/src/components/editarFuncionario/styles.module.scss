@@ -2,15 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 13px;
+  flex-direction: column;
+  gap: 33px;
   width: 840px;
   height: min-content;
   padding: 22px;
   position: relative;
+  
 
-}
-.message{
-  background-color: red;
+  .botoes,
+  .cargoStatus,
+  .nomeSexo,
+  .enderecoTelefone,
+  .nascimentoSetor,
+  .salarioAdm{
+     width: 534px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    gap: 22px;
+
+    div{
+      width: 253px;
+    }
+  }
+
 }

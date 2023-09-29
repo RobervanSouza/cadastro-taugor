@@ -73,7 +73,9 @@ function UserDetailsModal({
           ) : (
             <div className={styles.card}>
               {/* Renderize os detalhes do usuário aqui */}
-              <p className={styles.paragraph}>Nome: {editedUser.name}</p>
+              <p className={styles.paragraph}>
+                Nome: <span>{editedUser.name}</span>
+              </p>
               <p className={styles.paragraph}>Sexo: {editedUser.sexo}</p>
               <p className={styles.paragraph}>
                 Endereço: {editedUser.endereco}
@@ -87,9 +89,7 @@ function UserDetailsModal({
               <p className={styles.paragraph}>
                 Data Admissão: {editedUser.admisao}
               </p>
-              <p className={styles.paragraph}>
-                Status: {editedUser.status}
-              </p>
+              <p className={styles.paragraph}>Status: {editedUser.status}</p>
               <p className={styles.paragraph}>
                 Cargo atual: {editedUser.cargo}
               </p>
@@ -131,8 +131,6 @@ function UserDetailsModal({
           </p>
         </div>
       </div>
-      
-
     </Dialog>
   );
 }
