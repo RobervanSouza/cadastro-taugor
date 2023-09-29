@@ -86,7 +86,7 @@ useEffect(() => {
             ))}
           </div>
         )}
-        {isLoaded && <button onClick={reloadData}>Recarregar</button>}
+        {isLoaded && <span onClick={reloadData}></span>}
       </div>
     </>
   );
