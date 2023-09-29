@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { ref, update } from "firebase/database";
 import { database } from "../../config/configuraFirebase";
 import styles from "./styles.module.scss";
-  import { toast } from "react-toastify";
-
-  import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PersonIcon from "@mui/icons-material/Person";
+import WcIcon from "@mui/icons-material/Wc";
+import AddLocationIcon from "@mui/icons-material/AddLocation";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import WorkIcon from "@mui/icons-material/Work";
+import SettingsIcon from "@mui/icons-material/Settings";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 
 
 interface EditUserFormProps {
@@ -74,6 +81,16 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                 setEditedUser({ ...editedUser, name: e.target.value })
               }
               required
+              placeholder="Nome do Funcionário..."
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <PersonIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div>
@@ -83,8 +100,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, sexo: e.target.value })
               }
-          
               required
+              placeholder="Sexo"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <WcIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
         </section>
@@ -96,8 +122,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, endereco: e.target.value })
               }
-              
               required
+              placeholder="Rua ....."
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <AddLocationIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div>
@@ -107,8 +142,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, telefone: e.target.value })
               }
-          
               required
+              placeholder="99 9999-9999"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <LocalPhoneIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
         </section>
@@ -120,8 +164,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, nascimento: e.target.value })
               }
-              
               required
+              placeholder="DD/MM/AAAA"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div>
@@ -131,8 +184,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, setor: e.target.value })
               }
-              
               required
+              placeholder="Setor onde Trabalha"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <SettingsIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
         </section>
@@ -144,8 +206,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, salario: e.target.value })
               }
-            
               required
+              placeholder="R$"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <AttachMoneyIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div>
@@ -155,8 +226,17 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               onChange={(e) =>
                 setEditedUser({ ...editedUser, admisao: e.target.value })
               }
-              
               required
+              placeholder="DD/MM/AAAA"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment
+                    position="start"
+                    style={{ color: "#06a0ec", width: "42px" }}>
+                    <CalendarMonthIcon style={{ color: "#06a0ec" }} />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
         </section>
@@ -165,10 +245,20 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             label="Cargo atual"
             value={editedUser.cargo}
             onChange={(e) =>
-                setEditedUser({ ...editedUser, cargo: e.target.value })
-              }
+              setEditedUser({ ...editedUser, cargo: e.target.value })
+            }
             onBlur={handleCargoBlur}
             required
+            placeholder="Cargo atual"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment
+                  position="start"
+                  style={{ color: "#06a0ec", width: "42px" }}>
+                  <WorkIcon style={{ color: "#06a0ec" }} />
+                </InputAdornment>
+              ),
+            }}
           />
           <TextField
             label="Status"
@@ -177,7 +267,6 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             onChange={
               (e) => setEditedUser({ ...editedUser, status: e.target.value }) // Atualize o status diretamente no editedUser
             }
-            
             required
             select
             SelectProps={{
@@ -199,7 +288,11 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             </Button>
           </div>
           <div>
-            <Button onClick={onCancel} variant="contained" color="primary">
+            <Button
+              onClick={onCancel}
+              variant="contained"
+              color="primary"
+              style={{ color: "white", width: "223px" }}>
               Cancelar
             </Button>
           </div>
