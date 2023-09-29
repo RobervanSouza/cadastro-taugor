@@ -2,7 +2,7 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Cadastrar from "./pages/CadastroUser";
-import Pagina404 from "./pages/pagina404";
+// import Pagina404 from "./pages/pagina404";
 import CadastrarFuncionario from "./pages/CadastroFuncionario";
 
 import LoginAdmin from "./pages/LogarAdmin";
@@ -37,7 +37,7 @@ export function Navegacao() {
         <Route element={<CadastrarFuncionario />} path="/cadastrafuncionario" />
         <Route element={<PaginaPDF />} path="/visualizar-pdf" />
       </Route>
-      <Route element={<Pagina404 />} path="*" />
+      {/* <Route element={<Pagina404 />} path="*" /> */}
     </Routes>
   );
 }
