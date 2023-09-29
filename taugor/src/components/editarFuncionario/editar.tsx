@@ -14,6 +14,8 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WorkIcon from "@mui/icons-material/Work";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+
 
 
 interface EditUserFormProps {
@@ -26,6 +28,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
   const [isSaving, setIsSaving] = useState(false);
 
+  const [foto, setFoto] = useState(usuario.foto);
  
   function notificacao() {
     toast.success("Funcionário editado com sucesso!");
@@ -34,25 +37,28 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
 
   const handleSave = async () => {
     try {
-      
+      setIsSaving(true);
+
       // Atualize os dados do usuário no Firebase
       const usuariosRef = ref(database, `users/${usuario.id}`);
-      await update(usuariosRef, editedUser);
-      
-      notificacao();
+       await update(usuariosRef, {
+         ...editedUser,
+         foto: foto, 
+       });
 
       // Chame a função onSave com os dados editados
       onSave({ ...editedUser, id: usuario.id });
 
-     
+      notificacao();
+
       setIsSaving(false);
     } catch (error) {
       // Lide com erros, se necessário
       console.error("Erro ao salvar:", error);
-      // Defina o estado de salvamento como concluído, mesmo em caso de erro
       setIsSaving(false);
     }
   };
+
 
 
   const handleCargoBlur = () => {
@@ -65,13 +71,110 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
+
+
+
   
+  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
+    null
+  );
+
+  const [escolherArquivo, setEscolherArquivo] = useState(true);
+
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFoto(e.target.value);
+  };
+
+  const handleCheckboxChange = () => {
+    // Limpar a input de foto quando o checkbox for clicado
+    setFoto("");
+    // Alternar entre escolher arquivo e colar link
+    setEscolherArquivo(!escolherArquivo);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    if (value.startsWith("http://") || value.startsWith("https://")) {
+      // Se o valor começa com 'http://' ou 'https://', assumimos que é um link de imagem
+      setImagemPlaceholder(value);
+      setFoto(value); // Atualize o estado 'foto' com o link da imagem
+    } else {
+      // Caso contrário, assume-se que é um arquivo
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const dataURL = event.target && event.target.result;
+          if (dataURL) {
+            setImagemPlaceholder(dataURL as string);
+            setFoto(dataURL as string);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  };
+
 
 
 
   return (
     <>
       <div className={styles.editar}>
+        <section>
+          <div className={styles.foto}>
+            <div className={styles.iconeFoto}>
+              <TextField
+                label="Foto"
+                variant="outlined"
+                value={foto}
+                onChange={handleChange}
+                disabled
+                fullWidth
+                className={styles.input}
+                InputProps={{
+                  startAdornment: (
+                    <div className={styles.icon}>
+                      {imagemPlaceholder ? (
+                        <img
+                          src={imagemPlaceholder}
+                          alt="Imagem"
+                          className={styles.imgPla}
+                        />
+                      ) : (
+                        <AccountBoxIcon
+                          className={styles.icon}
+                          style={{ color: "#06a0ec" }}
+                        />
+                      )}
+                    </div>
+                  ),
+                }}
+              />
+            </div>
+
+            <label className={styles.uploadLabel}>
+              {escolherArquivo ? "Escolher arquivo" : "Colar link"}
+              <input
+                type={escolherArquivo ? "file" : "text"}
+                accept={escolherArquivo ? "image/*" : undefined}
+                className={styles.fotoInput}
+                onChange={handleFileChange}
+                placeholder="  Colar link da foto"
+              />
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={escolherArquivo}
+                onChange={handleCheckboxChange}
+              />{" "}
+              Arquivo ou Link
+            </label>
+          </div>
+        </section>
         <section className={styles.nomeSexo}>
           <div>
             <TextField

@@ -30,3 +30,60 @@
   }
 
 }
+
+ .foto {
+    width: 50%;
+    height: 128px;
+    margin-top: 12px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+
+    .iconeFoto {
+      width: 50%;
+      height: 124px;
+
+      .input {
+        margin-top: -12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 173px;
+      }
+
+      .icon {
+        width: 933px;
+        height: 133px;
+        overflow: hidden;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        .imgPla {
+          width: 220px;
+          height: 123px; 
+        }
+      }
+    }
+
+    .descFoto {
+      width: 50%;
+      color: #06a0ec;
+
+      flex-direction: column;
+      overflow: hidden;
+      img {
+        width: 12px;
+      }
+
+      .fotoInput{
+        background-color: #f6f9fb;
+        border: 2px solid black;
+        height: 22px;
+        width: 173px;
+        color: #06a0ec;
+        
+      }
+    }
+  }
