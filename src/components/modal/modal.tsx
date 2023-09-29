@@ -1,7 +1,7 @@
 import { Dialog, DialogTitle, Button } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { useState } from "react";
-import EditUserForm from "../editarFuncionario/editar"; // Importe o componente de edição
+import EditUserForm from "../editarFuncionario/editar"; 
 import styles from "./styles.module.scss";
 
 

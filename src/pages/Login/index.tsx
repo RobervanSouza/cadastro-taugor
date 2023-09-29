@@ -67,10 +67,10 @@ function Login() {
  async function submitEmail(event: FormEvent) {
    event.preventDefault();
 
-   // Defina isLoading como true para mostrar a imagem de carregamento
+   
    setIsLoading(true);
 
-   // Verificar se o email e a senha são válidos antes de prosseguir
+   
    if (isEmailValid && isPasswordValid) {
      try {
        const response = await signInWithEmailAndPassword(auth, email, password);
@@ -79,7 +79,7 @@ function Login() {
      } catch (error) {
        console.log(error);
      } finally {
-       // Defina isLoading como false após a conclusão do processo
+       
        setIsLoading(false);
      }
    } else {
@@ -90,7 +90,6 @@ function Login() {
        setPasswordError("A senha deve conter pelo menos 6 caracteres");
      }
 
-     // Defina isLoading como false em caso de erro
      setIsLoading(false);
    }
  }

@@ -57,7 +57,7 @@ function CadastrarFuncionario() {
     };
 
     const usuario: UserType = {
-      id: "", // Você pode definir um ID aqui, se necessário
+      id: "",
       name,
       sexo,
       endereco,
@@ -74,12 +74,12 @@ function CadastrarFuncionario() {
     criarUsuario(usuario);
     notificacao();
     resetForm();
-    // Redirecionar para a página desejada após o cadastro
+    
   };
 
   const dataAdmisao = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    let formattedValue = value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    let formattedValue = value.replace(/\D/g, "");
 
     if (formattedValue.length > 8) {
       formattedValue = formattedValue.slice(0, 8);
@@ -98,14 +98,13 @@ function CadastrarFuncionario() {
   };
   const dataNascimento = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    let formattedValue = value.replace(/\D/g, ""); // Remove todos os caracteres não numéricos
+    let formattedValue = value.replace(/\D/g, ""); 
 
-    // Limita o tamanho máximo em 8 caracteres
     if (formattedValue.length > 8) {
       formattedValue = formattedValue.slice(0, 8);
     }
 
-    // Adiciona as barras nos locais corretos
+    
     if (formattedValue.length > 2) {
       formattedValue =
         formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
@@ -129,9 +128,9 @@ function CadastrarFuncionario() {
 
   
   const handleCheckboxChange = () => {
-    // Limpar a input de foto quando o checkbox for clicado
+    
     setFoto("");
-    // Alternar entre escolher arquivo e colar link
+    
     setEscolherArquivo(!escolherArquivo);
   };
   const [escolherArquivo, setEscolherArquivo] = useState(true);
@@ -140,11 +139,11 @@ function CadastrarFuncionario() {
     const value = e.target.value;
 
       if (value.startsWith("http://") || value.startsWith("https://")) {
-        // Se o valor começa com 'http://' ou 'https://', assumimos que é um link de imagem
+        
         setImagemPlaceholder(value);
-        setFoto(value); // Atualize o estado 'foto' com o link da imagem
+        setFoto(value); 
       } else {
-        // Caso contrário, assume-se que é um arquivo
+       
         const file = e.target.files && e.target.files[0];
         if (file) {
           const reader = new FileReader();
@@ -393,7 +392,7 @@ function CadastrarFuncionario() {
                 value={salario}
                 onChange={(e) => {
                   const value = e.target.value;
-                  const formattedValue = value.replace(/[^0-9,.]/g, ""); // Remove caracteres não numéricos, exceto pontos e vírgulas
+                  const formattedValue = value.replace(/[^0-9,.]/g, ""); 
                   setSalario(formattedValue);
                 }}
                 required

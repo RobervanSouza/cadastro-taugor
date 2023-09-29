@@ -55,7 +55,7 @@ function Cadastrar() {
     event.preventDefault();
 
     if (email.trim() === "" || password.trim() === "") {
-      // Verifique se os campos de email e senha estão vazios e defina uma mensagem de erro
+     
       setEmailError("Preencha todos os campos.");
       return;
     }
@@ -63,7 +63,7 @@ function Cadastrar() {
     if (isEmailValid && isPasswordValid) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-        // Define a mensagem de sucesso e limpa os campos
+    
         notificacao();
         setEmail("");
         setPassword("");

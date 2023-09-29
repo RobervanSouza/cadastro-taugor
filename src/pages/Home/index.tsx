@@ -25,11 +25,11 @@ useEffect(() => {
           usuariosArray.push(usuario);
         });
         setUsuarios(usuariosArray);
-        setIsLoaded(true); // Defina como verdadeiro quando os dados forem carregados com sucesso
+        setIsLoaded(true); 
       }
     })
     .finally(() => {
-      setIsLoading(false); // Defina como falso após o carregamento, seja bem-sucedido ou não
+      setIsLoading(false); 
     });
 }, []);
 
@@ -41,7 +41,7 @@ useEffect(() => {
 
   const deleteUserFromFirebase = async (userId: string) => {
     try {
-      // Crie uma referência para o usuário que você deseja excluir no Firebase
+      
       const usuarioRef = ref(database, `users/${userId}`);
 
       
@@ -59,9 +59,6 @@ useEffect(() => {
   const reloadData = () => {
     setIsLoading(true);
 
-    // Recarregue os dados aqui, por exemplo, refaça a consulta ao Firebase
-
-    // Após a conclusão do carregamento, defina isLoading como falso
     setIsLoading(false);
   };
 

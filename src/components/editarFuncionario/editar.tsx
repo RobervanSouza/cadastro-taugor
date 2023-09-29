@@ -36,28 +36,28 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     try {
       setIsSaving(true);
 
-      // Atualize os dados do usuário no Firebase
+   
       const usuariosRef = ref(database, `users/${usuario.id}`);
       await update(usuariosRef, {
         ...editedUser,
         foto: foto,
       });
 
-      // Chame a função onSave com os dados editados
+      
       onSave({ ...editedUser, id: usuario.id });
 
       notificacao();
 
       setIsSaving(false);
     } catch (error) {
-      // Lide com erros, se necessário
+     
       console.error("Erro ao salvar:", error);
       setIsSaving(false);
     }
   };
 
   const handleCargoBlur = () => {
-    // Adicione o cargo atual ao histórico se for diferente do cargo inicial
+  
     if (editedUser.cargo !== usuario.cargo) {
       setEditedUser((prevUser) => ({
         ...prevUser,
@@ -77,9 +77,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   };
 
   const handleCheckboxChange = () => {
-    // Limpar a input de foto quando o checkbox for clicado
+    
     setFoto("");
-    // Alternar entre escolher arquivo e colar link
+  
     setEscolherArquivo(!escolherArquivo);
   };
 
@@ -87,11 +87,11 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     const value = e.target.value;
 
     if (value.startsWith("http://") || value.startsWith("https://")) {
-      // Se o valor começa com 'http://' ou 'https://', assumimos que é um link de imagem
+      
       setImagemPlaceholder(value);
-      setFoto(value); // Atualize o estado 'foto' com o link da imagem
+      setFoto(value); 
     } else {
-      // Caso contrário, assume-se que é um arquivo
+      
       const file = e.target.files && e.target.files[0];
       if (file) {
         const reader = new FileReader();
@@ -354,9 +354,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
           <TextField
             label="Status"
             variant="outlined"
-            value={editedUser.status} // Use o valor do status diretamente a partir do estado editedUser
+            value={editedUser.status} 
             onChange={
-              (e) => setEditedUser({ ...editedUser, status: e.target.value }) // Atualize o status diretamente no editedUser
+              (e) => setEditedUser({ ...editedUser, status: e.target.value }) 
             }
             required
             select

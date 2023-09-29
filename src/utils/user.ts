@@ -4,10 +4,10 @@ import { UserType } from '../types/userTypes';
 
 export function criarUsuario(user: UserType) {
   const usersRef = ref(database, "users");
-  const newUserRef = push(usersRef); // O Firebase gera automaticamente uma chave única
+  const newUserRef = push(usersRef); 
 
   set(newUserRef, {
-    id: newUserRef.key, // Use a chave gerada pelo Firebase como ID
+    id: newUserRef.key,
     name: user.name,
     sexo: user.sexo,
     endereco: user.endereco,

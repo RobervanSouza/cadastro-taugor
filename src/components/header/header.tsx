@@ -15,7 +15,7 @@ const Header = () => {
       navigate("/");
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
-      // Lidar com erros, se houver
+      
     }
   }
    function cadastrar() {

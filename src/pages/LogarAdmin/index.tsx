@@ -15,15 +15,13 @@ function LoginAdmin() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Verificar o estado de autenticação do usuário assim que a página é montada
+    
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // O usuário já está autenticado, redirecionar para a página inicial
+        
         navigate("/home");
       }
     });
-
-    // Lembre-se de cancelar a inscrição quando o componente for desmontado
     return () => unsubscribe();
   }, [navigate]);
 
@@ -45,7 +43,7 @@ function LoginAdmin() {
     if (!validateEmail(value)) {
       setEmailError("Email inválido");
     } else {
-      setEmailError(''); // Limpar erro de email se for válido
+      setEmailError(''); 
     }
   };
 
@@ -55,17 +53,17 @@ function LoginAdmin() {
     if (value.length < 6) {
       setPasswordError("A senha deve conter pelo menos 6 caracteres");
     } else {
-      setPasswordError(''); // Limpar erro de senha se for válido
+      setPasswordError(''); 
     }
   };
 
   async function submitEmail(event: FormEvent) {
     event.preventDefault();
 
-    // Verificar se o email e a senha são válidos antes de prosseguir
+   
     if (isEmailValid && isPasswordValid) {
       try {
-        // Verifique se o email é igual a "taugor@getnet.com"
+        
         if (email === "taugor@getnet.com") {
           const response = await signInWithEmailAndPassword(
             auth,
@@ -75,14 +73,14 @@ function LoginAdmin() {
           console.log(response);
           navigate("/cadastrar");
         } else {
-          // Se o email não for "taugor@getnet.com" ou a senha estiver incorreta, mostre uma mensagem de erro
+          
           setEmailError("Email ou senha incorretos ou você não e Admin.");
         }
       } catch (error) {
         console.log(error);
       }
     } else {
-      // Se algum dos campos não for válido, mostrar mensagens de erro
+     
       if (!isEmailValid) {
         setEmailError("Email inválido");
       }
