@@ -76,22 +76,32 @@ function UserDetailsModal({
               <p className={styles.paragraph}>
                 Nome: <span>{editedUser.name}</span>
               </p>
-              <p className={styles.paragraph}>Sexo: {editedUser.sexo}</p>
               <p className={styles.paragraph}>
-                Endereço: {editedUser.endereco}
+                Sexo: <span>{editedUser.sexo}</span>
               </p>
-              <p className={styles.paragraph}>Contato: {editedUser.telefone}</p>
               <p className={styles.paragraph}>
-                Data Nascimento: {editedUser.nascimento}
+                Endereço: <span>{editedUser.endereco}</span>
               </p>
-              <p className={styles.paragraph}>Setor: {editedUser.setor}</p>
-              <p className={styles.paragraph}>Salario: {editedUser.salario}</p>
               <p className={styles.paragraph}>
-                Data Admissão: {editedUser.admisao}
+                Contato: <span>{editedUser.telefone}</span>
               </p>
-              <p className={styles.paragraph}>Status: {editedUser.status}</p>
               <p className={styles.paragraph}>
-                Cargo atual: {editedUser.cargo}
+                Data Nascimento: <span>{editedUser.nascimento}</span>
+              </p>
+              <p className={styles.paragraph}>
+                Setor: <span>{editedUser.setor}</span>
+              </p>
+              <p className={styles.paragraph}>
+                Salario: <span>{editedUser.salario}</span>
+              </p>
+              <p className={styles.paragraph}>
+                Data Admissão: <span>{editedUser.admisao}</span>
+              </p>
+              <p className={styles.paragraph}>
+                Status: <span>{editedUser.status}</span>
+              </p>
+              <p className={styles.paragraph}>
+                Cargo atual: <span>{editedUser.cargo}</span>
               </p>
               <div className={`${styles.historico} ${styles.paragraph}`}>
                 <h4>Histórico de Cargo</h4>
