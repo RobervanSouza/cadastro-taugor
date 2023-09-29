@@ -1,7 +1,7 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Cadastrar from "./pages/CadastroUser";
+// import Cadastrar from "./pages/CadastroUser";
 import Pagina404 from "./pages/pagina404";
 import CadastrarFuncionario from "./pages/CadastroFuncionario";
 
@@ -29,9 +29,9 @@ export function Navegacao() {
     <Routes>
       <Route element={<Login />} path="/" />
       <Route element={<LoginAdmin />} path="/login-adm" />
-      <Route element={<ProtecaoRotas redirectTo="/login-adm" />}>
+      {/* <Route element={<ProtecaoRotas redirectTo="/login-adm" />}>
         <Route element={<Cadastrar />} path="/cadastrar" />
-      </Route>
+      </Route> */}
       <Route element={<ProtecaoRotas redirectTo="/" />}>
         <Route element={<Home />} path="/home" />
         <Route element={<CadastrarFuncionario />} path="/cadastrafuncionario" />
