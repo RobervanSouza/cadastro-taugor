@@ -1,12 +1,12 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Cadastrar from "./pages/CadastroUser";
-import Pagina404 from "./pages/pagina404";
-import CadastrarFuncionario from "./pages/CadastroFuncionario";
+import Home from "./pages/Home/home";
+import Cadastrar from "./pages/CadastroUser/cadastraUser";
+import Pagina404 from "./pages/pagina404/paginaErro";
+import CadastrarFuncionario from "./pages/CadastroFuncionario/cadastroFuncionario";
 
-import LoginAdmin from "./pages/LogarAdmin";
-import PaginaPDF from "./pages/PaginaPdf/index";
+import LoginAdmin from "./pages/LogarAdmin/loginAdm";
+import PaginaPDF from "./pages/PaginaPdf/paginaPdf";
 
 
 
