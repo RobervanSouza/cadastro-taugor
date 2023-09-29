@@ -121,7 +121,7 @@ function Login() {
 
           <Button type="button" variant="contained" className="primary">
             <Link
-              to="/admin"
+              to="/login-adm"
               style={{ textDecoration: "none", color: "white" }}>
               Cadastrar usuário como Admin?
             </Link>

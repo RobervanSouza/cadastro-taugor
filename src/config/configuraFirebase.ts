@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { browserLocalPersistence, getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
-import API_KEY from "../../"
+
 
 
 

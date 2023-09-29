@@ -28,8 +28,8 @@ export function Navegacao() {
   return (
     <Routes>
       <Route element={<Login />} path="/" />
-      <Route element={<LoginAdmin />} path="/admin" />
-      <Route element={<ProtecaoRotas redirectTo="/admin" />}>
+      <Route element={<LoginAdmin />} path="/login-adm" />
+      <Route element={<ProtecaoRotas redirectTo="/login-adm" />}>
         <Route element={<Cadastrar />} path="/cadastrar" />
       </Route>
       <Route element={<ProtecaoRotas redirectTo="/" />}>
