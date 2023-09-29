@@ -32,20 +32,22 @@
 }
 
  .foto {
-    width: 50%;
-    height: 128px;
+    width: 550px;
+    height: 198px;
     margin-top: 12px;
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: row;
 
-    .iconeFoto {
-      width: 50%;
-      height: 124px;
 
+    .iconeFoto {
+      width: 212px;
+      color: #06a0ec;
+      height: 124px;
+      
       .input {
-        margin-top: -12px;
+      
         display: flex;
         align-items: center;
         justify-content: center;
@@ -59,7 +61,7 @@
         align-items: center;
         display: flex;
         justify-content: center;
-
+        
         .imgPla {
           width: 220px;
           height: 123px; 
@@ -67,12 +69,14 @@
       }
     }
 
-    .descFoto {
-      width: 50%;
-      color: #06a0ec;
-
+    .desFoto {
+      width: 223px;
+      height: 123px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
-      overflow: hidden;
+      color: #06a0ec;
       img {
         width: 12px;
       }
@@ -83,7 +87,15 @@
         height: 22px;
         width: 173px;
         color: #06a0ec;
-        
+        margin-top: 6px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .checkbox{
+     
+        margin-top: 12px;
+        margin-left: -92px;
       }
     }
   }
