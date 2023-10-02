@@ -24,16 +24,22 @@ interface EditUserFormProps {
 
 function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const [editedUser, setEditedUser] = useState(usuario);
-  const [isSaving, setIsSaving] = useState(false);
+  const [salvando, setSalvando] = useState(false);
   const [foto, setFoto] = useState(usuario.foto);
+  const [escolherArquivo, setEscolherArquivo] = useState(true);
+
+
+  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
+    null
+  );
 
   function notificacao() {
     toast.success("Funcionário editado com sucesso!");
   }
 
-  const handleSave = async () => {
+  const salvar = async () => {
     try {
-      setIsSaving(true);
+      setSalvando(true);
 
    
       const usuariosRef = ref(database, `users/${usuario.id}`);
@@ -47,15 +53,15 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
 
       notificacao();
 
-      setIsSaving(false);
+      setSalvando(false);
     } catch (error) {
      
       console.error("Erro ao salvar:", error);
-      setIsSaving(false);
+      setSalvando(false);
     }
   };
 
-  const handleCargoBlur = () => {
+  const historicoCargos = () => {
   
     if (editedUser.cargo !== usuario.cargo) {
       setEditedUser((prevUser) => ({
@@ -65,24 +71,19 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
-  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
-    null
-  );
 
-  const [escolherArquivo, setEscolherArquivo] = useState(true);
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFoto(e.target.value);
   };
 
-  const handleCheckboxChange = () => {
-    
+  const checkbox = () => {
     setFoto("");
-  
     setEscolherArquivo(!escolherArquivo);
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const linkArquivo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     if (value.startsWith("http://") || value.startsWith("https://")) {
@@ -109,19 +110,19 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
  
  
   const formatarData = (value: string) => {
-    const numericValue = value.replace(/\D/g, "");
+    const valorNumerico = value.replace(/\D/g, "");
 
-    if (numericValue.length <= 2) {
-      return numericValue;
-    } else if (numericValue.length <= 4) {
-      return numericValue.slice(0, 2) + "/" + numericValue.slice(2);
+    if (valorNumerico.length <= 2) {
+      return valorNumerico;
+    } else if (valorNumerico.length <= 4) {
+      return valorNumerico.slice(0, 2) + "/" + valorNumerico.slice(2);
     } else {
       return (
-        numericValue.slice(0, 2) +
+        valorNumerico.slice(0, 2) +
         "/" +
-        numericValue.slice(2, 4) +
+        valorNumerico.slice(2, 4) +
         "/" +
-        numericValue.slice(4, 8)
+        valorNumerico.slice(4, 8)
       );
     }
   };
@@ -129,43 +130,43 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const dataNascimento = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const formattedValue = formatarData(e.target.value);
-    setEditedUser({ ...editedUser, nascimento: formattedValue });
+    const formatarValor = formatarData(e.target.value);
+    setEditedUser({ ...editedUser, nascimento: formatarValor });
   };
 
   const dataAdmisao = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedValue = formatarData(e.target.value);
-    setEditedUser({ ...editedUser, admisao: formattedValue });
+    const formatarValor = formatarData(e.target.value);
+    setEditedUser({ ...editedUser, admisao: formatarValor });
   };
 
  function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
    const value = e.target.value;
-   const numericValue = value.replace(/[^\d]/g, ""); // Remove tudo que não é número
-   const maxLength = 11; // Define o comprimento máximo permitido
+   const valorNumerico = value.replace(/[^\d]/g, "");
+   const valorMaxino = 11;
 
-   if (numericValue.length <= maxLength) {
-     let formattedValue = "";
+   if (valorNumerico.length <= valorMaxino) {
+     let formatarValor = "";
 
-     if (numericValue.length >= 2) {
-       // Adicione os primeiros 2 dígitos entre parênteses
-       formattedValue = `(${numericValue.slice(0, 2)})`;
+     if (valorNumerico.length >= 2) {
+     
+       formatarValor = `(${valorNumerico.slice(0, 2)})`;
 
-       // Adicione os próximos dígitos antes do traço
-       if (numericValue.length >= 7) {
-         formattedValue += ` ${numericValue.slice(2, numericValue.length - 4)}`;
+ 
+       if (valorNumerico.length >= 7) {
+         formatarValor += ` ${valorNumerico.slice(2, valorNumerico.length - 4)}`;
 
-         formattedValue += `-${numericValue.slice(
-           numericValue.length - 4,
-           maxLength
+         formatarValor += `-${valorNumerico.slice(
+           valorNumerico.length - 4,
+           valorMaxino
          )}`;
        } else {
-         formattedValue += ` ${numericValue.slice(2, maxLength)}`;
+         formatarValor += ` ${valorNumerico.slice(2, valorMaxino)}`;
        }
      } else {
-       // Se não houver 2 dígitos iniciais, adicione os dígitos sem formatação
-       formattedValue = numericValue;
+     
+       formatarValor = valorNumerico;
      }
- setEditedUser({ ...editedUser, telefone: formattedValue });
+ setEditedUser({ ...editedUser, telefone: formatarValor });
      
    }
  }
@@ -219,7 +220,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                   type={escolherArquivo ? "file" : "text"}
                   accept={escolherArquivo ? "image/*" : undefined}
                   className={styles.fotoInput}
-                  onChange={handleFileChange}
+                  onChange={linkArquivo}
                   placeholder="  Colar link da foto"
                 />
               </label>
@@ -227,7 +228,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                 <input
                   type="checkbox"
                   checked={escolherArquivo}
-                  onChange={handleCheckboxChange}
+                  onChange={checkbox}
                 />{" "}
                 Arquivo ou Link
               </label>
@@ -418,7 +419,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
             onChange={(e) =>
               setEditedUser({ ...editedUser, cargo: e.target.value })
             }
-            onBlur={handleCargoBlur}
+            onBlur={historicoCargos}
             required
             placeholder="Cargo atual"
             InputProps={{
@@ -453,12 +454,12 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
         <section className={styles.botoes}>
           <div>
             <Button
-              onClick={handleSave}
-              disabled={isSaving}
+              onClick={salvar}
+              disabled={salvando}
               variant="contained"
               color="primary"
               style={{ color: "white", width: "223px" }}>
-              {isSaving ? "Salvando..." : "Salvar"}
+              {salvando ? "Salvando..." : "Salvar"}
             </Button>
           </div>
           <div>

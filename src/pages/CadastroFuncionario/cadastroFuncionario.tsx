@@ -163,17 +163,17 @@ function CadastrarFuncionario() {
   function onChangeTelefone(e:ChangeEvent<HTMLInputElement>) {
 
     const value = e.target.value;
-    const numericValue = value.replace(/[^\d]/g, ""); // Remove tudo que não é número
-    const maxLength = 11; // Define o comprimento máximo permitido
+    const numericValue = value.replace(/[^\d]/g, ""); 
+    const maxLength = 11; 
 
     if (numericValue.length <= maxLength) {
       let formattedValue = "";
 
       if (numericValue.length >= 2) {
-        // Adicione os primeiros 2 dígitos entre parênteses
+        
         formattedValue = `(${numericValue.slice(0, 2)})`;
 
-        // Adicione os próximos dígitos antes do traço
+        
         if (numericValue.length >= 7) {
           formattedValue += ` ${numericValue.slice(2,numericValue.length - 4)}`;
 
@@ -183,7 +183,7 @@ function CadastrarFuncionario() {
           formattedValue += ` ${numericValue.slice(2, maxLength)}`;
         }
       } else {
-        // Se não houver 2 dígitos iniciais, adicione os dígitos sem formatação
+        
         formattedValue = numericValue;
       }
 
