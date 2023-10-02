@@ -253,6 +253,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                   </InputAdornment>
                 ),
               }}
+              inputProps={{
+                maxLength: 40,
+              }}
             />
           </div>
           <div>
@@ -272,6 +275,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                     <WcIcon style={{ color: "#06a0ec" }} />
                   </InputAdornment>
                 ),
+              }}
+              inputProps={{
+                maxLength: 20,
               }}
             />
           </div>
@@ -294,6 +300,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                     <AddLocationIcon style={{ color: "#06a0ec" }} />
                   </InputAdornment>
                 ),
+              }}
+              inputProps={{
+                maxLength: 40,
               }}
             />
           </div>
@@ -353,6 +362,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                   </InputAdornment>
                 ),
               }}
+              inputProps={{
+                maxLength: 20,
+              }}
             />
           </div>
         </section>
@@ -374,6 +386,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                     <AttachMoneyIcon style={{ color: "#06a0ec" }} />
                   </InputAdornment>
                 ),
+              }}
+              inputProps={{
+                maxLength: 10,
               }}
             />
           </div>
@@ -414,6 +429,9 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                   <WorkIcon style={{ color: "#06a0ec" }} />
                 </InputAdornment>
               ),
+            }}
+            inputProps={{
+              maxLength: 20,
             }}
           />
           <TextField

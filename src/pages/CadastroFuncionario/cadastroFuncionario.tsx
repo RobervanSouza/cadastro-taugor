@@ -218,6 +218,9 @@ function CadastrarFuncionario() {
                     </InputAdornment>
                   ),
                 }}
+                inputProps={{
+                  maxLength: 40,
+                }}
               />
               <TextField
                 label="Sexo"
@@ -233,6 +236,9 @@ function CadastrarFuncionario() {
                       <WcIcon style={{ color: "#06a0ec" }} />
                     </InputAdornment>
                   ),
+                }}
+                inputProps={{
+                  maxLength: 20,
                 }}
               />
             </div>
@@ -308,6 +314,9 @@ function CadastrarFuncionario() {
                     </InputAdornment>
                   ),
                 }}
+                inputProps={{
+                  maxLength: 20,
+                }}
               />
             </div>
           </section>
@@ -327,6 +336,9 @@ function CadastrarFuncionario() {
                       <AddLocationIcon style={{ color: "#06a0ec" }} />
                     </InputAdornment>
                   ),
+                }}
+                inputProps={{
+                  maxLength: 40,
                 }}
               />
             </div>
@@ -409,6 +421,9 @@ function CadastrarFuncionario() {
                     </InputAdornment>
                   ),
                 }}
+                inputProps={{
+                  maxLength: 20,
+                }}
               />
             </div>
           </section>
@@ -433,6 +448,9 @@ function CadastrarFuncionario() {
                       <AttachMoneyIcon style={{ color: "#06a0ec" }} />
                     </InputAdornment>
                   ),
+                }}
+                inputProps={{
+                  maxLength: 10,
                 }}
               />
             </div>
