@@ -28,12 +28,16 @@ function CadastrarFuncionario() {
   const [salario, setSalario] = useState("");
   const [admisao, setAdmisao] = useState("");
   const [status, setStatus] = useState("ativo");
+  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>( null );
+  const [escolherArquivo, setEscolherArquivo] = useState(true);
+
+
 
   function notificacao() {
     toast.success("Cadastrado com sucesso!");
   }
 
-  const handleSubmit = async (event: FormEvent) => {
+  const dadosUser = async (event: FormEvent) => {
     event.preventDefault();
 
     if (!foto) {
@@ -77,65 +81,47 @@ function CadastrarFuncionario() {
     
   };
 
-  const dataAdmisao = (event: ChangeEvent<HTMLInputElement>) => {
+  const formataData = (event: ChangeEvent<HTMLInputElement>, setData: (formattedValue: string) => void) => {
     const value = event.target.value;
-    let formattedValue = value.replace(/\D/g, "");
+    let formatarValor = value.replace(/\D/g, "");
 
-    if (formattedValue.length > 8) {
-      formattedValue = formattedValue.slice(0, 8);
+    if (formatarValor.length > 8) {
+      formatarValor = formatarValor.slice(0, 8);
     }
 
-    if (formattedValue.length > 2) {
-      formattedValue =
-        formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
+    if (formatarValor.length > 2) {
+      formatarValor =
+        formatarValor.slice(0, 2) + "/" + formatarValor.slice(2);
     }
-    if (formattedValue.length > 5) {
-      formattedValue =
-        formattedValue.slice(0, 5) + "/" + formattedValue.slice(5);
+    if (formatarValor.length > 5) {
+      formatarValor =
+        formatarValor.slice(0, 5) + "/" + formatarValor.slice(5);
     }
-
-    setAdmisao(formattedValue);
+    setData(formatarValor);
   };
-  const dataNascimento = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    let formattedValue = value.replace(/\D/g, ""); 
+  
+const dataAdmisao = (event: ChangeEvent<HTMLInputElement>) => {
+  formataData(event, setAdmisao);
+}
+const dataNascimento = (event: ChangeEvent<HTMLInputElement>) => {
+  formataData(event, setNascimento);
+}
 
-    if (formattedValue.length > 8) {
-      formattedValue = formattedValue.slice(0, 8);
-    }
-
-    
-    if (formattedValue.length > 2) {
-      formattedValue =
-        formattedValue.slice(0, 2) + "/" + formattedValue.slice(2);
-    }
-    if (formattedValue.length > 5) {
-      formattedValue =
-        formattedValue.slice(0, 5) + "/" + formattedValue.slice(5);
-    }
-
-    setNascimento(formattedValue);
-  };
-
-  const [imagemPlaceholder, setImagemPlaceholder] = useState<string | null>(
-    null
-  );
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFoto(e.target.value);
     setImagemPlaceholder(e.target.value);
   };
 
   
-  const handleCheckboxChange = () => {
+  const checkboxChange = () => {
     
     setFoto("");
     
     setEscolherArquivo(!escolherArquivo);
   };
-  const [escolherArquivo, setEscolherArquivo] = useState(true);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const arquivoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
       if (value.startsWith("http://") || value.startsWith("https://")) {
@@ -159,39 +145,21 @@ function CadastrarFuncionario() {
       }
   };
 
+function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
+  const numericValue = e.target.value.replace(/[^\d]/g, "").slice(0, 11);
 
-  function onChangeTelefone(e:ChangeEvent<HTMLInputElement>) {
+  let formattedValue = "";
 
-    const value = e.target.value;
-    const numericValue = value.replace(/[^\d]/g, ""); 
-    const maxLength = 11; 
-
-    if (numericValue.length <= maxLength) {
-      let formattedValue = "";
-
-      if (numericValue.length >= 2) {
-        
-        formattedValue = `(${numericValue.slice(0, 2)})`;
-
-        
-        if (numericValue.length >= 7) {
-          formattedValue += ` ${numericValue.slice(2,numericValue.length - 4)}`;
-
-          formattedValue += `-${numericValue.slice(numericValue.length - 4, maxLength)}`;
-        } else {
-         
-          formattedValue += ` ${numericValue.slice(2, maxLength)}`;
-        }
-      } else {
-        
-        formattedValue = numericValue;
-      }
-
-      setTelefone(formattedValue);
-    }
+  if (numericValue.length === 10) {
+    formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice( 2, 6 )}-${numericValue.slice(6, 10)}`;
+  } else if (numericValue.length === 11) {
+    formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice( 2, 7 )}-${numericValue.slice(7, 11)}`;
+  } else {
+    formattedValue = numericValue;
   }
 
-
+  setTelefone(formattedValue);
+}
 
   return (
     <>
@@ -199,7 +167,7 @@ function CadastrarFuncionario() {
         <Header />
       </header>
       <div className={styles.geral}>
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={dadosUser} className={styles.form}>
           <section className={styles.fns}>
             <div className={styles.nomeSexo}>
               <TextField
@@ -281,7 +249,7 @@ function CadastrarFuncionario() {
                     type={escolherArquivo ? "file" : "text"}
                     accept={escolherArquivo ? "image/*" : undefined}
                     className={styles.fotoInput}
-                    onChange={handleFileChange}
+                    onChange={arquivoChange}
                     placeholder="  Colar link da foto"
                   />
                 </label>
@@ -289,7 +257,7 @@ function CadastrarFuncionario() {
                   <input
                     type="checkbox"
                     checked={escolherArquivo}
-                    onChange={handleCheckboxChange}
+                    onChange={checkboxChange}
                   />{" "}
                   Arquivo ou Link
                 </label>
