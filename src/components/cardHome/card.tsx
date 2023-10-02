@@ -13,7 +13,7 @@ interface UserCardProps {
 
 function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [showCargoHistorico, setShowCargoHistorico] = useState(false);
+  const [cargoHistorico, setCargoHistorico] = useState(false);
  const  navigate= useNavigate();
  
 
@@ -37,12 +37,12 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
     onUpdateUser(usuario);
   };
 
-  const toggleCargoHistorico = () => {
+  const historicosCargos = () => {
     
-    setShowCargoHistorico(!showCargoHistorico);
+    setCargoHistorico(!cargoHistorico);
   };
 
-   const viewPDF = () => {
+   const verPDF = () => {
      navigate("/visualizar-pdf", { state: { usuario } });
    };
 
@@ -71,14 +71,14 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <p> Status: {usuario.status}</p>
             </Typography>
 
-            {userDetails.map((detail, index) => (
+            {userDetails.map((detalhes, index) => (
               <Typography
                 key={index}
                 className={
                   styles["user-details"]
-                }>{`${detail.label}: ${detail.value}`}</Typography>
+                }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
             ))}
-            {showCargoHistorico && (
+            {cargoHistorico && (
               <div className={`${styles.historico} ${styles.paragraph}`}>
                 <h4>Histórico de Cargo</h4>
                 {usuario.cargoHistorico?.map((cargo, index) => (
@@ -88,8 +88,8 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                 ))}
               </div>
             )}
-            <Button onClick={toggleCargoHistorico}>
-              {showCargoHistorico
+            <Button onClick={historicosCargos}>
+              {cargoHistorico
                 ? "Esconder Histórico"
                 : "Ver Histórico dos Cargos"}
             </Button>
@@ -101,7 +101,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
             type="button"
             variant="contained"
             color="primary"
-            onClick={viewPDF}>
+            onClick={verPDF}>
            
               visualizar em PDF!
             
