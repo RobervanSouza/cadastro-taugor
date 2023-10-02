@@ -20,27 +20,27 @@ function UserDetailsModal({
   onUpdateUser,
   onDeleteUser,
 }: UserDetailsModalProps) {
-  const [isEditing, setIsEditing] = useState(false);
+  const [editar, setEditar] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario);
 
 
 
   const handleEdit = () => {
-    setIsEditing(true);
+    setEditar(true);
   };
 
   const handleCancel = () => {
-    setIsEditing(false);
+    setEditar(false);
   };
 
   const handleSave = (editedUserData: UserType) => {
     setEditedUser(editedUserData);
-    setIsEditing(false);
+  setEditar(false);
     onUpdateUser(editedUserData);
   };
 
   const handleClose = () => {
-    if (!isEditing) {
+    if (!editar) {
       onUpdateUser(editedUser);
     }
     onClose();
@@ -64,7 +64,7 @@ function UserDetailsModal({
           <h1> Informações de Contato</h1>
         </DialogTitle>
         <div className={styles.cards}>
-          {isEditing ? (
+          {editar ? (
             <EditUserForm
               usuario={editedUser}
               onCancel={handleCancel}
@@ -116,21 +116,21 @@ function UserDetailsModal({
         </div>
         <div className={styles.botoes}>
           <p className={styles.btnEditar}>
-            {!isEditing && (
+            {!editar && (
               <Button onClick={handleEdit} style={{ color: "white" }}>
                 Editar
               </Button>
             )}
           </p>
           <p className={styles.btnFecha}>
-            {!isEditing && (
+            {!editar && (
               <Button style={{ color: "white" }} onClick={handleClose}>
                 Fechar
               </Button>
             )}
           </p>
           <p className={styles.btnExcluir}>
-            {!isEditing && (
+            {!editar && (
               <Button
                 style={{ color: "white" }}
                 onClick={handleDelete}
