@@ -25,28 +25,28 @@ function UserDetailsModal({
 
 
 
-  const handleEdit = () => {
+  const botaoEditar = () => {
     setEditar(true);
   };
 
-  const handleCancel = () => {
+  const botaoCancelar = () => {
     setEditar(false);
   };
 
-  const handleSave = (editedUserData: UserType) => {
+  const botaoSalvar = (editedUserData: UserType) => {
     setEditedUser(editedUserData);
   setEditar(false);
     onUpdateUser(editedUserData);
   };
 
-  const handleClose = () => {
+  const botaoFechar = () => {
     if (!editar) {
       onUpdateUser(editedUser);
     }
     onClose();
   };
 
-  const handleDelete = async () => {
+  const botaoDeletar = async () => {
     try {
       onDeleteUser(usuario.id);
       onClose();
@@ -67,8 +67,8 @@ function UserDetailsModal({
           {editar ? (
             <EditUserForm
               usuario={editedUser}
-              onCancel={handleCancel}
-              onSave={handleSave}
+              onCancel={botaoCancelar}
+              onSave={botaoSalvar}
             />
           ) : (
             <div className={styles.card}>
@@ -117,14 +117,14 @@ function UserDetailsModal({
         <div className={styles.botoes}>
           <p className={styles.btnEditar}>
             {!editar && (
-              <Button onClick={handleEdit} style={{ color: "white" }}>
+              <Button onClick={botaoEditar} style={{ color: "white" }}>
                 Editar
               </Button>
             )}
           </p>
           <p className={styles.btnFecha}>
             {!editar && (
-              <Button style={{ color: "white" }} onClick={handleClose}>
+              <Button style={{ color: "white" }} onClick={botaoFechar}>
                 Fechar
               </Button>
             )}
@@ -133,7 +133,7 @@ function UserDetailsModal({
             {!editar && (
               <Button
                 style={{ color: "white" }}
-                onClick={handleDelete}
+                onClick={botaoDeletar}
                 color="error">
                 Excluir
               </Button>
