@@ -159,6 +159,40 @@ function CadastrarFuncionario() {
       }
   };
 
+
+  function onChangeTelefone(e:ChangeEvent<HTMLInputElement>) {
+
+    const value = e.target.value;
+    const numericValue = value.replace(/[^\d]/g, ""); // Remove tudo que não é número
+    const maxLength = 11; // Define o comprimento máximo permitido
+
+    if (numericValue.length <= maxLength) {
+      let formattedValue = "";
+
+      if (numericValue.length >= 2) {
+        // Adicione os primeiros 2 dígitos entre parênteses
+        formattedValue = `(${numericValue.slice(0, 2)})`;
+
+        // Adicione os próximos dígitos antes do traço
+        if (numericValue.length >= 7) {
+          formattedValue += ` ${numericValue.slice(2,numericValue.length - 4)}`;
+
+          formattedValue += `-${numericValue.slice(numericValue.length - 4, maxLength)}`;
+        } else {
+         
+          formattedValue += ` ${numericValue.slice(2, maxLength)}`;
+        }
+      } else {
+        // Se não houver 2 dígitos iniciais, adicione os dígitos sem formatação
+        formattedValue = numericValue;
+      }
+
+      setTelefone(formattedValue);
+    }
+  }
+
+
+
   return (
     <>
       <header>
@@ -305,11 +339,7 @@ function CadastrarFuncionario() {
                 variant="outlined"
                 type="text"
                 value={telefone}
-                onChange={(e) => {
-                  const value = e.target.value;
-                  const numericValue = value.replace(/[^\d\s-]/g, "");
-                  setTelefone(numericValue);
-                }}
+                onChange={onChangeTelefone}
                 required
                 fullWidth
                 placeholder="99 9999-2333"
@@ -392,7 +422,7 @@ function CadastrarFuncionario() {
                 value={salario}
                 onChange={(e) => {
                   const value = e.target.value;
-                  const formattedValue = value.replace(/[^0-9,.]/g, ""); 
+                  const formattedValue = value.replace(/[^0-9,.]/g, "");
                   setSalario(formattedValue);
                 }}
                 required
