@@ -390,7 +390,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   ),
                 }}
                 inputProps={{
-                  maxLength: 20,
+                  maxLength: 30,
                 }}
               />
             </div>

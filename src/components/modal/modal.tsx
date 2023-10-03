@@ -70,40 +70,34 @@ function UserDetailsModal({
             <div className={styles.card}>
               <section className={styles.section}>
                 <div className={styles.div1}>
-                 
-                    <p>
-                      Nome:&nbsp; <span>{editedUser.name}</span>
-                    </p>
-                  
-                  
-                    <p>
-                      Sexo:&nbsp; <span>{editedUser.sexo}</span>
-                    </p>
-                  
-                  
-                    <p>
-                      Endereço:&nbsp; <span>{editedUser.endereco}</span>
-                    </p>
-                  
-                  
-                    <p>
-                      Contato:&nbsp; <span>{editedUser.telefone}</span>
-                    </p>
-                 
-                    <p>
-                      Data Nascimento:&nbsp;{" "}
-                      <span> {editedUser.nascimento}</span>
-                    </p>
-                    <p >
-                      Setor:&nbsp; <span>{editedUser.setor}</span>
-                    </p>
-                    <p >
-                      Salario:&nbsp; <span>{editedUser.salario}</span>
-                    </p>
-                    <p>
-                      Data Admissão:&nbsp; <span>{editedUser.admisao}</span>
-                    </p>
-                  
+                  <p>
+                    Nome:&nbsp; <span>{editedUser.name}</span>
+                  </p>
+
+                  <p>
+                    Sexo:&nbsp; <span>{editedUser.sexo}</span>
+                  </p>
+
+                  <p>
+                    Endereço:&nbsp; <span>{editedUser.endereco}</span>
+                  </p>
+
+                  <p>
+                    Contato:&nbsp; <span>{editedUser.telefone}</span>
+                  </p>
+
+                  <p>
+                    Data Nascimento:&nbsp; <span> {editedUser.nascimento}</span>
+                  </p>
+                  <p>
+                    Setor:&nbsp; <span>{editedUser.setor}</span>
+                  </p>
+                  <p>
+                    Salario:&nbsp; <span>{editedUser.salario}</span>
+                  </p>
+                  <p>
+                    Data Admissão:&nbsp; <span>{editedUser.admisao}</span>
+                  </p>
                 </div>
                 <div className={styles.div2}>
                   <div className={styles.status}>
@@ -116,12 +110,14 @@ function UserDetailsModal({
                       Cargo atual:&nbsp;<span>{editedUser.cargo}</span>
                     </p>
                   </div>
-                  <div className={`${styles.historico} ${styles.paragraph}`}>
+                  <div className={ styles.historico}>
                     <h4>Histórico de Cargo</h4>
                     {editedUser.cargoHistorico?.map((cargo, index) => (
-                      <p key={index}>
-                        {index + 1}° Cargo: <span>{cargo}</span>
-                      </p>
+                      <div>
+                        <p key={index}>
+                          {index + 1}° Cargo: <span>{cargo}</span>
+                        </p>
+                      </div>
                     ))}
                   </div>
                 </div>
