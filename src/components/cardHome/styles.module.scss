@@ -42,14 +42,10 @@
   display: flex;
   flex-wrap: wrap;
   width: 279px;
-  height: auto;
-  
+  height: 50px;
   overflow: hidden;
   word-break: break-all; 
 }
-
-
-
     .user-details {
       margin-bottom: 4px;
       display: flex;
@@ -57,12 +53,11 @@
       align-items: center;
       flex-wrap: wrap;
       width: 279px;
-      height: min-content;
-    
+      height: 60px;
+      
       overflow: hidden;
       word-break: break-all; 
-    
-
+      
     }
   }
   .user-image {

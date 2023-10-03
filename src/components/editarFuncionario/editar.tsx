@@ -255,7 +255,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
                 ),
               }}
               inputProps={{
-                maxLength: 40,
+                maxLength: 37,
               }}
             />
           </div>

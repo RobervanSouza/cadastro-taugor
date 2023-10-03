@@ -187,7 +187,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   ),
                 }}
                 inputProps={{
-                  maxLength: 40,
+                  maxLength: 37,
                 }}
               />
               <TextField
