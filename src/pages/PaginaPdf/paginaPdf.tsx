@@ -14,17 +14,6 @@ function PaginaPDF() {
   const [leitura, setleitura] = useState(false);
 
 
-
-
-
-
-
-
-
-
-
-  
-
   const baixarPDF = () => {
     setleitura(true);
     const capturar = document.querySelector(".pagina") as HTMLElement;

@@ -57,7 +57,7 @@ body {
   border: 1px solid #d6d4d4;
   padding: 22px;
   margin-bottom: 12px;
-  
+  overflow: hidden;
 }
 
 .pagina h1{
@@ -195,6 +195,7 @@ body {
   align-items: center;
   flex-direction: column;
   margin-top: 28px;
+  
 }
 
 .historico{
@@ -212,18 +213,22 @@ body {
 .historico-cargo{
   width: 100%;
   
+  
+  height: min-content;
+    overflow-y: auto;
+    overflow: hidden;
 }
 
 .historicos-cargos{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
+  gap: 5px;
 }
 .historicos-cargos p{
-   margin-bottom: 13px;
   color: #06A0EC;
-  margin-top: 12px;
+  font-size: 13px;
 }
 
 .historicos-cargos span{
