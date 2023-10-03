@@ -54,7 +54,7 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-   border: 1px solid #d6d4d4;
+  border: 1px solid #d6d4d4;
   padding: 22px;
   margin-bottom: 12px;
   
@@ -189,11 +189,6 @@ body {
   color: #06A0EC;
 }
 
-
-
-
-
-
 .historico-funcionario{
   border: 1px solid #d6d4d4;
   display: flex;
@@ -201,8 +196,6 @@ body {
   flex-direction: column;
   margin-top: 28px;
 }
-
-
 
 .historico{
   margin-top: -18px;
@@ -242,9 +235,8 @@ body {
 }
 
 .funcionario-ativo span {
-  color: green; /* Estilo para funcionários ativos */
+  color: green; 
 }
-
 .informacoes-trabalho{
   margin-top: 12px;
 }

@@ -13,6 +13,18 @@ function PaginaPDF() {
   const { usuario } = location.state as { usuario: UserType };
   const [leitura, setleitura] = useState(false);
 
+
+
+
+
+
+
+
+
+
+
+  
+
   const baixarPDF = () => {
     setleitura(true);
     const capturar = document.querySelector(".pagina") as HTMLElement;
@@ -38,6 +50,7 @@ function PaginaPDF() {
     });
     
   };
+
 
   function getStatusClassName(usuarioStatus: string) {
     console.log("usuarioStatus:", usuarioStatus); 
