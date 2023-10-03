@@ -29,15 +29,40 @@
 
   .card-content {
     padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
 
-    .user-name {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+    
+ .user-name {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 279px;
+  height: auto;
+  
+  overflow: hidden;
+  word-break: break-all; 
+}
+
+
 
     .user-details {
       margin-bottom: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 279px;
+      height: min-content;
+    
+      overflow: hidden;
+      word-break: break-all; 
+    
+
     }
   }
   .user-image {
@@ -73,4 +98,15 @@
 }
 .demitido{
   color: red;
+}
+
+.historico{
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 279px;
+  height: auto;
+  overflow: hidden;
+  word-break: break-all; 
 }

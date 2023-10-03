@@ -1,53 +1,33 @@
-
-.botoes{
- margin-top: 12px;
-  
+.botoes {
+  margin-top: 12px;
 }
 
-.cards{
-
+.cards {
   width: 634px;
   height: min-content;
   display: flex;
   align-items: center;
   justify-content: center;
-   
-
 }
 
-.card{
-  
-  width: 634px;
-  height: 340px;
-  flex-wrap: wrap;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.botoes{
+.botoes {
   display: flex;
   gap: 23px;
 
-  .btnEditar{
+  .btnEditar {
     background-color: gray;
     border-radius: 5px;
-    
   }
-  .btnFecha{
-    background-color:#06A0EC ;
+  .btnFecha {
+    background-color: #06a0ec;
     border-radius: 5px;
-    
   }
-  .btnExcluir{
-    background-color:red ;
+  .btnExcluir {
+    background-color: red;
     border-radius: 5px;
-    
   }
 
-  .btnPDF{
+  .btnPDF {
     background-color: green;
     border-radius: 5px;
   }
@@ -58,7 +38,6 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  
 }
 
 .cards {
@@ -68,37 +47,80 @@
 }
 
 .card {
-  background-color: #f5f5f5;
+  background-color: #eae1e1;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #06a0ec;
   border-radius: 8px;
- 
+  overflow: hidden;
   width: 900px;
   margin: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+  box-shadow: 0px 0px 3px #06a0ec;
+  height: 340px;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
 
-  p {
-    margin: 8px 0;
-    color: #06A0EC;
+  .paragraph {
+    width: 437px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #06a0ec;
+
+    overflow: hidden;
+    flex-wrap: wrap;
   }
 
-  span{
+  .cargoParagrafo {
+    width: 237px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: #06a0ec;
+
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+
+  .status{
+    width: 243px;
+    
+  }
+
+  span {
     color: black;
+    width: 237px;
+
+    
+    align-items: center;
+    justify-self: center;
+    word-break: break-all;
   }
 
   .historico {
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 2px solid #06A0EC;
-    border-left: 2px solid #06A0EC;
-
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
- width: 242px;
+    border-top: 2px solid #06a0ec;
+    border-left: 2px solid #06a0ec;
+    
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 242px;
     h4 {
       margin-bottom: 8px;
+    }
+    p{
+      
+    width: 292px;
+    margin: 6px;
+    align-items: center;
+    
+
     }
   }
 }

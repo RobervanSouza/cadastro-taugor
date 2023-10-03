@@ -84,7 +84,7 @@ function PaginaPDF() {
               <p>
                 Telefone: <span> {usuario.telefone} </span>
               </p>
-              <p>
+              <p className="contato-endereco" >
                 Endereço: <span> {usuario.endereco} </span>
               </p>
             </div>

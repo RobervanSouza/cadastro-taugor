@@ -49,7 +49,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
 
   return (
     <>
-      <div className={styles.cardGeral} >
+      <div className={styles.cardGeral}>
         <Card
           className={`${styles["user-card"]} ${
             usuario.status === "demitido" ? styles["demitido"] : styles["ativo"]
@@ -58,9 +58,10 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
             <div className={styles["user-image"]}>
               <img src={usuario.foto} alt={usuario.name} />
             </div>
-            <Typography className={styles["user-name"]} variant="h6">
-              {usuario.name}
-            </Typography>
+            <div className={styles["user-name"]}>
+
+            <p>{usuario.name}</p>
+            </div>
 
             <Typography
               className={`
@@ -95,25 +96,22 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
             </Button>
           </CardContent>
           <div className={styles.botoes}>
-
-          <Button onClick={openModal}>Ver Detalhes</Button>
-          <Button
-            type="button"
-            variant="contained"
-            color="primary"
-            onClick={verPDF}>
-           
+            <Button onClick={openModal}>Ver Detalhes</Button>
+            <Button
+              type="button"
+              variant="contained"
+              color="primary"
+              onClick={verPDF}>
               visualizar em PDF!
-            
-          </Button>
-          <UserDetailsModal
-            usuario={usuario}
-            isOpen={modalOpen}
-            onClose={closeModal}
-            onUpdateUser={onUpdateUser}
-            onDeleteUser={onDeleteUser}
+            </Button>
+            <UserDetailsModal
+              usuario={usuario}
+              isOpen={modalOpen}
+              onClose={closeModal}
+              onUpdateUser={onUpdateUser}
+              onDeleteUser={onDeleteUser}
             />
-            </div>
+          </div>
         </Card>
       </div>
     </>

@@ -72,21 +72,28 @@ function UserDetailsModal({
             />
           ) : (
             <div className={styles.card}>
-              {/* Renderize os detalhes do usuário aqui */}
+              <div className={styles.paragraph}>
+                <p>
+                  Nome: <span>{editedUser.name}</span>
+                </p>
+              </div>
+              <div className={styles.paragraph}>
+                <p>
+                  Sexo: <span>{editedUser.sexo}</span>
+                </p>
+              </div>
+              <div className={styles.paragraph}>
+                <p>
+                  Endereço: <span>{editedUser.endereco}</span>
+                </p>
+              </div>
+              <div className={styles.paragraph}>
+                <p>
+                  Contato: <span>{editedUser.telefone}</span>
+                </p>
+              </div>
               <p className={styles.paragraph}>
-                Nome: <span>{editedUser.name}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Sexo: <span>{editedUser.sexo}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Endereço: <span>{editedUser.endereco}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Contato: <span>{editedUser.telefone}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Data Nascimento: <span>{editedUser.nascimento}</span>
+                Data Nascimento: &nbsp; <span> {editedUser.nascimento}</span>
               </p>
               <p className={styles.paragraph}>
                 Setor: <span>{editedUser.setor}</span>
@@ -97,12 +104,16 @@ function UserDetailsModal({
               <p className={styles.paragraph}>
                 Data Admissão: <span>{editedUser.admisao}</span>
               </p>
-              <p className={styles.paragraph}>
-                Status: <span>{editedUser.status}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Cargo atual: <span>{editedUser.cargo}</span>
-              </p>
+              <div className={styles.status}>
+                <p>
+                  Status: <span>{editedUser.status}</span>
+                </p>
+              </div>
+              <div className={styles.cargoParagrafo}>
+                <p>
+                  Cargo atual: <span>{editedUser.cargo}</span>
+                </p>
+              </div>
               <div className={`${styles.historico} ${styles.paragraph}`}>
                 <h4>Histórico de Cargo</h4>
                 {editedUser.cargoHistorico?.map((cargo, index) => (
