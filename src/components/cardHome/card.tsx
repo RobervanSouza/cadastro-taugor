@@ -72,6 +72,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <p> Status: {usuario.status}</p>
             </Typography>
 
+
             {userDetails.map((detalhes, index) => (
               <Typography
                 key={index}
@@ -79,6 +80,8 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                   styles["user-details"]
                 }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
             ))}
+
+
             {cargoHistorico && (
               <div className={`${styles.historico} ${styles.paragraph}`}>
                 <h4>Histórico de Cargo</h4>
@@ -89,6 +92,8 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                 ))}
               </div>
             )}
+          
+
             <Button onClick={historicosCargos}>
               {cargoHistorico
                 ? "Esconder Histórico"
