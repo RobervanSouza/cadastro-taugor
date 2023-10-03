@@ -75,7 +75,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <Typography
                 key={index}
                 className={
-                  styles["user-details"]
+                  styles.userDetails
                 }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
             ))}  
 
