@@ -46,18 +46,26 @@
   overflow: hidden;
   word-break: break-all; 
 }
-    .user-details {
+    .userDetails {
       margin-bottom: 4px;
       display: flex;
-      justify-content: center;
+      width: 285px;
+      background-color: #06a0ec;
       align-items: center;
-      flex-wrap: wrap;
-      width: 279px;
-      height: 60px;
-      
-      overflow: hidden;
-      word-break: break-all; 
-      
+      justify-content: center;
+      flex-direction: row;
+  word-break: break-all; 
+   
+
+
+
+  
+
+
+
+
+
+
     }
   }
   .user-image {

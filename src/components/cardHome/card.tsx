@@ -59,8 +59,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <img src={usuario.foto} alt={usuario.name} />
             </div>
             <div className={styles["user-name"]}>
-
-            <p>{usuario.name}</p>
+              <p>{usuario.name}</p>
             </div>
 
             <Typography
@@ -72,15 +71,15 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <p> Status: {usuario.status}</p>
             </Typography>
 
-
-            {userDetails.map((detalhes, index) => (
+             {userDetails.map((detalhes, index) => (
               <Typography
                 key={index}
                 className={
                   styles["user-details"]
                 }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
-            ))}
+            ))}  
 
+          
 
             {cargoHistorico && (
               <div className={`${styles.historico} ${styles.paragraph}`}>
@@ -92,7 +91,6 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                 ))}
               </div>
             )}
-          
 
             <Button onClick={historicosCargos}>
               {cargoHistorico
