@@ -38,12 +38,15 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  
 }
 
 .cards {
   width: 100%;
   display: flex;
   justify-content: center;
+
+  height: auto;
 }
 
 .card {
@@ -51,17 +54,19 @@
   padding: 20px;
   border: 1px solid #06a0ec;
   border-radius: 8px;
-  overflow: hidden;
+  
   width: 900px;
   margin: 20px;
+  
   box-shadow: 0px 0px 3px #06a0ec;
-  height: 340px;
+  height: auto;
   flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 5px;
+  
 
   .paragraph {
     width: 437px;
@@ -69,25 +74,22 @@
     justify-content: center;
     display: flex;
     color: #06a0ec;
-
+  
     overflow: hidden;
     flex-wrap: wrap;
   }
 
   .cargoParagrafo {
-    width: 237px;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+    width: 337px;
+   
     color: #06a0ec;
-
-    overflow: hidden;
+    height: min-content;
     flex-wrap: wrap;
   }
 
   .status{
     width: 243px;
-    
+    color: #06a0ec;
   }
 
   span {
@@ -102,15 +104,19 @@
 
   .historico {
     margin-top: 16px;
-    padding-top: 16px;
+    
     border-top: 2px solid #06a0ec;
     border-left: 2px solid #06a0ec;
-    
-    align-items: center;
+  
+    align-items: flex-start;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 242px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  
+
+    width: 297px;
+  
+    
     h4 {
       margin-bottom: 8px;
     }
@@ -134,5 +140,42 @@
   .btnFecha,
   .btnExcluir {
     margin-right: 10px;
+  }
+}
+
+
+
+.section{
+  width: 790px;
+  height: 340px;
+  
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 12px;
+
+  .div1{
+  
+    overflow: hidden;
+    width: 48%;
+    color: #06a0ec;
+    align-items: flex-start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 340px;
+    margin: 12px;
+
+}
+
+  .div2{
+    width: 48%;
+    align-items: flex-start;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: min-content;
+    padding: 12px;
+  
   }
 }

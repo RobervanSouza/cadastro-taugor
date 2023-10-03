@@ -432,7 +432,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
               ),
             }}
             inputProps={{
-              maxLength: 20,
+              maxLength: 40,
             }}
           />
           <TextField

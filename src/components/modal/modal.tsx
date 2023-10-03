@@ -1,9 +1,8 @@
 import { Dialog, DialogTitle, Button } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { useState } from "react";
-import EditUserForm from "../editarFuncionario/editar"; 
+import EditUserForm from "../editarFuncionario/editar";
 import styles from "./styles.module.scss";
-
 
 interface UserDetailsModalProps {
   usuario: UserType;
@@ -23,8 +22,6 @@ function UserDetailsModal({
   const [editar, setEditar] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario);
 
-
-
   const botaoEditar = () => {
     setEditar(true);
   };
@@ -35,7 +32,7 @@ function UserDetailsModal({
 
   const botaoSalvar = (editedUserData: UserType) => {
     setEditedUser(editedUserData);
-  setEditar(false);
+    setEditar(false);
     onUpdateUser(editedUserData);
   };
 
@@ -55,7 +52,6 @@ function UserDetailsModal({
     }
   };
 
-
   return (
     <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
       <div className={styles.geral}>
@@ -72,56 +68,64 @@ function UserDetailsModal({
             />
           ) : (
             <div className={styles.card}>
-              <div className={styles.paragraph}>
-                <p>
-                  Nome: <span>{editedUser.name}</span>
-                </p>
-              </div>
-              <div className={styles.paragraph}>
-                <p>
-                  Sexo: <span>{editedUser.sexo}</span>
-                </p>
-              </div>
-              <div className={styles.paragraph}>
-                <p>
-                  Endereço: <span>{editedUser.endereco}</span>
-                </p>
-              </div>
-              <div className={styles.paragraph}>
-                <p>
-                  Contato: <span>{editedUser.telefone}</span>
-                </p>
-              </div>
-              <p className={styles.paragraph}>
-                Data Nascimento: &nbsp; <span> {editedUser.nascimento}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Setor: <span>{editedUser.setor}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Salario: <span>{editedUser.salario}</span>
-              </p>
-              <p className={styles.paragraph}>
-                Data Admissão: <span>{editedUser.admisao}</span>
-              </p>
-              <div className={styles.status}>
-                <p>
-                  Status: <span>{editedUser.status}</span>
-                </p>
-              </div>
-              <div className={styles.cargoParagrafo}>
-                <p>
-                  Cargo atual: <span>{editedUser.cargo}</span>
-                </p>
-              </div>
-              <div className={`${styles.historico} ${styles.paragraph}`}>
-                <h4>Histórico de Cargo</h4>
-                {editedUser.cargoHistorico?.map((cargo, index) => (
-                  <p key={index}>
-                    {index + 1}° Cargo: <span>{cargo}</span>
-                  </p>
-                ))}
-              </div>
+              <section className={styles.section}>
+                <div className={styles.div1}>
+                 
+                    <p>
+                      Nome:&nbsp; <span>{editedUser.name}</span>
+                    </p>
+                  
+                  
+                    <p>
+                      Sexo:&nbsp; <span>{editedUser.sexo}</span>
+                    </p>
+                  
+                  
+                    <p>
+                      Endereço:&nbsp; <span>{editedUser.endereco}</span>
+                    </p>
+                  
+                  
+                    <p>
+                      Contato:&nbsp; <span>{editedUser.telefone}</span>
+                    </p>
+                 
+                    <p>
+                      Data Nascimento:&nbsp;{" "}
+                      <span> {editedUser.nascimento}</span>
+                    </p>
+                    <p >
+                      Setor:&nbsp; <span>{editedUser.setor}</span>
+                    </p>
+                    <p >
+                      Salario:&nbsp; <span>{editedUser.salario}</span>
+                    </p>
+                    <p>
+                      Data Admissão:&nbsp; <span>{editedUser.admisao}</span>
+                    </p>
+                  
+                </div>
+                <div className={styles.div2}>
+                  <div className={styles.status}>
+                    <p>
+                      Status:&nbsp;<span>{editedUser.status}</span>
+                    </p>
+                  </div>
+                  <div className={styles.cargoParagrafo}>
+                    <p>
+                      Cargo atual:&nbsp;<span>{editedUser.cargo}</span>
+                    </p>
+                  </div>
+                  <div className={`${styles.historico} ${styles.paragraph}`}>
+                    <h4>Histórico de Cargo</h4>
+                    {editedUser.cargoHistorico?.map((cargo, index) => (
+                      <p key={index}>
+                        {index + 1}° Cargo: <span>{cargo}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </section>
             </div>
           )}
         </div>
