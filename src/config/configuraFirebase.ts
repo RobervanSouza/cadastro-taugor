@@ -18,11 +18,11 @@ import { getDatabase } from "firebase/database";
 //   messagingSenderId: MESSAGING_SENDER_ID,
 //   appId: APP_ID,
 //   measurementId: MEASUREMENT_ID,
-//   projectId: "cadastro-taugor",
 //    apiKey: API_KEY,
 // };
 
 const firebaseConfig = {
+ projectId: "cadastro-taugor",
  apiKey: "AIzaSyBhs9PQnte26EUwf5kwSDKMoPL3QzwPv0U",
   authDomain: "cadastro-taugor.firebaseapp.com",
   storageBucket: "cadastro - taugor.appspot.com",
