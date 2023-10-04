@@ -80,7 +80,7 @@ function Cadastrar() {
           {" "}
           <LogoComponent width="" height="" />{" "}
         </div>
-        <h1>Cadastrar usuario</h1>
+        <h1>Cadastrar usuário</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
             label="Email"
