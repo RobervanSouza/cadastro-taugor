@@ -40,7 +40,7 @@ body {
 
 .container{
   width: 100vw;
-  height: 90vh;
+  height: 297mm;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,7 +49,7 @@ body {
 }
 
 .pagina{
-   width: 210mm;
+  width: 210mm;
   height: 297mm;
   display: flex;
   flex-direction: column;
@@ -213,6 +213,7 @@ body {
 .historico-cargo{
   width: 100%;
 
+padding: 12px;
   height: min-content;
     overflow-y: auto;
   
@@ -223,7 +224,7 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
-  gap: 5px;
+  gap: 9px;
 }
 .historicos-cargos p{
   color: #06A0EC;

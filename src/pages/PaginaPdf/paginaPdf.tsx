@@ -24,14 +24,22 @@ function PaginaPDF() {
     }
 
     html2canvas(capturar, {
-      scale: 7, 
+      scale: 7,
       useCORS: true,
     }).then((canvas) => {
       const imageData = canvas.toDataURL("image/jpeg", 3.0);
+
+      // Configurar o tamanho da página PDF como "a4"
       const doc = new jsPDF("p", "mm", "a4");
-      const largura = doc.internal.pageSize.getWidth();
-      const altura = doc.internal.pageSize.getHeight();
-      doc.addImage(imageData, "JPEG", 0, 0, largura, altura);
+
+      doc.addImage(
+        imageData,
+        "JPEG",
+        0,
+        0,
+        doc.internal.pageSize.getWidth(),
+        doc.internal.pageSize.getHeight()
+      );
       setleitura(false);
 
       const nomeDoArquivo = `Funcionário-${usuario.name}.pdf`;
