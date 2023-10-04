@@ -6,7 +6,7 @@ import { auth } from "../../config/configuraFirebase";
 import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import LogoComponent from "../../components/logo/logo";
-import { emailAdm } from "../../env";
+
 import { toast } from "react-toastify";
 
 function LoginAdmin() {
@@ -69,7 +69,7 @@ function LoginAdmin() {
     if (isEmailValid && isPasswordValid) {
       try {
         
-        if (email === emailAdm) {
+        if (email === "taugor@getnet.com") {
           const response = await signInWithEmailAndPassword(
             auth,
             email,
@@ -78,7 +78,6 @@ function LoginAdmin() {
           console.log(response);
           navigate("/cadastrar");
         } else {
-          
           setEmailError("Email ou senha incorretos ou você não e Admin.");
         }
       } catch (error) {
