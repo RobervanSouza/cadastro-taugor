@@ -76,7 +76,10 @@ function Cadastrar() {
   return (
     <>
       <div className={styles.geral}>
-        <div> <LogoComponent width="" height="" /> </div>
+        <div>
+          {" "}
+          <LogoComponent width="" height="" />{" "}
+        </div>
         <h1>Cadastrar usuario</h1>
         <form onSubmit={submitEmail} className={styles.form}>
           <TextField
@@ -88,6 +91,9 @@ function Cadastrar() {
             onChange={handleEmailChange}
             error={!isEmailValid && !!emailError}
             helperText={emailError}
+            inputProps={{
+              maxLength: 20,
+            }}
           />
           <TextField
             label="Senha"
@@ -99,6 +105,9 @@ function Cadastrar() {
             onChange={handlePasswordChange}
             error={!isPasswordValid && !!passwordError}
             helperText={passwordError}
+            inputProps={{
+              maxLength: 20,
+            }}
           />
 
           <Button type="submit" variant="contained" color="primary">
