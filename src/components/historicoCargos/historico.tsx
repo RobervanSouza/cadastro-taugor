@@ -24,13 +24,16 @@ function HistoricoCargoModal({
           <h4>Histórico de Cargo</h4>
           {historico && historico.length > 0 ? (
             historico.map((cargo, index) => (
-              <Typography variant="body1">
+              <Typography key={index} variant="body1">
                 <span style={{ color: "#06a0ec" }}>{index + 1}° Cargo:</span>
                 <span style={{ color: "black" }}> {cargo}</span>
               </Typography>
             ))
           ) : (
-            <Typography style={{ color: "#06a0ec" }} variant="body1">
+            <Typography
+              
+              style={{ color: "#06a0ec" }}
+              variant="body1">
               Nenhum histórico de Cargo!!!.
             </Typography>
           )}
