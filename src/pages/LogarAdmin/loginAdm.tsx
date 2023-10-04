@@ -42,25 +42,30 @@ function LoginAdmin() {
   const isEmailValid = validateEmail(email);
   const isPasswordValid = validatePassword(password);
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setEmail(value);
-    if (!validateEmail(value)) {
-      setEmailError("Email inválido");
-    } else {
-      setEmailError(''); 
-    }
-  };
+ const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+   if (event && event.target) {
+     const { value } = event.target;
+     setEmail(value);
+     if (!validateEmail(value)) {
+       setEmailError("Email inválido");
+     } else {
+       setEmailError("");
+     }
+   }
+ };
 
-  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setPassword(value);
-    if (value.length < 6) {
-      setPasswordError("A senha deve conter pelo menos 6 caracteres");
-    } else {
-      setPasswordError(''); 
-    }
-  };
+ const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+   if (event && event.target) {
+     const { value } = event.target;
+     setPassword(value);
+     if (value.length < 6) {
+       setPasswordError("A senha deve conter pelo menos 6 caracteres");
+     } else {
+       setPasswordError("");
+     }
+   }
+ };
+
 
   async function submitEmail(event: FormEvent) {
     event.preventDefault();
