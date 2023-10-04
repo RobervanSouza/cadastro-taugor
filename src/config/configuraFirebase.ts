@@ -13,18 +13,18 @@ import { AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID, M
 
 const firebaseConfig = {
   authDomain:  AUTH_DOMAIN ,
-  projectId: PROJECT_ID,
+  //projectId: PROJECT_ID,
   storageBucket: STORAGE_BUCKET,
   messagingSenderId: MESSAGING_SENDER_ID,
   appId: APP_ID,
   measurementId: MEASUREMENT_ID,
+  projectId: "cadastro-taugor",
    apiKey: API_KEY,
 };
 
 // const firebaseConfig = {
 //  apiKey: "AIzaSyBhs9PQnte26EUwf5kwSDKMoPL3QzwPv0U",
 //   authDomain: "cadastro-taugor.firebaseapp.com",
-//   projectId: "cadastro-taugor",
 //   storageBucket: "cadastro - taugor.appspot.com",
 //   messagingSenderId: "308655623057",
 //   appId: "1:308655623057:web:74460aff19b4c43da12830",
