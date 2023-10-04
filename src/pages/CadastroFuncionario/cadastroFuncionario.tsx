@@ -146,19 +146,19 @@ const dataNascimento = (event: ChangeEvent<HTMLInputElement>) => {
   };
 
 function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
-  const numericValue = e.target.value.replace(/[^\d]/g, "").slice(0, 11);
+  const valorNumerico = e.target.value.replace(/[^\d]/g, "").slice(0, 11);
 
-  let formattedValue = "";
+  let formatarValor = "";
 
-  if (numericValue.length === 10) {
-    formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice( 2, 6 )}-${numericValue.slice(6, 10)}`;
-  } else if (numericValue.length === 11) {
-    formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice( 2, 7 )}-${numericValue.slice(7, 11)}`;
+  if (valorNumerico.length === 10) {
+    formatarValor = `(${valorNumerico.slice(0, 2)}) ${valorNumerico.slice( 2, 6 )}-${valorNumerico.slice(6, 10)}`;
+  } else if (valorNumerico.length === 11) {
+    formatarValor = `(${valorNumerico.slice(0, 2)}) ${valorNumerico.slice( 2, 7 )}-${valorNumerico.slice(7, 11)}`;
   } else {
-    formattedValue = numericValue;
+    formatarValor = valorNumerico;
   }
 
-  setTelefone(formattedValue);
+  setTelefone(formatarValor);
 }
 
   return (
