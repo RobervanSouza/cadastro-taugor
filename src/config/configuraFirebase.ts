@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { browserLocalPersistence, getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
- import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID, PROJECT_ID, STORAGE_BUCKET } from "../env";
+ import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID, PROJECT_ID, } from "../env";
 
 
 
