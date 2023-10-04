@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { browserLocalPersistence, getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
- import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID, PROJECT_ID, } from "../env";
+ //import { API_KEY, APP_ID, AUTH_DOMAIN, MEASUREMENT_ID, MESSAGING_SENDER_ID, PROJECT_ID, } from "../env";
 
 
 
@@ -17,11 +17,11 @@ import { getDatabase } from "firebase/database";
 //   messagingSenderId: MESSAGING_SENDER_ID,
 //   appId: APP_ID,
 //   measurementId: MEASUREMENT_ID,
+  //  apiKey: API_KEY,
 // };
 
 const firebaseConfig = {
-   apiKey: API_KEY,
-//  apiKey: "AIzaSyBhs9PQnte26EUwf5kwSDKMoPL3QzwPv0U",
+ apiKey: "AIzaSyBhs9PQnte26EUwf5kwSDKMoPL3QzwPv0U",
   authDomain: "cadastro-taugor.firebaseapp.com",
   projectId: "cadastro-taugor",
   storageBucket: "cadastro - taugor.appspot.com",
