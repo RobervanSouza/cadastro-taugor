@@ -6,6 +6,8 @@ import { auth } from "../../config/configuraFirebase";
 import { Link, useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import LogoComponent from "../../components/logo/logo";
+import { emailAdm } from "../../env";
+import { toast } from "react-toastify";
 
 function LoginAdmin() {
   const [email, setEmail] = useState("");
@@ -14,11 +16,14 @@ function LoginAdmin() {
   const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
+   function notificacao() {
+     toast.success("Usuário logado!");
+   }
   useEffect(() => {
     
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        
+        notificacao()
         navigate("/home");
       }
     });
@@ -64,7 +69,7 @@ function LoginAdmin() {
     if (isEmailValid && isPasswordValid) {
       try {
         
-        if (email === "taugor@getnet.com") {
+        if (email === emailAdm) {
           const response = await signInWithEmailAndPassword(
             auth,
             email,
