@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle, Button } from "@mui/material";
+import { Dialog, DialogTitle, Button, Typography } from "@mui/material";
 import { UserType } from "../../types/userTypes";
 import { useState } from "react";
 import EditUserForm from "../editarFuncionario/editar";
@@ -70,55 +70,66 @@ function UserDetailsModal({
             <div className={styles.card}>
               <section className={styles.section}>
                 <div className={styles.div1}>
-                  <p>
+                  <Typography className={styles.customTypography}>
                     Nome:&nbsp; <span>{editedUser.name}</span>
-                  </p>
+                  </Typography>
 
-                  <p>
+                  <Typography className={styles.customTypography}>
                     Sexo:&nbsp; <span>{editedUser.sexo}</span>
-                  </p>
+                  </Typography>
 
-                  <p>
+                  <Typography className={styles.customTypography}>
                     Endereço:&nbsp; <span>{editedUser.endereco}</span>
-                  </p>
+                  </Typography>
 
-                  <p>
+                  <Typography className={styles.customTypography}>
                     Contato:&nbsp; <span>{editedUser.telefone}</span>
-                  </p>
+                  </Typography>
 
-                  <p>
-                    Data Nascimento:&nbsp; <span> {editedUser.nascimento}</span>
-                  </p>
-                  <p>
+                  <Typography className={styles.customTypography}>
+                    Data Nascimento:&nbsp; <span>{editedUser.nascimento}</span>
+                  </Typography>
+
+                  <Typography className={styles.customTypography}>
                     Setor:&nbsp; <span>{editedUser.setor}</span>
-                  </p>
-                  <p>
+                  </Typography>
+
+                  <Typography className={styles.customTypography}>
                     Salario:&nbsp; <span>{editedUser.salario}</span>
-                  </p>
-                  <p>
+                  </Typography>
+
+                  <Typography className={styles.customTypography}>
                     Data Admissão:&nbsp; <span>{editedUser.admisao}</span>
-                  </p>
+                  </Typography>
                 </div>
+
                 <div className={styles.div2}>
                   <div className={styles.status}>
-                    <p>
+                    <Typography>
                       Status:&nbsp;<span>{editedUser.status}</span>
-                    </p>
+                    </Typography>
                   </div>
                   <div className={styles.cargoParagrafo}>
-                    <p>
+                    <Typography>
                       Cargo atual:&nbsp;<span>{editedUser.cargo}</span>
-                    </p>
+                    </Typography>
                   </div>
-                  <div className={ styles.historico}>
+                  <div className={styles.historico}>
                     <h4>Histórico de Cargo</h4>
-                    {editedUser.cargoHistorico?.map((cargo, index) => (
-                      <div>
-                        <p key={index}>
-                          {index + 1}° Cargo: <span>{cargo}</span>
-                        </p>
-                      </div>
-                    ))}
+                    {editedUser.cargoHistorico &&
+                    editedUser.cargoHistorico.length > 0 ? (
+                      editedUser.cargoHistorico.map((cargo, index) => (
+                        <div key={index}>
+                          <Typography>
+                            {index + 1}° Cargo: <span>{cargo}</span>
+                          </Typography>
+                        </div>
+                      ))
+                    ) : (
+                      <Typography style={{ color: "#06a0ec" }} variant="body1">
+                        Nenhum histórico de Cargo!!!.
+                      </Typography>
+                    )}
                   </div>
                 </div>
               </section>

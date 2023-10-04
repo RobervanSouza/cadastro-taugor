@@ -4,6 +4,7 @@ import { UserType } from "../../types/userTypes";
 import styles from "./styles.module.scss";
 import UserDetailsModal from "../modal/modal";
 import { useNavigate } from "react-router-dom";
+import HistoricoCargoModal from "../historicoCargos/historico";
 
 interface UserCardProps {
   usuario: UserType;
@@ -14,8 +15,14 @@ interface UserCardProps {
 function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [cargoHistorico, setCargoHistorico] = useState(false);
+
+
  const  navigate= useNavigate();
  
+ const openHistoricoModal = () => {
+   setCargoHistorico(true);
+ };
+
 
   const userDetails = [
     // { label: "Sexo", value: usuario.sexo },
@@ -37,16 +44,11 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
     onUpdateUser(usuario);
   };
 
-  const historicosCargos = () => {
-    
-    setCargoHistorico(!cargoHistorico);
-  };
-
    const verPDF = () => {
      navigate("/visualizar-pdf", { state: { usuario } });
    };
 
-
+   
   return (
     <>
       <div className={styles.cardGeral}>
@@ -71,15 +73,13 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               <p> Status: {usuario.status}</p>
             </Typography>
 
-             {userDetails.map((detalhes, index) => (
+            {userDetails.map((detalhes, index) => (
               <Typography
                 key={index}
                 className={
                   styles.userDetails
                 }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
-            ))}  
-
-          
+            ))}
 
             {cargoHistorico && (
               <div className={`${styles.historico} ${styles.paragraph}`}>
@@ -91,8 +91,13 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                 ))}
               </div>
             )}
+            <HistoricoCargoModal
+              open={cargoHistorico}
+              onClose={() => setCargoHistorico(false)}
+              historico={usuario.cargoHistorico || []}
+            />
 
-            <Button onClick={historicosCargos}>
+            <Button onClick={openHistoricoModal}>
               {cargoHistorico
                 ? "Esconder Histórico"
                 : "Ver Histórico dos Cargos"}

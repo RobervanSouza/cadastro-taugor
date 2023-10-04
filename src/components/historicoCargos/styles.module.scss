@@ -1,0 +1,24 @@
+.geral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  height: auto;
+  border: 3px solid #06a0ec;
+}
+
+.historico{
+  
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.botoes {
+  display: flex;
+  gap: 23px;
+  
+}

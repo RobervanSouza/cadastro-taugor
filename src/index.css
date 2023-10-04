@@ -212,11 +212,10 @@ body {
 
 .historico-cargo{
   width: 100%;
-  
-  
+
   height: min-content;
     overflow-y: auto;
-    overflow: hidden;
+  
 }
 
 .historicos-cargos{
