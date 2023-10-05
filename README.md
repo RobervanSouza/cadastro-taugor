@@ -1,5 +1,8 @@
 ## Sistema de Gerenciamento de Funcionários Taugor
 
+## Link do projeto:
+- https://taugor.vercel.app/
+
 ### Descrição
 
 O Sistema de Gerenciamento de Funcionários Taugor permite que você gerencie informações detalhadas de funcionários de forma eficiente. Com recursos de edição, visualização e exclusão, além da capacidade de escolher uma foto para cada funcionário, o sistema oferece uma solução completa para gerenciar sua equipe.
@@ -73,3 +76,7 @@ Este projeto está licenciado sob a Licença MIT.
 
 - E-mail: rob.robervan@hotmail.com
 - Telefone: 89 99453-2058
+### Autor
+- Robervan Souza
+
+
