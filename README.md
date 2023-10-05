@@ -40,18 +40,18 @@ Certifique-se de ter as seguintes dependências instaladas:
 
 ### Instalação
 
-1. Clone o repositório do projeto.
-git clone https://github.com/seu-usuario/taugor.git
+1. Clone o repositório do projeto: 
+- git clone https://github.com/seu-usuario/taugor.git
 
-2. Navegue até o diretório do projeto.
-cd taugor
+2. Navegue até o diretório do projeto:
+- cd taugor
 
-3. Instale as dependências.
-npm install
+3. Instale as dependências:
+- npm install
 
 
-4. Inicie o servidor de desenvolvimento.
-npm run dev
+4. Inicie o servidor de desenvolvimento: 
+- npm run dev
 
 
 5. Acesse o sistema em [http://localhost:3000](http://localhost:3000).
