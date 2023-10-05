@@ -43,9 +43,9 @@ function UserDetailsModal({
     onClose();
   };
 
-  const botaoDeletar = async () => {
+  const botaoDeletar = () => {
     try {
-      onDeleteUser(usuario.id);
+     onDeleteUser(usuario.id);
       onClose();
     } catch (error) {
       console.error("Erro ao excluir o usuário:", error);

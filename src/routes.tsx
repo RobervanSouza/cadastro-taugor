@@ -8,9 +8,6 @@ import CadastrarFuncionario from "./pages/CadastroFuncionario/cadastroFuncionari
 import LoginAdmin from "./pages/LogarAdmin/loginAdm";
 import PaginaPDF from "./pages/PaginaPdf/paginaPdf";
 
-
-
-
 interface IProtegerRotas {
   redirectTo: string;
 }

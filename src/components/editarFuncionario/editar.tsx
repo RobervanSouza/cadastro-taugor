@@ -40,19 +40,14 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
   const salvar = async () => {
     try {
       setSalvando(true);
-
-   
       const usuariosRef = ref(database, `users/${usuario.id}`);
       await update(usuariosRef, {
         ...editedUser,
         foto: foto,
       });
 
-      
       onSave({ ...editedUser, id: usuario.id });
-
       notificacao();
-
       setSalvando(false);
     } catch (error) {
      
@@ -127,9 +122,7 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     }
   };
 
-  const dataNascimento = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const dataNascimento = ( e: React.ChangeEvent<HTMLInputElement>) => {
     const formatarValor = formatarData(e.target.value);
     setEditedUser({ ...editedUser, nascimento: formatarValor });
   };
@@ -139,46 +132,22 @@ function EditUserForm({ usuario, onCancel, onSave }: EditUserFormProps) {
     setEditedUser({ ...editedUser, admisao: formatarValor });
   };
 
- function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
-   const value = e.target.value;
-   const valorNumerico = value.replace(/[^\d]/g, "");
-   const valorMaxino = 11;
+function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
+   const valorNumerico = e.target.value.replace(/[^\d]/g, "").slice(0, 11);
 
-   if (valorNumerico.length <= valorMaxino) {
-     let formatarValor = "";
+   let formatarValor = "";
 
-     if (valorNumerico.length >= 2) {
-     
-       formatarValor = `(${valorNumerico.slice(0, 2)})`;
-
- 
-       if (valorNumerico.length >= 7) {
-         formatarValor += ` ${valorNumerico.slice(2, valorNumerico.length - 4)}`;
-
-         formatarValor += `-${valorNumerico.slice(
-           valorNumerico.length - 4,
-           valorMaxino
-         )}`;
-       } else {
-         formatarValor += ` ${valorNumerico.slice(2, valorMaxino)}`;
-       }
-     } else {
-     
-       formatarValor = valorNumerico;
-     }
- setEditedUser({ ...editedUser, telefone: formatarValor });
-     
+   if (valorNumerico.length === 10) {
+     formatarValor = `(${valorNumerico.slice(0, 2)}) ${valorNumerico.slice(2,6)}-${valorNumerico.slice(6, 10)}`;
+   } else if (valorNumerico.length === 11) {
+     formatarValor = `(${valorNumerico.slice(0, 2)}) ${valorNumerico.slice(2,7)}-${valorNumerico.slice(7, 11)}`;
+   } else {
+     formatarValor = valorNumerico;
    }
- }
 
+  setEditedUser({ ...editedUser, telefone: formatarValor });
+}
 
-
-
-
-
-
-
-   
   return (
     <>
       <div className={styles.editar}>

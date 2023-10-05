@@ -19,7 +19,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
 
  const  navigate= useNavigate();
  
- const openHistoricoModal = () => {
+ const historicoModal = () => {
    setCargoHistorico(true);
  };
 
@@ -56,6 +56,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
           className={`${styles["user-card"]} ${
             usuario.status === "demitido" ? styles["demitido"] : styles["ativo"]
           }`}>
+
           <CardContent className={styles["card-content"]}>
             <div className={styles["user-image"]}>
               <img src={usuario.foto} alt={usuario.name} />
@@ -78,32 +79,31 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
                 key={index}
                 className={
                   styles.userDetails
-                }>{`${detalhes.label}: ${detalhes.value}`}</Typography>
+                }>{`${detalhes.label}: ${detalhes.value}`}
+              </Typography>
             ))}
 
-            {cargoHistorico && (
-              <div className={`${styles.historico} ${styles.paragraph}`}>
-                <h4>Histórico de Cargo</h4>
-                {usuario.cargoHistorico?.map((cargo, index) => (
-                  <p key={index}>
-                    {index + 1}° Cargo: <span>{cargo}</span>
-                  </p>
-                ))}
-              </div>
-            )}
             <HistoricoCargoModal
               open={cargoHistorico}
               onClose={() => setCargoHistorico(false)}
               historico={usuario.cargoHistorico || []}
             />
 
-            <Button onClick={openHistoricoModal}>
+            <UserDetailsModal
+              usuario={usuario}
+              isOpen={modalOpen}
+              onClose={closeModal}
+              onUpdateUser={onUpdateUser}
+              onDeleteUser={onDeleteUser}
+            />
+
+          </CardContent>
+          <div className={styles.botoes}>
+            <Button onClick={historicoModal}>
               {cargoHistorico
                 ? "Esconder Histórico"
                 : "Ver Histórico dos Cargos"}
             </Button>
-          </CardContent>
-          <div className={styles.botoes}>
             <Button onClick={openModal}>Ver Detalhes</Button>
             <Button
               type="button"
@@ -112,13 +112,6 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               onClick={verPDF}>
               visualizar em PDF!
             </Button>
-            <UserDetailsModal
-              usuario={usuario}
-              isOpen={modalOpen}
-              onClose={closeModal}
-              onUpdateUser={onUpdateUser}
-              onDeleteUser={onDeleteUser}
-            />
           </div>
         </Card>
       </div>

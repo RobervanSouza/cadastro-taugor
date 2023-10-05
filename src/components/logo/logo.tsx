@@ -27,7 +27,6 @@ function home() {
     <img
       src={Logo}
       alt="Logo"
-      
       style={style}
       onClick={home}
       />
