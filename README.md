@@ -21,7 +21,7 @@ O Sistema de Gerenciamento de Funcionários Taugor permite que você gerencie in
 #### Exclusão de Funcionário
 
 - Remova funcionários da base de dados conforme necessário.
-- Tem tambem a opção de demitir o funcionário, caso seja demitido, mostra o card e texto na cor vermelha.
+- Tem a opção de demitir o funcionário, caso seja demitido, mostra o card e texto na cor vermelha.
 
 
 #### Escolha de Foto
