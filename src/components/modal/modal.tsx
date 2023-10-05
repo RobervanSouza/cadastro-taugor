@@ -19,6 +19,7 @@ function UserDetailsModal({
   onUpdateUser,
   onDeleteUser,
 }: UserDetailsModalProps) {
+
   const [editar, setEditar] = useState(false);
   const [editedUser, setEditedUser] = useState(usuario);
 
@@ -54,22 +55,29 @@ function UserDetailsModal({
 
   return (
     <Dialog open={isOpen} onClose={onClose} maxWidth="md" fullWidth>
+
       <div className={styles.geral}>
+
         <DialogTitle>
           {" "}
           <h1> Informações de Contato</h1>
         </DialogTitle>
+
         <div className={styles.cards}>
+
           {editar ? (
             <EditUserForm
               usuario={editedUser}
               onCancel={botaoCancelar}
               onSave={botaoSalvar}
             />
+
           ) : (
+
             <div className={styles.card}>
               <section className={styles.section}>
                 <div className={styles.div1}>
+
                   <Typography className={styles.customTypography}>
                     Nome:&nbsp; <span>{editedUser.name}</span>
                   </Typography>
@@ -105,31 +113,45 @@ function UserDetailsModal({
 
                 <div className={styles.div2}>
                   <div className={styles.status}>
+
                     <Typography>
                       Status:&nbsp;<span>{editedUser.status}</span>
                     </Typography>
+
                   </div>
+
                   <div className={styles.cargoParagrafo}>
+
                     <Typography>
                       Cargo atual:&nbsp;<span>{editedUser.cargo}</span>
                     </Typography>
+
                   </div>
+
                   <div className={styles.historico}>
                     <h4>Histórico de Cargo</h4>
+
                     {editedUser.cargoHistorico &&
                     editedUser.cargoHistorico.length > 0 ? (
                       editedUser.cargoHistorico.map((cargo, index) => (
+
                         <div key={index}>
+
                           <Typography>
                             {index + 1}° Cargo: <span>{cargo}</span>
                           </Typography>
+
                         </div>
+
                       ))
                     ) : (
+
                       <Typography style={{ color: "#06a0ec" }} variant="body1">
                         Nenhum histórico de Cargo!!!.
                       </Typography>
+
                     )}
+
                   </div>
                 </div>
               </section>
@@ -137,30 +159,38 @@ function UserDetailsModal({
           )}
         </div>
         <div className={styles.botoes}>
-          <p className={styles.btnEditar}>
+          <button className={styles.btnEditar}>
+
             {!editar && (
               <Button onClick={botaoEditar} style={{ color: "white" }}>
                 Editar
               </Button>
             )}
-          </p>
-          <p className={styles.btnFecha}>
+
+          </button>
+
+          <button className={styles.btnFecha}>
+
             {!editar && (
               <Button style={{ color: "white" }} onClick={botaoFechar}>
                 Fechar
               </Button>
             )}
-          </p>
-          <p className={styles.btnExcluir}>
+
+          </button>
+
+          <button className={styles.btnExcluir}>
+
             {!editar && (
               <Button
                 style={{ color: "white" }}
                 onClick={botaoDeletar}
-                color="error">
+                >
                 Excluir
               </Button>
             )}
-          </p>
+            
+          </button>
         </div>
       </div>
     </Dialog>

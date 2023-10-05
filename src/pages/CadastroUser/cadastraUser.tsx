@@ -53,9 +53,7 @@ function Cadastrar() {
 
   async function submitEmail(event: FormEvent) {
     event.preventDefault();
-
-    if (email.trim() === "" || password.trim() === "") {
-     
+    if (email.trim() === "" || password.trim() === "") {    
       setEmailError("Preencha todos os campos.");
       return;
     }
@@ -63,7 +61,6 @@ function Cadastrar() {
     if (isEmailValid && isPasswordValid) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
-    
         notificacao();
         setEmail("");
         setPassword("");
@@ -76,12 +73,15 @@ function Cadastrar() {
   return (
     <>
       <div className={styles.geral}>
-        <div>
-          {" "}
-          <LogoComponent width="" height="" />{" "}
+
+        <div>      
+          <LogoComponent width="" height="" />
         </div>
+
         <h1>Cadastrar usuário</h1>
+
         <form onSubmit={submitEmail} className={styles.form}>
+
           <TextField
             label="Email"
             variant="outlined"
@@ -95,6 +95,7 @@ function Cadastrar() {
               maxLength: 20,
             }}
           />
+
           <TextField
             label="Senha"
             variant="outlined"
@@ -113,11 +114,13 @@ function Cadastrar() {
           <Button type="submit" variant="contained" color="primary">
             Cadastrar
           </Button>
+
           <Button variant="contained" color="primary">
             <Link style={{ textDecoration: "none", color: "white" }} to="/home">
               Navegar para a página home
             </Link>
           </Button>
+          
         </form>
       </div>
     </>

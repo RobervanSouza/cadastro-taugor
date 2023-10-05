@@ -68,7 +68,6 @@ function LoginAdmin() {
    
     if (isEmailValid && isPasswordValid) {
       try {
-        
         if (email === "taugor@getnet.com") {
           const response = await signInWithEmailAndPassword(
             auth,
@@ -80,10 +79,14 @@ function LoginAdmin() {
         } else {
           setEmailError("Email ou senha incorretos ou você não e Admin.");
         }
-      } catch (error) {
+      } 
+      
+      catch (error) {
         console.log(error);
       }
-    } else {
+
+    }
+    else {
      
       if (!isEmailValid) {
         setEmailError("Email inválido");
@@ -96,9 +99,13 @@ function LoginAdmin() {
 
   return (
     <div className={styles.geral}>
+
       <div> <LogoComponent/> </div>
+
       <h1>Entrar como Admin</h1>
+
       <form onSubmit={submitEmail} className={styles.form}>
+
         <TextField
           label="Email"
           variant="outlined"
@@ -109,6 +116,7 @@ function LoginAdmin() {
           error={!isEmailValid || !!emailError}
           helperText={emailError}
         />
+
         <TextField
           label="Senha"
           variant="outlined"
@@ -120,14 +128,17 @@ function LoginAdmin() {
           error={!isPasswordValid || !!passwordError}
           helperText={passwordError}
         />
+
         <Button type="submit" variant="contained" color="primary">
           Entrar
         </Button>
+
         <Button type="button" variant="contained" color="primary">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             Voltar para login
           </Link>
         </Button>
+        
       </form>
     </div>
   );

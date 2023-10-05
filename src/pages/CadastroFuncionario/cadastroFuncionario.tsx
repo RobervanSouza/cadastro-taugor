@@ -166,9 +166,11 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
       <header>
         <Header />
       </header>
+
       <div className={styles.geral}>
         <form onSubmit={dadosUser} className={styles.form}>
           <section className={styles.fns}>
+
             <div className={styles.nomeSexo}>
               <TextField
                 label="Nome"
@@ -190,6 +192,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   maxLength: 37,
                 }}
               />
+
               <TextField
                 label="Sexo"
                 variant="outlined"
@@ -209,10 +212,12 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   maxLength: 20,
                 }}
               />
+
             </div>
 
             <div className={styles.foto}>
               <div className={styles.iconeFoto}>
+
                 <TextField
                   label="Foto"
                   variant="outlined"
@@ -243,6 +248,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               </div>
 
               <div className={styles.descFoto}>
+
                 <label className={styles.uploadLabel}>
                   {escolherArquivo ? "Escolher arquivo" : "Colar link"}
                   <input
@@ -253,6 +259,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                     placeholder="  Colar link da foto"
                   />
                 </label>
+
                 <label>
                   <input
                     type="checkbox"
@@ -261,12 +268,15 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   />{" "}
                   Arquivo ou Link
                 </label>
+
               </div>
             </div>
+          
           </section>
 
           <section className={styles.cargo}>
             <div className={styles.cargoStyle}>
+
               <TextField
                 label="Cargo"
                 variant="outlined"
@@ -286,10 +296,13 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   maxLength: 20,
                 }}
               />
+
             </div>
           </section>
+
           <section className={styles.endereco}>
             <div className={styles.enderecoTeste}>
+
               <TextField
                 label="Endereço"
                 variant="outlined"
@@ -309,11 +322,13 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   maxLength: 40,
                 }}
               />
+
             </div>
           </section>
 
           <section className={styles.teleNasci}>
             <div className={styles.telefone}>
+
               <TextField
                 label="Telefone"
                 variant="outlined"
@@ -351,10 +366,12 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   ),
                 }}
               />
+
             </div>
           </section>
 
           <section className={styles.setorAdm}>
+
             <div>
               <TextField
                 className={styles.adm}
@@ -373,6 +390,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 }}
               />
             </div>
+
             <div>
               <TextField
                 className={styles.setor}
@@ -393,10 +411,12 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   maxLength: 30,
                 }}
               />
+
             </div>
           </section>
 
           <section className={styles.salarioButton}>
+
             <div>
               <TextField
                 className={styles.salario}
@@ -422,11 +442,13 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 }}
               />
             </div>
+
             <div className={styles.button}>
               <Button type="submit" variant="contained" color="primary">
                 Cadastrar
               </Button>
             </div>
+
           </section>
         </form>
       </div>

@@ -236,7 +236,7 @@ padding: 12px;
 }
 
 .funcionario-demitido span {
-  color: red; /* Estilo para funcionários demitidos */
+  color: red; 
 }
 
 .funcionario-ativo span {

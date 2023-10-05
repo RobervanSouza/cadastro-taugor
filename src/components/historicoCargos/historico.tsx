@@ -14,22 +14,29 @@ function HistoricoCargoModal({
   onClose,
   historico,
 }: HistoricoCargoModalProps) {
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+
       <div className={styles.geral}>
+
         <DialogTitle>
           <h1>Histórico de Cargos</h1>
         </DialogTitle>
+
         <div className={styles.historico}>
           <h4>Histórico de Cargo</h4>
+
           {historico && historico.length > 0 ? (
             historico.map((cargo, index) => (
               <Typography key={index} variant="body1">
                 <span style={{ color: "#06a0ec" }}>{index + 1}° Cargo:</span>
                 <span style={{ color: "black" }}> {cargo}</span>
               </Typography>
+
             ))
           ) : (
+
             <Typography
               
               style={{ color: "#06a0ec" }}
@@ -46,6 +53,7 @@ function HistoricoCargoModal({
           color="primary">
           Fechar
         </Button>
+
       </div>
     </Dialog>
   );

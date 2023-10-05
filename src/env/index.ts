@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-undef
+
 const {
   VITE_REACT_APP_API_KEY,
   VITE_REACT_APP_AUTH_DOMAIN,

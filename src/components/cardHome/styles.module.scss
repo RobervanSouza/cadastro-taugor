@@ -1,11 +1,6 @@
-
-.cardGeral{
-  
+.cardGeral {
   padding: 13px;
-  
 }
-
-
 
 .user-card {
   width: 300px;
@@ -20,17 +15,14 @@
   flex-wrap: wrap;
   border: 2px solid transparent;
   background-color: red;
-   
 
-   div{
- 
+  div {
     align-items: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin-bottom: 12px;
-   } 
-
+  }
 
   .card-content {
     padding: 2px;
@@ -39,67 +31,60 @@
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
-    
 
-    
- .user-name {
-  font-size: 1.25rem;
-  margin-bottom: 4px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 279px;
-  height: 50px;
-  overflow: hidden;
-  word-break: break-all; 
-}
+    .user-name {
+      font-size: 1.25rem;
+      margin-bottom: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 279px;
+      height: 50px;
+      overflow: hidden;
+      word-break: break-all;
+    }
     .userDetails {
       margin-bottom: 4px;
       display: flex;
       width: 285px;
-     
+
       align-items: center;
       justify-content: center;
       flex-direction: row;
-  word-break: break-all; 
-   height: 60px;
-   color: black;
-
+      word-break: break-all;
+      height: 60px;
+      color: black;
     }
   }
   .user-image {
     width: 123px;
     height: 123px;
     align-items: center;
-    
 
-    img{
+    img {
       width: 120px;
       height: 122px;
     }
-
   }
-  .botoes{
+  .botoes {
     margin-top: -22px;
     gap: 5px;
-    
   }
-  
 }
 
 .user-card.demitido {
-  border-color: red; 
+  border-color: red;
 }
 .user-card.ativo {
-  border-color: green; 
+  border-color: green;
 }
-.ativo{
+.ativo {
   color: green;
 }
-.demitido{
+.demitido {
   color: red;
 }
 
-.historico{
+.historico {
   font-size: 1.25rem;
   margin-bottom: 4px;
   display: flex;
@@ -107,13 +92,13 @@
   width: 279px;
   overflow-x: auto;
 
-  word-break: break-all; 
-  
-  p{
+  word-break: break-all;
+
+  p {
     color: #06a0ec;
   }
 
-  span{
+  span {
     color: black;
   }
 }

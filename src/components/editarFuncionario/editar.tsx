@@ -154,6 +154,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
         <section>
           <div className={styles.foto}>
             <div className={styles.iconeFoto}>
+
               <TextField
                 label="Foto"
                 variant="outlined"
@@ -182,7 +183,9 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 }}
               />
             </div>
+
             <div className={styles.desFoto}>
+
               <label className={styles.uploadLabel}>
                 {escolherArquivo ? "Escolher arquivo" : "Colar link"}
                 <input
@@ -193,6 +196,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                   placeholder="  Colar link da foto"
                 />
               </label>
+
               <label className={styles.checkbox}>
                 <input
                   type="checkbox"
@@ -201,6 +205,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 />{" "}
                 Arquivo ou Link
               </label>
+
             </div>
           </div>
         </section>
@@ -228,6 +233,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               }}
             />
           </div>
+
           <div>
             <TextField
               label="Sexo"
@@ -250,8 +256,10 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 maxLength: 20,
               }}
             />
+
           </div>
         </section>
+
         <section className={styles.enderecoTelefone}>
           <div>
             <TextField
@@ -276,6 +284,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               }}
             />
           </div>
+
           <div>
             <TextField
               label="Contato"
@@ -293,8 +302,10 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 ),
               }}
             />
-          </div>
+
+          </div> 
         </section>
+
         <section className={styles.nascimentoSetor}>
           <div>
             <TextField
@@ -314,6 +325,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               }}
             />
           </div>
+
           <div>
             <TextField
               label="Setor"
@@ -336,8 +348,10 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
                 maxLength: 30,
               }}
             />
+
           </div>
         </section>
+
         <section className={styles.salarioAdm}>
           <div>
             <TextField
@@ -362,6 +376,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               }}
             />
           </div>
+
           <div>
             <TextField
               label="Data Admissão"
@@ -381,6 +396,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
             />
           </div>
         </section>
+
         <section className={styles.cargoStatus}>
           <TextField
             label="Cargo atual"
@@ -404,6 +420,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               maxLength: 40,
             }}
           />
+
           <TextField
             label="Status"
             variant="outlined"
@@ -419,8 +436,11 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
             <option value="ativo">Ativo</option>
             <option value="demitido">Demitido</option>
           </TextField>
+
         </section>
+
         <section className={styles.botoes}>
+
           <div>
             <Button
               onClick={salvar}
@@ -431,6 +451,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               {salvando ? "Salvando..." : "Salvar"}
             </Button>
           </div>
+
           <div>
             <Button
               onClick={onCancel}
@@ -440,6 +461,7 @@ function onChangeTelefone(e: ChangeEvent<HTMLInputElement>) {
               Cancelar
             </Button>
           </div>
+          
         </section>
       </div>
     </>

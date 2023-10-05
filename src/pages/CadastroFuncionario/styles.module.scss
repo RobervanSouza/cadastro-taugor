@@ -33,7 +33,7 @@
   width: 840px;
   height: min-content;
   padding: 10px;
-  
+
   margin-top: -123px;
 }
 
@@ -44,7 +44,6 @@
   flex-direction: row;
   width: 734px;
   padding: 12px;
-  
 
   .nomeSexo {
     width: 50%;
@@ -85,7 +84,7 @@
 
         .imgPla {
           width: 220px;
-          height: 123px; 
+          height: 123px;
         }
       }
     }
@@ -100,75 +99,68 @@
         width: 12px;
       }
 
-      .fotoInput{
+      .fotoInput {
         background-color: #f6f9fb;
         border: 2px solid black;
         height: 22px;
         width: 173px;
         color: #06a0ec;
-        
       }
     }
   }
-
-
 }
 
-.cargo{
+.cargo {
   width: 704px;
- 
 }
-.endereco{
+.endereco {
   width: 704px;
-
 }
 
-.teleNasci{
-  width: 704px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  gap: 14px;
-  
-
-  .telefone{
-    width: 343px;
-    
-  }
-
-  .nascimento{
-    width: 343px;
-  }
-}
-
-.setorAdm{
-   width: 704px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  gap: 14px;
-
-  .adm{
-    width: 343px;
-  }
-
-  .setor{
-    width: 343px;
-  }
-}
-
-.salarioButton{
+.teleNasci {
   width: 704px;
   align-items: center;
   justify-content: center;
   display: flex;
   gap: 14px;
 
-  .salario{
+  .telefone {
     width: 343px;
   }
 
-  .button{
+  .nascimento {
+    width: 343px;
+  }
+}
+
+.setorAdm {
+  width: 704px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 14px;
+
+  .adm {
+    width: 343px;
+  }
+
+  .setor {
+    width: 343px;
+  }
+}
+
+.salarioButton {
+  width: 704px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 14px;
+
+  .salario {
+    width: 343px;
+  }
+
+  .button {
     width: 343px;
     align-items: center;
     display: flex;
@@ -177,91 +169,62 @@
 }
 
 
-
-
-
-
-
-
-/* Adicione um media query para ajustar os campos em telas menores */
 @media (max-width: 768px) {
   .form {
-      width: 373px;
-  
+    width: 373px;
+
     height: 70%;
     flex-direction: column;
     padding: 6px;
     display: flex;
     gap: 12px;
     justify-content: center;
-    
-    .fns{
-   
+
+    .fns {
       flex-direction: column;
       width: 373px;
       margin-left: -373px;
       align-items: center;
       justify-content: center;
       display: flex;
-      
-    
-      .nomeSexo{
+
+      .nomeSexo {
         width: 373px;
-        
       }
 
-      .foto{
+      .foto {
         width: 363px;
-        
       }
     }
 
-    .cargo{
-      
-      .cargoStyle{
-       
+    .cargo {
+      .cargoStyle {
         width: 363px;
         margin-left: -2px;
       }
-    
     }
 
-    .endereco{
-      
-      .enderecoTeste{
+    .endereco {
+      .enderecoTeste {
         width: 363px;
         margin-top: 473px;
         margin-left: -723px;
       }
-      
     }
-    
-    .teleNasci{
-      
-   
-      margin-top: 675px;
-        margin-left: -2143px;
 
-      .telefone{
+    .teleNasci {
+      margin-top: 675px;
+      margin-left: -2143px;
+
+      .telefone {
         width: 179px;
         margin-left: -363px;
-        
       }
-      .nascimento{
+      .nascimento {
         width: 179px;
-        
       }
     }
   }
-
-
-
-
-
-
-
-
-
 
   .container {
     margin-top: 22px;

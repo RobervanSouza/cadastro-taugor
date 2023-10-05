@@ -1,5 +1,5 @@
-.geral{
-  display: flex; 
+.geral {
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -9,13 +9,12 @@
   padding: 10px;
   position: relative;
 
-  h1{
-    color: #06A0EC;
+  h1 {
+    color: #06a0ec;
     font-size: 24px;
   }
-  
 }
-.form{
+.form {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -23,6 +22,5 @@
   width: 100%;
   max-width: 400px;
   padding: 50px;
-  border: 2px solid #06A0EC;
-    
+  border: 2px solid #06a0ec;
 }

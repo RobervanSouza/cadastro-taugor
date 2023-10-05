@@ -13,7 +13,6 @@ function PaginaPDF() {
   const { usuario } = location.state as { usuario: UserType };
   const [leitura, setleitura] = useState(false);
 
-
   const baixarPDF = () => {
     setleitura(true);
     const capturar = document.querySelector(".pagina") as HTMLElement;
@@ -28,10 +27,7 @@ function PaginaPDF() {
       useCORS: true,
     }).then((canvas) => {
       const imageData = canvas.toDataURL("image/jpeg", 3.0);
-
-      // Configurar o tamanho da página PDF como "a4"
       const doc = new jsPDF("p", "mm", "a4");
-
       doc.addImage(
         imageData,
         "JPEG",
@@ -45,12 +41,10 @@ function PaginaPDF() {
       const nomeDoArquivo = `Funcionário-${usuario.name}.pdf`;
       doc.save(nomeDoArquivo);
     });
-    
   };
 
-
   function getStatusClassName(usuarioStatus: string) {
-    console.log("usuarioStatus:", usuarioStatus); 
+    console.log("usuarioStatus:", usuarioStatus);
     if (usuarioStatus === "demitido") {
       console.log("Class: funcionario-demitido");
       return "funcionario-demitido";
@@ -60,7 +54,6 @@ function PaginaPDF() {
     }
   }
 
-
   return (
     <>
       <header>
@@ -69,11 +62,13 @@ function PaginaPDF() {
           name="viewport"
           content="width=device-width, initial-scale=1.0"></meta>
       </header>
+
       <div className="container">
         <div className="pagina">
           <div className="funcionario">
             <h1>Informações do Funcionário</h1>
           </div>
+
           <div className="pagina-nome">
             <p>
               Nome: <span> {usuario.name} </span>
@@ -87,22 +82,27 @@ function PaginaPDF() {
           </div>
 
           <div className="contato">
+
             <div className="contato-h2">
               <h2>Informações de Contato</h2>
             </div>
+            
             <div className="contato-nomes">
               <p>
                 Telefone: <span> {usuario.telefone} </span>
               </p>
-              <p className="contato-endereco" >
+              <p className="contato-endereco">
                 Endereço: <span> {usuario.endereco} </span>
               </p>
             </div>
+
           </div>
           <div className="informacoes-trabalho">
+
             <div className="empresa">
               <h2>Função na Empresa</h2>
             </div>
+
             <div className="grupo-superior">
               <p>
                 Status:{" "}
@@ -117,6 +117,7 @@ function PaginaPDF() {
                 Data admissão: <span> {usuario.admisao} </span>
               </p>
             </div>
+
             <div className="grupo-inferior">
               <p>
                 Setor: <span> {usuario.setor} </span>
@@ -127,22 +128,24 @@ function PaginaPDF() {
             </div>
           </div>
 
-          <div className="historico-funcionario" >
+          <div className="historico-funcionario">
+            
             <div className="historico">
               <h2>Histórico de Cargos</h2>
             </div>
-            
+
             <div className="historico-cargo">
-              
-            {usuario.cargoHistorico && usuario.cargoHistorico.length > 0 && (
-              <div className="historicos-cargos">
-                {usuario.cargoHistorico.map((cargo: string, index: number) => (
-                  <p key={index}>
-                    {index + 1}° Cargo: <span>{cargo}</span>
-                  </p>
-                ))}
-              </div>
-            )}
+              {usuario.cargoHistorico && usuario.cargoHistorico.length > 0 && (
+                <div className="historicos-cargos">
+                  {usuario.cargoHistorico.map(
+                    (cargo: string, index: number) => (
+                      <p key={index}>
+                        {index + 1}° Cargo: <span>{cargo}</span>
+                      </p>
+                    )
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

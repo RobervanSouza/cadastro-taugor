@@ -18,7 +18,6 @@ function Login() {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
-
   useEffect(() => {
    
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -69,7 +68,6 @@ function Login() {
 
    
    setIsLoading(true);
-
    
    if (isEmailValid && isPasswordValid) {
      try {
@@ -82,7 +80,8 @@ function Login() {
        
        setIsLoading(false);
      }
-   } else {
+   } 
+   else {
      if (!isEmailValid) {
        setEmailError("Digite um email válido");
      }
@@ -97,9 +96,12 @@ function Login() {
   return (
     <>
       <div className={styles.geral}>
+
         <LogoComponent width="" height="" />
         <h1>Acessar sua conta</h1>
+
         <form onSubmit={submitEmail} className={styles.form}>
+
           <TextField
             label="Email"
             variant="outlined"
@@ -110,6 +112,7 @@ function Login() {
             error={!isEmailValid && !!emailError}
             helperText={emailError}
           />
+
           <TextField
             label="Senha"
             variant="outlined"
@@ -137,6 +140,7 @@ function Login() {
               Cadastrar usuário como Admin?
             </Link>
           </Button>
+          
         </form>
       </div>
     </>

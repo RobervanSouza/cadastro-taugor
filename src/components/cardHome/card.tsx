@@ -58,18 +58,19 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
           }`}>
 
           <CardContent className={styles["card-content"]}>
+
             <div className={styles["user-image"]}>
               <img src={usuario.foto} alt={usuario.name} />
             </div>
+
             <div className={styles["user-name"]}>
               <p>{usuario.name}</p>
             </div>
 
             <Typography
               className={`
-          ${styles["user-status"]}
-          ${usuario.status === "ativo" ? styles["ativo"] : styles["demitido"]}
-          `}
+               ${styles["user-status"]} 
+               ${usuario.status === "ativo" ? styles["ativo"] : styles["demitido"]}`}
               variant="h6">
               <p> Status: {usuario.status}</p>
             </Typography>
@@ -98,13 +99,17 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
             />
 
           </CardContent>
+
           <div className={styles.botoes}>
+
             <Button onClick={historicoModal}>
               {cargoHistorico
                 ? "Esconder Histórico"
                 : "Ver Histórico dos Cargos"}
             </Button>
+
             <Button onClick={openModal}>Ver Detalhes</Button>
+
             <Button
               type="button"
               variant="contained"
@@ -112,6 +117,7 @@ function UserCard({ usuario, onUpdateUser, onDeleteUser }: UserCardProps) {
               onClick={verPDF}>
               visualizar em PDF!
             </Button>
+            
           </div>
         </Card>
       </div>

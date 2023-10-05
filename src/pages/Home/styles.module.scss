@@ -1,27 +1,24 @@
-.geral{
-  display: flex; 
+.geral {
+  display: flex;
   align-items: center;
   justify-content: center;
- flex-wrap: wrap;
- flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
   width: 100vw;
   min-height: 100vh;
   padding: 10px;
   position: relative;
 
-  h1{
-    color: #06A0EC;
+  h1 {
+    color: #06a0ec;
     font-size: 24px;
   }
-  
-  
-  
 }
-/* UserCard.module.scss */
-.userList{
+
+.userList {
   width: 90vw;
-  
+
   margin: 16px;
 
   border-radius: 8px;
@@ -30,5 +27,4 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-
 }

@@ -8,94 +8,88 @@
   height: min-content;
   padding: 22px;
   position: relative;
-  
 
   .botoes,
   .cargoStatus,
   .nomeSexo,
   .enderecoTelefone,
   .nascimentoSetor,
-  .salarioAdm{
-     width: 534px;
+  .salarioAdm {
+    width: 534px;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     display: flex;
     gap: 22px;
 
-    div{
+    div {
       width: 253px;
-      
     }
   }
-
 }
 
- .foto {
-    width: 550px;
-    height: 198px;
-    margin-top: 12px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+.foto {
+  width: 550px;
+  height: 198px;
+  margin-top: 12px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 
+  .iconeFoto {
+    width: 212px;
+    color: #06a0ec;
+    height: 124px;
 
-    .iconeFoto {
-      width: 212px;
-      color: #06a0ec;
-      height: 124px;
-      
-      .input {
-      
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 173px;
-      }
-
-      .icon {
-        width: 933px;
-        height: 133px;
-        overflow: hidden;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        
-        .imgPla {
-          width: 220px;
-          height: 123px; 
-        }
-      }
+    .input {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 173px;
     }
 
-    .desFoto {
-      width: 223px;
-      height: 123px;
+    .icon {
+      width: 933px;
+      height: 133px;
+      overflow: hidden;
+      align-items: center;
       display: flex;
       justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: #06a0ec;
-      img {
-        width: 12px;
-      }
 
-      .fotoInput{
-        background-color: #f6f9fb;
-        border: 2px solid black;
-        height: 22px;
-        width: 173px;
-        color: #06a0ec;
-        margin-top: 6px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .checkbox{
-     
-        margin-top: 12px;
-        margin-left: -92px;
+      .imgPla {
+        width: 220px;
+        height: 123px;
       }
     }
   }
+
+  .desFoto {
+    width: 223px;
+    height: 123px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #06a0ec;
+    img {
+      width: 12px;
+    }
+
+    .fotoInput {
+      background-color: #f6f9fb;
+      border: 2px solid black;
+      height: 22px;
+      width: 173px;
+      color: #06a0ec;
+      margin-top: 6px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .checkbox {
+      margin-top: 12px;
+      margin-left: -92px;
+    }
+  }
+}
